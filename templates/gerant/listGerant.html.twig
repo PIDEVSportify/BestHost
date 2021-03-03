@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+   {% block title%} BestHost  | Liste Gérant  {% endblock title %}
+{% block content %}
+    {% if gerants %}
+
+    <table id="articles" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Les gérants</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+                {% for gerant in gerants %}
+            <tr>
+                <td><h1> {{ gerant.Nom }}</h1>
+                <h1> {{ gerant.Prenom }}</h1>
+                <h1> {{ gerant.Cin }}</h1>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-light">Edit</a>
+                    <a href="#" class="btn btn-danger delete-article">Delete</a>
+                </td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No articles to display</p>
+  {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}
+
