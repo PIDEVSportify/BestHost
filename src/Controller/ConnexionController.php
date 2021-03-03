@@ -68,6 +68,7 @@ class ConnexionController extends AbstractController
                 $hash=$encoder->encodePassword($user,$user->getPassword());
                 $user->setPassword($hash);
                 $user->setRoles(['ROLE_USER']);
+
                 $em->persist($user);
                 $em->flush();
                 return $this->redirectToRoute('login');

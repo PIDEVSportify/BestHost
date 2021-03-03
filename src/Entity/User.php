@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -25,6 +26,8 @@ class User implements  UserInterface
      * @ORM\Column(type="integer")
      */
     private $id;
+
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -74,7 +77,16 @@ class User implements  UserInterface
      */
     private $cin;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
 
+
+    public function __construct()
+    {
+        $this->created_at=DateTime::createFromFormat('d-m-Y H:i:s','now');
+    }
 
 
 
@@ -197,8 +209,7 @@ class User implements  UserInterface
     public function getRoles():array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+
 
         return array_unique($roles);
     }
@@ -206,6 +217,18 @@ class User implements  UserInterface
     public function setRoles(?array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
 
         return $this;
     }
