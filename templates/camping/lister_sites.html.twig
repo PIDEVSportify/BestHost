@@ -15,17 +15,21 @@
     </style>
     <h1 style="text-align: center">l'affichage des sites camping</h1>
     <br>
+    {% set index1 =0 %}
     {% for message in app.flashes('warning') %}
+        {% set index1 =1 %}
         <div class="alert alert-warning">
             {{ message }}
         </div>
     {% endfor %}
     <br>
+    {% if not index1 %}
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">
             {{ message }}
         </div>
     {% endfor %}
+    {% endif %}
     <br>
     <table class="mb-0 table">
         <thead>
@@ -73,11 +77,11 @@
                     {%  endif %}
                     <input id="in6" hidden type="text" value="{{ s.getTypeCamping() }}" name="Type" >
                     <input id="in7" hidden type="text" value="{{ s.getImageCamping() }}" name="Image" >
-                    <input id="in8" type="submit" value="Modifier" class="btn btn-dark">
+                    <button id="in8" type="submit" class="btn btn-dark" >Modifier</button>
                 </form></td>
             <td> <form  action="{{ path('Supprimer_camping')}}" method="post" onsubmit="return ConfirmDelete()"  >
                     <input id="in9" hidden type="number" value="{{ s.getId()}}" name="id" >
-                    <input id="in10" type="submit" value="Supprimer" class="btn btn-dark" >
+                    <button id="in10" type="submit" class="btn btn-dark" >Supprimer</button>
                 </form></td>
         </tr>
         </tbody>
@@ -90,6 +94,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 {{ form_start(formcamping) }}
+                {{ form_errors(formcamping) }}
                 <div class="modal-header">
                     <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> site camping</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

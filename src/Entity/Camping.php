@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CampingRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CampingRepository::class)
@@ -19,16 +20,22 @@ class Camping
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Localisation is required")
+     * @Assert\Length(max=60)
      */
     private $localisation_camping;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Description is required")
+     * @Assert\Length(max=60)
      */
     private $description_camping;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Type is required")
+     * @Assert\Length(max=60)
      */
     private $type_camping;
 

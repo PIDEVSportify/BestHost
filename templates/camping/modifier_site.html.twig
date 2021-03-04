@@ -2,14 +2,20 @@
 {% block title %}Modifier{% endblock %}
 {% form_theme formcamping 'bootstrap_4_horizontal_layout.html.twig' %}
 {% block body %}
+    <h1 style="text-align: center">Modifier Site</h1>
+    <div class="container" style="margin-top: 20px">
     {{ form_start(formcamping) }}
+        {{ form_errors(formcamping) }}
         {{ form_row(formcamping.id, { 'label': 'Id' }) }}
         {{ form_row(formcamping.localisation_camping,{ 'label': 'Position' }) }}
         {{ form_row(formcamping.description_camping, { 'label': 'Déscription' }) }}
         {{ form_row(formcamping.type_camping, { 'label': 'Type' }) }}
         {{ form_row(formcamping.imageFile, { 'label': 'Image' }) }}
         {{ form_row(formcamping.find_offre, { 'label': 'Offre' }) }}
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
         <button type="submit" class="btn btn-success"><i class="ti-save"></i> Enregistrer</button>
     {{ form_end(formcamping) }}
+            <form  action="{{ path('Afficher_site')}}" method="post"  >
+            <button type="submit" class="btn btn-secondary" data-dismiss="modal" STYLE="margin-top: 2%">Fermer</button>
+            </form>
+    </div>
 {% endblock %}

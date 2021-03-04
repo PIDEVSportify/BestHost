@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Camping;
 use App\Entity\Offre;
 use App\Entity\Urlizer;
+use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DomCrawler\Image;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -117,12 +118,14 @@ class CampingController extends AbstractController
             $find = $get_class->find($request1->request->get('form')['find_offre']);
             $camping->setImageCamping($newFilename);
             if (!$find) {
-
+                $camping->setOffreId(Null);
                 $entityManager->flush();
                 $this->addFlash("warning", "No Offer found for id_offer ,and the site has been updated");
                 $this->redirectToRoute('Afficher_site');
             }
+            $camping->setOffreId($find);
             $entityManager->flush();
+            $this->addFlash("success", "The site has been updated");
             return $this->redirectToRoute('Afficher_site');
         }
         return $this->render('camping/modifier_site.html.twig',

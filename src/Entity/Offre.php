@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\OffreRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,16 +22,22 @@ class Offre
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Number of places is required")
+     * @Assert\Range(min=4,max=10,minMessage="le nombre minimum de places est <= 4 ",maxMessage="le nombre maximum de places est >=10 ")
      */
     private $nombre_places_offre;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank(message="Date is required")
+     * @Assert\Expression("this.getDateDebutOffre() < this.getDateFinOffre()")
      */
     private $date_debut_offre;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank(message="Date is required")
+     * @Assert\Expression("this.getDateDebutOffre() < this.getDateFinOffre()")
      */
     private $date_fin_offre;
 

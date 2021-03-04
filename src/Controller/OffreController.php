@@ -67,6 +67,7 @@ class OffreController extends AbstractController
         $date_fin = new \DateTime($request1->request->get('fin'));
         $offre->setDateDebutOffre($date_debut);
         $offre->setDateFinOffre($date_fin);
+        $this->addFlash("success", "The offer has been updated");
         $entityManager->flush();
         return $this->redirectToRoute('Afficher_offre');
     }
