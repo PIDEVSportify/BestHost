@@ -40,18 +40,19 @@ class AdminController extends AbstractController
      * @param Request $request
      * @param DataTableFactory $dataTableFactory
      * @return Response
-     * @Route("/show",name="showUsers")
+     * @Route("/showUsers",name="showUsers")
      */
 
     public function showAction(Request $request, DataTableFactory $dataTableFactory ,UserRepository  $repo)
     {
         $users=$repo->findAll();
+
         $table = $dataTableFactory->create()
-            ->add('email', TextColumn::class, ['label'=>'Email'])
+            ->add('email', TextColumn::class, ['label'=>'Email','searchable'=> true])
             ->add('cin', TextColumn::class, ['label'=>'CIN'])
             ->add('created_at', DateTimeColumn::class, ['label'=>'Created_at','format'=>
             'd-m-Y  H:m:s'])
-            ->add('delete',TextColumn::class, ['label'=>'Action', 'field'=>'user.email','render'=>
+            ->add('delete',TextColumn::class, ['label'=>'Action','orderable'=>false, 'field'=>'user.email','render'=>
                 function ($value)
                 {
                     if ($this->getUser()->getUsername()==$value)
@@ -62,7 +63,7 @@ class AdminController extends AbstractController
 
                     return $btn;
                 }])
-            ->add('modify',TextColumn::class, ['label'=>'', 'field'=>'user.id','render'=>
+            ->add('modify',TextColumn::class, ['label'=>'', 'orderable'=>false,'field'=>'user.id','render'=>
                 function ($value)
                 {
                     if ($this->getUser()->getUsername()==$value)
@@ -77,6 +78,7 @@ class AdminController extends AbstractController
                 'entity'=>User::class])
 
             ->handleRequest($request);
+
 
         if ($table->isCallback()) {
             return $table->getResponse();
@@ -95,7 +97,7 @@ class AdminController extends AbstractController
     public function deleteUser(Request $request , UserRepository $repo )
         {
 
-            $user=$repo->findOneBy(['email'=> $request->get('modifier')]);
+            $user=$repo->findOneBy(['email'=> $request->get('supprimer')]);
 
             $em=$this->getDoctrine()->getManager();
 
@@ -127,7 +129,7 @@ class AdminController extends AbstractController
         {
 
                if($request->get('modifier'))
-            $user = $repo->find($request->get('modifier'));
+               $user = $repo->find($request->get('modifier'));
             else
                 $user= $repo->find($request->get('inscription')['modifier']);
 

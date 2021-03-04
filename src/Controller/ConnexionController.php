@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 
+use Cassandra\Date;
+use DateTime;
 use Doctrine\ORM\EntityManager;
 use phpDocumentor\Reflection\Types\Integer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -65,10 +67,21 @@ class ConnexionController extends AbstractController
         $form->handleRequest($request);
             if (  $form->isSubmitted() && $form->isValid()  )
             {
+                /** @var UploadedFile $uploadedFile */
+                $uploadedFile = $form['avatar']->getData();
+                $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $date=new DateTime('now');
+                $newFilename = 'uploads/'.$originalFilename.$date->format('mmddyyyHHiiSS').'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move(
+                    $destination,
+                    $newFilename
+                );
+
                 $hash=$encoder->encodePassword($user,$user->getPassword());
                 $user->setPassword($hash);
                 $user->setRoles(['ROLE_USER']);
-
+                $user->setAvatar($newFilename);
                 $em->persist($user);
                 $em->flush();
                 return $this->redirectToRoute('login');
@@ -100,9 +113,9 @@ class ConnexionController extends AbstractController
         $form->handleRequest($request);
       if($form->isSubmitted() && $form->isValid())
       {
+          $em=$this->getDoctrine()->getManager();
           $hash=$encoder->encodePassword($user,$user->getPassword());
           $user->setPassword($hash);
-          $em=$this->getDoctrine()->getManager();
           $em->flush();
           return $this->redirectToRoute('accueil');
       }

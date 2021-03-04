@@ -12,8 +12,18 @@
   <component name="ChangeListManager">
     <list default="true" id="b7857afa-e1bd-47d6-a9cc-1450b4f07127" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ConnexionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ConnexionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FacebookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FacebookController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PrestataireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PrestataireController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/InscriptionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InscriptionType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PrestataireType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PrestataireType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/showUsers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/showUsers.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/connexion/inscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/connexion/inscription.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/prestataire/inscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prestataire/inscription.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +166,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -200,7 +210,14 @@
       <workItem from="1614694848212" duration="9460000" />
       <workItem from="1614704773076" duration="4497000" />
       <workItem from="1614763169081" duration="2323000" />
-      <workItem from="1614765595892" duration="18207000" />
+      <workItem from="1614765595892" duration="18414000" />
+      <workItem from="1614804898005" duration="55000" />
+      <workItem from="1614852990347" duration="2535000" />
+      <workItem from="1614857520388" duration="3256000" />
+      <workItem from="1614863107194" duration="6548000" />
+      <workItem from="1614875016621" duration="4506000" />
+      <workItem from="1614882702264" duration="6893000" />
+      <workItem from="1614889802070" duration="945000" />
     </task>
     <servers />
   </component>
@@ -220,27 +237,38 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="451" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614591826445">
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614888118573">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1614888118573" />
+    <state x="451" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614885004144">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="451" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614591826445" />
+    <state x="451" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1614885004144" />
     <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser" timestamp="1614440910139">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614440910139" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614705527418">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614890500208">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614705527418" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1614890500208" />
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1614262685630">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614262685630" />
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1614036845108" />
-    <state x="201" y="11" key="SettingsEditor" timestamp="1614608584059">
+    <state x="201" y="11" key="SettingsEditor" timestamp="1614869398405">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="201" y="11" key="SettingsEditor/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614608584059" />
+    <state x="201" y="11" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1614869398405" />
+    <state width="498" height="451" key="SwitcherDM" timestamp="1614888308262">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="498" height="451" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1614888308262" />
     <state x="390" y="0" width="585" height="728" key="find.popup" timestamp="1614768001461">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

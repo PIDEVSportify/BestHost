@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     fields={"email"},
  *      message="email existant"
  * )
+ *
  */
 class User implements  UserInterface
 {
@@ -24,6 +25,7 @@ class User implements  UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *
      */
     private $id;
 
@@ -31,7 +33,7 @@ class User implements  UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
+     * @Assert\Email(message="Saisir mail valide ")
      */
     private $email;
 
@@ -48,7 +50,7 @@ class User implements  UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min="8",minMessage="Password needs to be at least 8 characters long")
-     *
+     * 
      **/
     private $password;
     /**
@@ -64,16 +66,20 @@ class User implements  UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     private $avatar;
 
     /**
      * @ORM\Column(type="json", nullable=true)
+     *
      */
     private $roles = [];
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Length(min="8",max="8",maxMessage="Cin non valide")
+     *
      */
     private $cin;
 
@@ -82,10 +88,15 @@ class User implements  UserInterface
      */
     private $created_at;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebook_id;
+
 
     public function __construct()
     {
-        $this->created_at=DateTime::createFromFormat('d-m-Y H:i:s','now');
+        $this->created_at=new DateTime('now');
     }
 
 
@@ -226,9 +237,21 @@ class User implements  UserInterface
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreatedAt( \DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getFacebookId(): ?string
+    {
+        return $this->facebook_id;
+    }
+
+    public function setFacebookId(?string $facebook_id): self
+    {
+        $this->facebook_id = $facebook_id;
 
         return $this;
     }

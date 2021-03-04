@@ -54,8 +54,16 @@
                                         {{form_widget(form.password,{ 'attr':{'placeholder':'Password', 'class':'form-control' }})}}
                                     </div>
                                 <div class="col-md-12 form-group p_star" >
+
                                     {{ form_errors(form.confirm_password) }}
                                     {{form_widget(form.confirm_password,{ 'attr':{'placeholder':'Confirm Password', 'class':'form-control' }})}}
+                                </div>
+
+                                <div class="col-md-12 form-group  p_star" >
+                                    <div class="custom-file">
+                                        {{ form_errors(form.avatar) }}
+                                        {{form_widget(form.avatar)}}
+                                    </div>
                                 </div>
                                 <div class="row justify-content-center">
                                 {{ form_end(form) }}

@@ -30,7 +30,8 @@
 
         <div class="row justify-content-center">
 
-         <div id="users">Loading...</div>
+
+         <div id="users">Loading ...</div>
      </div>
     </div>
  {% endblock body %}
@@ -39,7 +40,8 @@
     <script src="{{ asset('bundles/datatables/js/datatables.js') }}"></script>
     <script>
         $(function() {
-            $('#users').initDataTables({{ datatable_settings(datatable) }});
+            $('#users').initDataTables({{ datatable_settings(datatable) }} ,{ searching: true,
+                processing: false });
         });
     </script>
 

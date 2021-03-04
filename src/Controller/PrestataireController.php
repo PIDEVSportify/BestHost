@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,9 +35,21 @@ class PrestataireController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
+            /** @var UploadedFile $uploadedFile */
+            $uploadedFile = $form['avatar']->getData();
+            $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
+            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $date=new DateTime('now');
+            $newFilename = 'uploads/'.$originalFilename.$date->format('mmddyyyHHiiSS').'.'.$uploadedFile->guessExtension();
+            $uploadedFile->move(
+                $destination,
+                $newFilename
+            );
+
+
+            $user->setAvatar($newFilename);
             $em= $this->getDoctrine()->getManager();
             $user->setPassword($encoder->encodePassword($user,$user->getPassword()));
-
             $em->persist($user);
             $em->flush();
             return $this->redirectToRoute('login');
