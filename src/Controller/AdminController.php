@@ -10,6 +10,7 @@ use Omines\DataTablesBundle\Column\DateTimeColumn;
 use Omines\DataTablesBundle\DataTableFactory;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,10 +50,17 @@ class AdminController extends AbstractController
 
         $table = $dataTableFactory->create()
             ->add('email', TextColumn::class, ['label'=>'Email','searchable'=> true])
+            ->add('first_name',TextColumn::class,['label'=>'Nom'])
+            ->add('last_name',TextColumn::class,['label'=>'Prenom'])
             ->add('cin', TextColumn::class, ['label'=>'CIN'])
             ->add('created_at', DateTimeColumn::class, ['label'=>'Created_at','format'=>
             'd-m-Y  H:m:s'])
-            ->add('delete',TextColumn::class, ['label'=>'Action','orderable'=>false, 'field'=>'user.email','render'=>
+            ->add('avatar',TextColumn::class,['label'=>'Avatar','orderable'=>false,'render'=>
+        function($value)
+        {
+            return "<img src=\"".$value."\"/ width=\"60px\" height=\"60px\">";
+        }])
+        ->add('delete',TextColumn::class, ['label'=>'Action','orderable'=>false, 'field'=>'user.email','render'=>
                 function ($value)
                 {
                     if ($this->getUser()->getUsername()==$value)

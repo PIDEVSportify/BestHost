@@ -12,15 +12,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b7857afa-e1bd-47d6-a9cc-1450b4f07127" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ConnexionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ConnexionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FacebookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FacebookController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PrestataireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PrestataireController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/InscriptionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InscriptionType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PrestataireType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PrestataireType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/showUsers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/showUsers.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/modifyUser.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/modifyUser.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/connexion/inscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/connexion/inscription.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/prestataire/inscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prestataire/inscription.html.twig" afterDir="false" />
@@ -217,7 +211,9 @@
       <workItem from="1614863107194" duration="6548000" />
       <workItem from="1614875016621" duration="4506000" />
       <workItem from="1614882702264" duration="6893000" />
-      <workItem from="1614889802070" duration="945000" />
+      <workItem from="1614889802070" duration="1045000" />
+      <workItem from="1614891249025" duration="105000" />
+      <workItem from="1614891483138" duration="3085000" />
     </task>
     <servers />
   </component>
@@ -237,10 +233,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614888118573">
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614893635786">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1614888118573" />
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1614893635786" />
     <state x="451" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614885004144">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

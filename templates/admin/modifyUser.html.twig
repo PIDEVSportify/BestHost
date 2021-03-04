@@ -55,6 +55,18 @@
                         {{ form_errors(form.confirm_password) }}
                         {{form_widget(form.confirm_password,{ 'attr':{'placeholder':'Confirm Password', 'class':'form-control' }})}}
                     </div>
+                    <div class="col-md-12 form-group p_star" >
+                      <div class="row justify-content-center">
+                        <div class="col">
+                          {{ form_errors(form.avatar) }}
+                        {{form_widget(form.avatar,{'attr': {'id':'inscription_avatar', 'onchange':'loadFile(event)'  }})}}
+                      </div>
+                        <div class="col">
+                            <img id="output" width="100" />
+                        </div>
+                      </div>
+
+                    </div>
                     <div class="row justify-content-center">
                         {{ form_end(form) }}
                     </div>
@@ -66,4 +78,5 @@
 
     </div>
  {% endblock body %}
+
 
