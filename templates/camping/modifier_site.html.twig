@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modifier{% endblock %}
+{% form_theme formcamping 'bootstrap_4_horizontal_layout.html.twig' %}
+{% block body %}
+    {{ form_start(formcamping) }}
+        {{ form_row(formcamping.id, { 'label': 'Id' }) }}
+        {{ form_row(formcamping.localisation_camping,{ 'label': 'Position' }) }}
+        {{ form_row(formcamping.description_camping, { 'label': 'Déscription' }) }}
+        {{ form_row(formcamping.type_camping, { 'label': 'Type' }) }}
+        {{ form_row(formcamping.imageFile, { 'label': 'Image' }) }}
+        {{ form_row(formcamping.find_offre, { 'label': 'Offre' }) }}
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-success"><i class="ti-save"></i> Enregistrer</button>
+    {{ form_end(formcamping) }}
+{% endblock %}

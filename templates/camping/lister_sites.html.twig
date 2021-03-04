@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello sites{% endblock %}
+{% form_theme formcamping 'bootstrap_4_horizontal_layout.html.twig' %}
+{% block body %}
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+    <h1 style="text-align: center">l'affichage des sites camping</h1>
+    <br>
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <br>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <br>
+    <table class="mb-0 table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Offre</th>
+            <th>localisation</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Image</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if liste['0']['site'] is not empty  %}
+        {%  for s in liste['0']['site'] %}
+        {% set index =0 %}
+        <tr>
+            <td >  {{ s.getId() }} </td>
+            {%  for c in liste['1']['offre'] %}
+                {% if s.getOffreId() is not null %}
+                    {% if s.getOffreId().getid()==c.getId() %}
+                        {% set index=1 %}
+                        <td >  {{ s.getOffreId().getId() }} </td>
+                    {%  endif %}
+                {%  endif %}
+            {% endfor %}
+            {% if not index %}
+                <td>Pas d'offre pour le moment</td>
+            {% endif %}
+            <td >  {{ s.getLocalisationCamping() }} </td>
+            <td >  {{ s.getDescriptionCamping() }} </td>
+            <td >  {{ s.getTypeCamping() }} </td>
+            <td >  <img id="taswira" src="uploads/{{ s.getImageCamping() }}"/> </td>
+            <td> <form  action="{{ path('Modifier_camping')}}" method="post"  >
+                    <input id="in1" hidden type="number" value="{{ s.getId()}}" name="id" >
+                    <input id="in2" hidden type="text" value="{{ s.getLocalisationCamping() }}" name="Localisation" >
+                    <input id="in3" hidden type="text" value="{{ s.getDescriptionCamping() }}" name="Description" >
+                    {% if s.getOffreId() is not null %}
+                        <input id="in4" hidden type="text" value="{{ s.getOffreId().getId()}}" name="Id_offre" >
+                    {% else %}
+                        <input id="in5" hidden type="text" value="{{0}}" name="Id_offre" >
+
+                    {%  endif %}
+                    <input id="in6" hidden type="text" value="{{ s.getTypeCamping() }}" name="Type" >
+                    <input id="in7" hidden type="text" value="{{ s.getImageCamping() }}" name="Image" >
+                    <input id="in8" type="submit" value="Modifier" class="btn btn-dark">
+                </form></td>
+            <td> <form  action="{{ path('Supprimer_camping')}}" method="post" onsubmit="return ConfirmDelete()"  >
+                    <input id="in9" hidden type="number" value="{{ s.getId()}}" name="id" >
+                    <input id="in10" type="submit" value="Supprimer" class="btn btn-dark" >
+                </form></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        {% endif %}
+    </table>
+    <br>
+    <button type="button" class="btn btn-dark" href="" data-toggle="modal" data-target="#createmodel" >Ajouter site camping</button>
+    <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                {{ form_start(formcamping) }}
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> site camping</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ form_row(formcamping.id, { 'label': 'Id' }) }}
+                    {{ form_row(formcamping.localisation_camping,{ 'label': 'Position' }) }}
+                    {{ form_row(formcamping.description_camping, { 'label': 'Déscription' }) }}
+                    {{ form_row(formcamping.type_camping, { 'label': 'Type' }) }}
+                    {{ form_row(formcamping.imageFile, { 'label': 'Image' }) }}
+                    {{ form_row(formcamping.find_offre, { 'label': 'Offre' }) }}
+                    <div class="modal-footer">
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button type="submit" class="btn btn-success"><i class="ti-save"></i> Enregistrer</button>
+                </div>
+                {{ form_end(formcamping) }}
+            </div>
+        </div>
+    </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier{% endblock %}
+{% block body %}
+<h1 style="text-align: center">Modifier Offre</h1>
+<form name="F1" method="POST" action="{{ path('Modifier_offre')}}" id="formu2" >
+    <label>Id:</label>
+    <input id="in5" hidden type="number" name="save" style="margin-left: 80px;" value="{{ request.request.get('id') }}">
+    <input id="in1" type="number" name="Id" style="margin-left: 80px;" value="{{ request.request.get('id') }}" >
+    <br>
+    <br>
+    <label>Nombre des palces:</label>
+    <input id="in2" type="number" name="Nombre" style="margin-left: 60px; " value="{{ request.request.get('nombre')}}">
+    <br>
+    <br>
+    <label>Date debut:</label>
+    <input id="in3" type="date" name="debut" style="
+        margin-left: 60px;
+    " value="{{ request.request.get('date_debut') |date("Y-m-d")}}">
+    <br>
+    <br>
+    <label>Date fin:</label>
+    <input id="in4" type="date" name="fin" style="
+        margin-left: 60px;
+    " value="{{ request.request.get('date_fin') |date("Y-m-d")}}">
+    <br>
+    <br>
+    <input id="in6" type="submit" value="modifier" class="btn btn-dark" onclick="" style="margin-left: 290px;margin-top: 20px;">
+</form>
+{% endblock %}
