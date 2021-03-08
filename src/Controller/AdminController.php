@@ -48,7 +48,7 @@ class AdminController extends AbstractController
     {
         $users=$repo->findAll();
 
-        $table = $dataTableFactory->create()
+      /*  $table = $dataTableFactory->create()
             ->add('email', TextColumn::class, ['label'=>'Email','searchable'=> true])
             ->add('first_name',TextColumn::class,['label'=>'Nom'])
             ->add('last_name',TextColumn::class,['label'=>'Prenom'])
@@ -92,7 +92,10 @@ class AdminController extends AbstractController
             return $table->getResponse();
         }
 
-        return $this->render('admin/showUsers.html.twig', ['datatable' => $table]);
+        return $this->render('admin/showUsers.html.twig', ['datatable' => $table]);*/
+
+
+            return $this->render("admin/showUsers.html.twig",['users'=>$users]);
 
 
     }
@@ -140,6 +143,7 @@ class AdminController extends AbstractController
                $user = $repo->find($request->get('modifier'));
             else
                 $user= $repo->find($request->get('inscription')['modifier']);
+
 
             $form=$this->createForm(InscriptionType::class,$user)
                 ->add('modifier',SubmitType::class,['attr'=>['class'=>'btn_3','value'=> $user->getId()]]);

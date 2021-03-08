@@ -98,6 +98,7 @@ class ConnexionController extends AbstractController
      */
     public function terminer_inscription(Request $request,UserPasswordEncoderInterface $encoder)
     {
+        $em=$this->getDoctrine()->getManager();
 
         $email= $this->getUser()->getEmail();
         $user=$this->getDoctrine()->getRepository(User::class)->findOneBy(['email'=>$email]);
@@ -113,10 +114,10 @@ class ConnexionController extends AbstractController
         $form->handleRequest($request);
       if($form->isSubmitted() && $form->isValid())
       {
-          $em=$this->getDoctrine()->getManager();
           $hash=$encoder->encodePassword($user,$user->getPassword());
           $user->setPassword($hash);
           $em->flush();
+
           return $this->redirectToRoute('accueil');
       }
 

@@ -71,7 +71,7 @@ $user = $this->em->getRepository(User::class)
         $user=new User();
         $user->setFacebookId($facebookUser->getId());
         $user->setEmail($facebookUser->getEmail());
-        $user->setAvatar($facebookUser->getPictureUrl());
+        $user->setAvatar($facebookUser->getPictureUrl () );
         $user->setPassword("test");
         $user->setFirstName($facebookUser->getFirstName());
         $user->setLastName($facebookUser->getLastName());
@@ -101,11 +101,8 @@ public function onAuthenticationSuccess(Request $request, TokenInterface $token,
         return new RedirectResponse($targetUrl);
     }
 
-
-
 // change "app_homepage" to some route in your app
 $targetUrl = $this->router->generate('accueil');
-
 return new RedirectResponse($targetUrl);
 
 // or, on success, let the request continue to be handled by the controller

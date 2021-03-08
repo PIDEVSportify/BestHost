@@ -21,9 +21,7 @@ class FacebookController extends AbstractController
 // will redirect to Facebook!
         return $clientRegistry
             ->getClient('facebook_main') // key used in config/packages/knpu_oauth2_client.yaml
-            ->redirect([
-                'public_profile', 'email' // the scopes you want to access
-            ]);
+            ->redirect();
     }
 
     /**

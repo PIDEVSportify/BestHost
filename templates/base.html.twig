@@ -68,6 +68,16 @@
                                                 <li><a href="blog-details.html">Blog Details</a></li>
                                             </ul>
                                         </li>
+                                        {% if app.user  %}
+                                        {%  for role in app.user.roles %}
+                                        {% if role=="ROLE_ADMIN" %}
+                                            <li><a href="{{ path('admin_showUsers') }}">show users</a></li>
+
+
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
+
                                         <li><a href="#">Pages</a>
                                             <ul class="submenu">
                                                 <li><a href="{{ path('login') }}">Login</a></li>

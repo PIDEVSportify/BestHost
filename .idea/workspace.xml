@@ -12,11 +12,14 @@
   <component name="ChangeListManager">
     <list default="true" id="b7857afa-e1bd-47d6-a9cc-1450b4f07127" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ConnexionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ConnexionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FacebookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FacebookController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/modifyUser.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/modifyUser.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/FacebookAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/FacebookAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/showUsers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/showUsers.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/connexion/inscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/connexion/inscription.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/prestataire/inscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prestataire/inscription.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,7 +216,9 @@
       <workItem from="1614882702264" duration="6893000" />
       <workItem from="1614889802070" duration="1045000" />
       <workItem from="1614891249025" duration="105000" />
-      <workItem from="1614891483138" duration="3085000" />
+      <workItem from="1614891483138" duration="3260000" />
+      <workItem from="1614933698985" duration="2121000" />
+      <workItem from="1615214570952" duration="8755000" />
     </task>
     <servers />
   </component>
@@ -269,11 +274,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="390" y="0" width="585" height="728" key="find.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614768001461" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1614689098455">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1615216448178">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614600504236" />
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1614689098455" />
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1615216448178" />
     <state x="346" y="49" width="670" height="58" key="search.everywhere.popup" timestamp="1614778209301">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

@@ -58,7 +58,7 @@
                                 {{form_widget(form.password,{ 'attr':{'placeholder':'Password', 'class':'form-control' }})}}
                             </div>
                             <div class="col-md-12 form-group p_star" >
-                                {{ form_errors(form.confirm_password) }}
+                                {{ form_errors(form.confirm_password,{'attr':{'class':'alert'}}) }}
                                 {{form_widget(form.confirm_password,{ 'attr':{'placeholder':'Confirm Password', 'class':'form-control' }})}}
                             </div>
                             <div class="col-md-12 form-group  p_star" >
