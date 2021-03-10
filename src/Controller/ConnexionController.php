@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 
-use Cassandra\Date;
+
 use DateTime;
 use Doctrine\ORM\EntityManager;
 use phpDocumentor\Reflection\Types\Integer;
@@ -71,7 +71,7 @@ class ConnexionController extends AbstractController
                 $uploadedFile = $form['avatar']->getData();
                 $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
                 $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $date=new DateTime('now');
+                $date= new DateTime('now');
                 $newFilename = 'uploads/'.$originalFilename.$date->format('mmddyyyHHiiSS').'.'.$uploadedFile->guessExtension();
                 $uploadedFile->move(
                     $destination,

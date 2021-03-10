@@ -55,7 +55,12 @@
                     <td>{{ user.LastName }}</td>
                     <td>{{ user.FirstName }}</td>
                     <td>{{ user.cin }}</td>
-                    <td><img src="{{ user.avatar }} "  height="60px" width="60px"> </td>
+                    <td>
+                        {% if user.avatar matches '/^uploads/' %}
+                        <img src="{{ asset(user.avatar)}} "  height="60px" width="60px"> </td>
+                    {% else %}
+                        <img src="{{ user.avatar }} "  height="60px" width="60px"> </td>
+                    {% endif %}
                     <td>
                     {% for role in user.roles %}
                         {{ role }}

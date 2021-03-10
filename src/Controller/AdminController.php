@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\InscriptionType;
 use App\Repository\UserRepository;
+use DateTime;
 use Omines\DataTablesBundle\Adapter\ArrayAdapter;
 use Omines\DataTablesBundle\Adapter\Doctrine\ORMAdapter;
 use Omines\DataTablesBundle\Column\DateTimeColumn;
@@ -153,6 +154,17 @@ class AdminController extends AbstractController
             if ($form->isSubmitted() && $form->isValid())
             {
 
+                /** @var UploadedFile $uploadedFile */
+                $uploadedFile = $form['avatar']->getData();
+                $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $date=new DateTime('now');
+                $newFilename = 'uploads/'.$originalFilename.$date->format('mmddyyyHHiiSS').'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move(
+                    $destination,
+                    $newFilename
+                );
+                $user->setAvatar($newFilename);
                 $hash=$encoder->encodePassword($user,$user->getPassword());
                 $user->setPassword($hash);
                 $em=$this->getDoctrine()->getManager();
