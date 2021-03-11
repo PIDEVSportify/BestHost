@@ -11,12 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7857afa-e1bd-47d6-a9cc-1450b4f07127" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/test.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +217,7 @@
       <workItem from="1615366138019" duration="328000" />
       <workItem from="1615367191573" duration="9554000" />
       <workItem from="1615457518618" duration="26370000" />
-      <workItem from="1615487777707" duration="3415000" />
+      <workItem from="1615487777707" duration="3503000" />
     </task>
     <servers />
   </component>
