@@ -10,7 +10,9 @@
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
         {% block stylesheets %}
 
-            {#{{ encore_entry_link_tags('app') }}#}
+
+            {{ encore_entry_link_tags('app') }}
+
             <link rel="stylesheet" href="{{ asset('https://bootswatch.com/4/flatly/bootstrap.min.css') }}" >
             <link rel="stylesheet" href=" {{ asset('assets/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
@@ -28,12 +30,17 @@
 
             <link rel="stylesheet" type="text/css" href="  https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
 
+
+
         {% endblock %}
 
         {% block javascripts %}
+
+
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
         {% endblock %}
     </head>
@@ -72,21 +79,13 @@
                                         {%  for role in app.user.roles %}
                                         {% if role=="ROLE_ADMIN" %}
                                             <li><a href="{{ path('admin_showUsers') }}">show users</a></li>
-
+                                            <li><a href="{{ path('admin_showStats') }}">show statistics</a></li>
 
                                             {% endif %}
                                         {% endfor %}
                                         {% endif %}
 
-                                        <li><a href="#">Pages</a>
-                                            <ul class="submenu">
-                                                <li><a href="{{ path('login') }}">Login</a></li>
-                                                <li><a href="cart.html">Cart</a></li>
-                                                <li><a href="elements.html">Element</a></li>
-                                                <li><a href="confirmation.html">Confirmation</a></li>
-                                                <li><a href="checkout.html">Product Checkout</a></li>
-                                            </ul>
-                                        </li>
+
                                         <li ><a href="contact.html">Contact</a></li>
                                         <li class="hot"> <a href="{{ path('prestataire_inscription') }}">  Devenir Hôte  </a></li>
                                     </ul>
@@ -141,6 +140,8 @@
         {% endblock %}
 
 {% block scripts %}
+
+    {{ encore_entry_script_tags('app') }}
 
     <script src="{{ asset('assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
     <!-- Jquery, Popper, Bootstrap -->

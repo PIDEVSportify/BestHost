@@ -1,0 +1,40 @@
+{% extends  'base.html.twig' %}
+
+
+{% block title %} Admin | Statistiques {% endblock title %}
+{% block body %}
+
+    <div class="slider-area ">
+        <div class="single-slider slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Statistiques</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container" style="margin-top: 10%" >
+
+       <div class="row justify-content-around " height="500px" margin-top="20px">
+        <div class="col-6 " >
+
+            {{ render_chart(chart) }}
+
+        </div>
+        <div class="col-6 " >
+
+            {{ render_chart(chart_cat) }}
+        </div>
+       </div>
+
+    </div>
+
+
+{% endblock %}
