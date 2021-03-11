@@ -29,14 +29,14 @@ class Offre
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\NotBlank(message="Date is required")
+     * @Assert\NotBlank(message="Valider que la date de fin est supérieure à la date de début")
      * @Assert\Expression("this.getDateDebutOffre() < this.getDateFinOffre()")
      */
     private $date_debut_offre;
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\NotBlank(message="Date is required")
+     * @Assert\NotBlank(message="Valider que la date de fin est supérieure à la date de début")
      * @Assert\Expression("this.getDateDebutOffre() < this.getDateFinOffre()")
      */
     private $date_fin_offre;

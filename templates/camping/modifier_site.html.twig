@@ -4,7 +4,7 @@
 {% block body %}
     <h1 style="text-align: center">Modifier Site</h1>
     <div class="container" style="margin-top: 20px">
-    {{ form_start(formcamping) }}
+    {{ form_start(formcamping,{'attr': {'enctype': 'multipart/form-data'}}) }}
         {{ form_errors(formcamping) }}
         {{ form_row(formcamping.id, { 'label': 'Id' }) }}
         {{ form_row(formcamping.localisation_camping,{ 'label': 'Position' }) }}

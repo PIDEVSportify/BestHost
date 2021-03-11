@@ -25,19 +25,12 @@ class CampingRepository extends ServiceEntityRepository
       */
     public function sql(Request $request):array
     {
-        //$conn = $this->getDoctrine()->getManager();
-        $conn = $this->getEntityManager()->getConnection();
+        $conn = $this->getEntityManager();
+        $dql=$conn->createQuery('SELECT c FROM App\Entity\Camping c WHERE 15 > :min and 15 < :max');
 
-        $sql = '
-        SELECT * FROM camping
-        WHERE 15 between :min and :max 
-        ';
-        $stmt = $conn->prepare($sql);
-        $stmt->bindValue('min',$request->request->get('min_price'));
-        $stmt->bindValue('max',$request->request->get('max_price'));
-        $stmt->execute();
-        return $stmt->fetchAllAssociative();
-
+        $dql->setParameter('min',$request->request->get('min_price'));
+        $dql->setParameter('max',$request->request->get('max_price'));
+        return $dql->getResult();
     }
     /*
     public function findByExampleField($value)

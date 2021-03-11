@@ -174,7 +174,7 @@ class CampingController extends AbstractController
     }
 
     /**
-     * @Route(name="rating_camping")
+     * @Route("/rate_site",name="rating_camping")
      */
     function rating_camping(Request $request)
     {

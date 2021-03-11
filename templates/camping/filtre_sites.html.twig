@@ -64,9 +64,9 @@
             </tr>
     {% for f in filtre['2']['search'] %}
             <tr>
-                <td><img class="product-thumb" src="uploads/{{ f.image_camping }}" /><a href="">{{ f.type_camping }}</a></td>
-                <td>{{ f.id }}</td>
-                <td class='text-right'>{{f.description_camping}}</td>
+                <td><img class="product-thumb" src="uploads/{{ f.getImageCamping() }}" /><a href="">{{ f.getTypeCamping() }}</a></td>
+                <td>{{ f.getId() }}</td>
+                <td class='text-right'>{{f.getDescriptionCamping()}}</td>
             </tr>
     {% endfor %}
    {% else %}
