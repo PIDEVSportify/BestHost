@@ -1,0 +1,95 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CampingData_OfferData</title>
+</head>
+<body>
+<style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+    #customers tr:hover {background-color: #ddd;}
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #FD2020;
+        color: white;
+    }
+</style>
+<h1 style="text-align: center">PDF</h1>
+<br>
+<table id="customers" >
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Offre</th>
+        <th>localisation</th>
+        <th>Description</th>
+        <th>Type</th>
+       {#  <th>Image</th>#}
+    </tr>
+    </thead>
+    <tbody>
+    {% if liste['0']['site'] is not empty  %}
+    {%  for s in liste['0']['site'] %}
+    {% set index =0 %}
+    <tr>
+        <td >  {{ s.getId() }} </td>
+        {%  for c in liste['1']['offre'] %}
+            {% if s.getOffreId() is not null %}
+                {% if s.getOffreId().getid()==c.getId() %}
+                    {% set index=1 %}
+                    <td >  {{ s.getOffreId().getId() }} </td>
+                {%  endif %}
+            {%  endif %}
+        {% endfor %}
+        {% if not index %}
+            <td>Pas d'offre pour le moment</td>
+        {% endif %}
+        <td >  {{ s.getLocalisationCamping() }} </td>
+        <td >  {{ s.getDescriptionCamping() }} </td>
+        <td >  {{ s.getTypeCamping() }} </td>
+       {# <td >  <img id="taswira" src="uploads/{{ s.getImageCamping() }}"/> </td>#}
+    </tr>
+
+    </tbody>
+    {% endfor %}
+    {% endif %}
+</table>
+<br><br>
+<table id="customers">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nombre des places</th>
+        <th>Date debut</th>
+        <th>Date fin</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if liste['1']['offre'] is not empty  %}
+    {%  for o in liste['1']['offre'] %}
+    <tr>
+        <td>  {{ o.getId()}}   </td>
+        <td >  {{ o.getNombrePlacesOffre() }} </td>
+        <td >  {{ o.getDateDebutOffre() |date("m/d/Y")}} </td>
+        <td >  {{ o.getDateFinOffre() |date("m/d/Y")}} </td>
+    </tr>
+    </tbody>
+    {% endfor %}
+    {% endif %}
+</table>
+</body>
+</html>

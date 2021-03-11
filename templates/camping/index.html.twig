@@ -69,15 +69,23 @@
                                 <h3><a href="product_details.html">{{ fronts.getTypeCamping() }}</a></h3>
                                 <span>{{ fronts.getDescriptionCamping() }} </span>
                             </div>
-                            <iframe hidden onload="average({{fronts.getAverageRating()}},{{index}})" ></iframe>
+                            {% if fronts.getRatingCamping()  %}
+                                <iframe hidden onload="average({{(fronts.getAverageRating()/fronts.getRatingCamping())}},{{index}})" ></iframe>
+                            {% else %}
+                                <iframe hidden onload="average({{fronts.getAverageRating()}},{{index}})" ></iframe>
+                            {% endif %}
                             <div style="margin-top: 15px" >
                                 <form class="rating" >
-                                <label id="11{{index}}" title="Poor" class="fa fa-star" ></label>
-                                <label id="22{{index}}" title="Average" class="fa fa-star" ></label>
-                                <label id="33{{index}}" title="Average" class="fa fa-star" ></label>
-                                <label id="44{{index}}" title="Good" class="fa fa-star" ></label>
-                                <label id="55{{index}}" title="Awesome" class="fa fa-star" ></label>
-                                    <p style="margin-left: 12px; color: #0066B4!important">{{fronts.getAverageRating()|number_format(1, '.', ',')}}  ({{fronts.getRatingCamping()}})</p>
+                                <label id="11{{index}}" title="Poor" class="fa fa-star disabled" ></label>
+                                <label id="22{{index}}" title="Average" class="fa fa-star disabled" ></label>
+                                <label id="33{{index}}" title="Average" class="fa fa-star disabled" ></label>
+                                <label id="44{{index}}" title="Good" class="fa fa-star disabled" ></label>
+                                <label id="55{{index}}" title="Awesome" class="fa fa-star disabled" ></label>
+                                    {% if fronts.getRatingCamping()  %}
+                                    <p style="margin-left: 12px; color: #0066B4!important">{{(fronts.getAverageRating()/fronts.getRatingCamping())|number_format(1, '.', ',')}}  ({{fronts.getRatingCamping()}})</p>
+                                    {% else %}
+                                        <p style="margin-left: 12px; color: #0066B4!important">{{fronts.getAverageRating()|number_format(1, '.', ',')}}  ({{fronts.getRatingCamping()}})</p>
+                                    {% endif %}
                                 </form>
                             </div>
                             <div>
@@ -87,7 +95,7 @@
                                         <div class="modal-content">
                                             <form class="rating" method="POST" id="form{{index}}" action="{{ path('rating_camping') }}" >
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> How do you rate our site ?</h5>
+                                                    <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> Click to rate!</h5>
                                                 </div>
                                                 <div class="modal-body">
                                                     <input hidden id="id" type="number" value="{{ fronts.getId() }}" name="id_rate">

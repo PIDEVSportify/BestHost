@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Camping;
 use App\Entity\Offre;
 use App\Entity\Urlizer;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DomCrawler\Image;
@@ -21,10 +23,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CampingController extends AbstractController
 {
+
     /**
      * @Route("/lister_sites", name="Afficher_site")
      */
-
     public function index(Request $request)
     {
         $get_sites=$this->getDoctrine()->getRepository(Camping::class);
@@ -79,7 +81,6 @@ class CampingController extends AbstractController
     /**
      * @Route("/modifier_camping", name="Modifier_camping")
      */
-
     public function modifier_camping(Request  $request1)
     {
         dump($request1);
@@ -137,7 +138,6 @@ class CampingController extends AbstractController
     /**
      * @Route("/supprimer_camping", name="Supprimer_camping")
      */
-
     public function supprimer_camping(Request  $request)
     {
         if ($request->request->get('id')>0) {
@@ -156,7 +156,6 @@ class CampingController extends AbstractController
     /**
      * @Route("/front_sites", name="Afficher_front")
      */
-
     public function afficher_front(Request $request)
     {
         dump($request);
@@ -188,7 +187,7 @@ class CampingController extends AbstractController
             if(!$site->getAverageRating())
                 $site->setAverageRating($rate);
             else
-                $site->setAverageRating(($site->getAverageRating()+$rate)/2);
+                $site->setAverageRating(($site->getAverageRating()+$rate));
             $entityManager->flush();
 
             return $this->redirectToRoute("Afficher_front");
@@ -196,6 +195,32 @@ class CampingController extends AbstractController
         throw $this->createNotFoundException(
             'error' . $request->request->get('id_rate')
         );
+    }
+
+    /**
+     * @Route("/generate_pdf")
+     */
+    public function generate_pdf()
+    {
+        $get_sites=$this->getDoctrine()->getRepository(Camping::class);
+        $site=$get_sites->findAll();
+        $liste=array(array('site'=>$site),array('offre'=>$this->getDoctrine()->getRepository(Offre::class)->findAll()));
+
+        $Options = new Options();
+        $Options->set('isRemoteEnabled',true);
+        $Options->set('defaultFont', 'Arial');
+
+        $pdf = new Dompdf($Options);
+        $html = $this->renderView('camping/pdf_sites.html.twig', [
+            'liste' => $liste
+        ]);
+
+        $pdf->loadHtml($html);
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+        $pdf->stream("speaky.pdf", [
+            "Attachment" => true
+        ]);
     }
 
 }
