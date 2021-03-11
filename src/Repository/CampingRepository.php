@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Camping;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method Camping|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,9 +20,25 @@ class CampingRepository extends ServiceEntityRepository
         parent::__construct($registry, Camping::class);
     }
 
-    // /**
-    //  * @return Camping[] Returns an array of Camping objects
-    //  */
+    /**
+      * @return Camping[] Returns an array of Camping objects
+      */
+    public function sql(Request $request):array
+    {
+        //$conn = $this->getDoctrine()->getManager();
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT * FROM camping
+        WHERE 15 between :min and :max 
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue('min',$request->request->get('min_price'));
+        $stmt->bindValue('max',$request->request->get('max_price'));
+        $stmt->execute();
+        return $stmt->fetchAllAssociative();
+
+    }
     /*
     public function findByExampleField($value)
     {

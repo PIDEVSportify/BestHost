@@ -52,6 +52,16 @@ class Camping
 
     private $find_offre;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $rating_camping;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $average_rating;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -132,5 +142,29 @@ class Camping
     public function getFindOffre(): ?int
     {
         return $this->find_offre;
+    }
+
+    public function getRatingCamping(): ?int
+    {
+        return $this->rating_camping;
+    }
+
+    public function setRatingCamping(?int $rating_camping): self
+    {
+        $this->rating_camping = $rating_camping;
+
+        return $this;
+    }
+
+    public function getAverageRating(): ?float
+    {
+        return $this->average_rating;
+    }
+
+    public function setAverageRating(?float $average_rating): self
+    {
+        $this->average_rating = $average_rating;
+
+        return $this;
     }
 }

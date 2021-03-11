@@ -24,6 +24,7 @@ class CampingController extends AbstractController
     /**
      * @Route("/lister_sites", name="Afficher_site")
      */
+
     public function index(Request $request)
     {
         $get_sites=$this->getDoctrine()->getRepository(Camping::class);
@@ -36,8 +37,8 @@ class CampingController extends AbstractController
             ->add('description_camping', TextType::class)
             ->add('type_camping', TextType::class)
             ->add('imageFile', FileType::class,[
-        'mapped' => false
-    ])
+                'mapped' => false
+            ])
             ->add('find_offre', NumberType::class)
             ->getForm();
         $form->handleRequest($request);
@@ -61,13 +62,13 @@ class CampingController extends AbstractController
                 $camping->setOffreId($find);
                 $entityManager->persist($camping);
                 $entityManager->flush();
-                }
+            }
             else{
                 $camping->setImageCamping($newFilename);
                 $camping->setOffreId(Null);
                 $entityManager->persist($camping);
                 $entityManager->flush();
-              }
+            }
             return $this->redirectToRoute('Afficher_site');
         }
 
@@ -78,17 +79,18 @@ class CampingController extends AbstractController
     /**
      * @Route("/modifier_camping", name="Modifier_camping")
      */
+
     public function modifier_camping(Request  $request1)
     {
         dump($request1);
         $entityManager = $this->getDoctrine()->getManager();
         if($request1->request->get('id')){
-        $camping = $entityManager->getRepository(Camping::class)->find($request1->request->get('id'));
-        if (!$camping) {
-            throw $this->createNotFoundException(
-                'No site found for id ' . $request1->request->get('id')
-            );
-        }}
+            $camping = $entityManager->getRepository(Camping::class)->find($request1->request->get('id'));
+            if (!$camping) {
+                throw $this->createNotFoundException(
+                    'No site found for id ' . $request1->request->get('id')
+                );
+            }}
         else{
             $camping = $entityManager->getRepository(Camping::class)->find($request1->request->get('form')['id']);
             dump($camping);
@@ -120,7 +122,7 @@ class CampingController extends AbstractController
             if (!$find) {
                 $camping->setOffreId(Null);
                 $entityManager->flush();
-                $this->addFlash("warning", "No Offer found for id_offer ,and the site has been updated");
+                $this->addFlash("warning", "No Offer found for id_offer");
                 $this->redirectToRoute('Afficher_site');
             }
             $camping->setOffreId($find);
@@ -136,7 +138,6 @@ class CampingController extends AbstractController
      * @Route("/supprimer_camping", name="Supprimer_camping")
      */
 
-
     public function supprimer_camping(Request  $request)
     {
         if ($request->request->get('id')>0) {
@@ -150,6 +151,51 @@ class CampingController extends AbstractController
                 'something is wrong for id ' . $request->request->get('id')
             );
         }
+    }
+
+    /**
+     * @Route("/front_sites", name="Afficher_front")
+     */
+
+    public function afficher_front(Request $request)
+    {
+        dump($request);
+        $get_sites = $this->getDoctrine()->getRepository(Camping::class);
+        $site = $get_sites->findAll();
+        if($request->request->count()>0) {
+            $min = $request->request->get('min_price');
+            $max = $request->request->get('max_price');
+            $search = $this->getDoctrine()->getRepository(Camping::class)->sql($request);
+            dump($search);
+            return $this->render('camping/filtre_sites.html.twig',
+                ['filtre' => array(array('min'=>$min),array('max'=>$max),array('search'=>$search))]);
+        }
+        return $this->render('camping/index.html.twig',
+            ['liste' => $site]);
+    }
+
+    /**
+     * @Route(name="rating_camping")
+     */
+    function rating_camping(Request $request)
+    {
+        if ($request->request->count()>0) {
+            $rate = $request->request->get('rating');
+            $entityManager = $this->getDoctrine()->getManager();
+            $get_sites = $entityManager->getRepository(Camping::class);
+            $site = $get_sites->find($request->request->get('id_rate'));
+            $site->setRatingCamping($site->getRatingCamping()+1);
+            if(!$site->getAverageRating())
+                $site->setAverageRating($rate);
+            else
+                $site->setAverageRating(($site->getAverageRating()+$rate)/2);
+            $entityManager->flush();
+
+            return $this->redirectToRoute("Afficher_front");
+        }
+        throw $this->createNotFoundException(
+            'error' . $request->request->get('id_rate')
+        );
     }
 
 }

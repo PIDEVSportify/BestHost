@@ -34,6 +34,19 @@
         </div>
         <!-- slider Area End-->
         <!-- ? New Product Start -->
+        <div class="filtre">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <form method="POST" action="{{ path('Afficher_front')}}" >
+                            <div style="margin-left: 12%;margin-top: 3%;MARGIN-INLINE-START: AUTO;">
+                                <input type="submit" value="Filtres" name="view" id="filtre" data-toggle="modal" class="btn-shadow dropdown-toggle btn btn-info test" data-target="#dataModal" style="background-color: #6c6a74;border-color: #dbdbdb;">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <section class="new-product-area section-padding30">
             <div class="container">
                 <!-- Section tittle -->
@@ -44,42 +57,67 @@
                         </div>
                     </div>
                 </div>
+                {% set index=0 %}
                 <div class="row">
+                    {% for fronts in liste %}
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                         <div class="single-new-pro mb-30 text-center">
                             <div class="product-img">
-                                <img src="assets/img/gallery/new_product1.png" alt="">
+                                <img src="uploads/{{ fronts.getImageCamping() }}" alt="">
                             </div>
                             <div class="product-caption">
-                                <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                                <span>$ 45,743</span>
+                                <h3><a href="product_details.html">{{ fronts.getTypeCamping() }}</a></h3>
+                                <span>{{ fronts.getDescriptionCamping() }} </span>
+                            </div>
+                            <iframe hidden onload="average({{fronts.getAverageRating()}},{{index}})" ></iframe>
+                            <div style="margin-top: 15px" >
+                                <form class="rating" >
+                                <label id="11{{index}}" title="Poor" class="fa fa-star" ></label>
+                                <label id="22{{index}}" title="Average" class="fa fa-star" ></label>
+                                <label id="33{{index}}" title="Average" class="fa fa-star" ></label>
+                                <label id="44{{index}}" title="Good" class="fa fa-star" ></label>
+                                <label id="55{{index}}" title="Awesome" class="fa fa-star" ></label>
+                                    <p style="margin-left: 12px; color: #0066B4!important">{{fronts.getAverageRating()|number_format(1, '.', ',')}}  ({{fronts.getRatingCamping()}})</p>
+                                </form>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-dark" href="" data-toggle="modal" data-target="#createmodel{{index}}" style="margin-top: 12px; margin-right:80% " >Rate</button>
+                                <div class="modal fade" id="createmodel{{index}}" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true" style="padding-top: 100px">
+                                    <div class="modal-dialog" role="document" style="max-width: 525px">
+                                        <div class="modal-content">
+                                            <form class="rating" method="POST" id="form{{index}}" action="{{ path('rating_camping') }}" >
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> How do you rate our site ?</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <input hidden id="id" type="number" value="{{ fronts.getId() }}" name="id_rate">
+                                                    <input type="radio" id="rating1{{index}}" name="rating" value="1" onclick="rate1({{index}})">
+                                                    <label id="1{{index}}" title="Poor" class="fa fa-star" for="rating1{{index}}"></label>
+                                                    <input type="radio" id="rating2{{index}}" name="rating" value="2" onclick="rate2({{index}})">
+                                                    <label id="2{{index}}" title="Average" class="fa fa-star" for="rating2{{index}}"></label>
+                                                    <input type="radio" id="rating3{{index}}" name="rating" value="3" onclick="rate3({{index}})">
+                                                    <label id="3{{index}}" title="Average" class="fa fa-star" for="rating3{{index}}"></label>
+                                                    <input type="radio" id="rating4{{index}}" name="rating" value="4" onclick="rate4({{index}})">
+                                                    <label id="4{{index}}" title="Good" class="fa fa-star" for="rating4{{index}}"></label>
+                                                    <input type="radio" id="rating5{{index}}" name="rating" value="5" onclick="rate5({{index}})">
+                                                    <label id="5{{index}}" title="Awesome" class="fa fa-star" for="rating5{{index}}"></label>
+                                                    <div class="modal-footer">
+                                                    </div>
+                                                    <button type="submit" id="submit_rate" onclick="clean({{index}})" data-dismiss="modal">Close</button>
+                                                    <button type="submit" id="submit_rate" form="form{{index}}" value="Submit">Rate</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             </div>
                         </div>
+                        {% set index =index+1 %}
+                    {% endfor %}
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-new-pro mb-30 text-center">
-                            <div class="product-img">
-                                <img src="assets/img/gallery/new_product2.png" alt="">
-                            </div>
-                            <div class="product-caption">
-                                <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                                <span>$ 45,743</span>
-                            </div>
-                        </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-new-pro mb-30 text-center">
-                            <div class="product-img">
-                                <img src="assets/img/gallery/new_product3.png" alt="">
-                            </div>
-                            <div class="product-caption">
-                                <h3><a href="product_details.html">Thermo Ball Etip Gloves</a></h3>
-                                <span>$ 45,743</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
         <!--  New Product End -->
         <!--? Gallery Area Start -->
