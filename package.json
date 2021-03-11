@@ -16,6 +16,8 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "@symfony/webpack-encore": "^0.32.0"
+        "@symfony/webpack-encore": "^0.32.1",
+        "photo-sphere-viewer": "^4.2.1",
+        "three": "0.126.1"
     }
 }

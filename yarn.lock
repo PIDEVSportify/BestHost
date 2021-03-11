@@ -860,7 +860,7 @@
   dependencies:
     chart.js "^2.9.4"
 
-"@symfony/webpack-encore@^0.32.0":
+"@symfony/webpack-encore@^0.32.1":
   version "0.32.1"
   resolved "https://registry.yarnpkg.com/@symfony/webpack-encore/-/webpack-encore-0.32.1.tgz#67fae6c430c5548c2caa4d50ac5a46843537e46b"
   integrity sha512-xrKYQ/eghQlH8qlqj1lWaiMf3uDIE0ZttN/eaoYTlmY9whkKiwEJemiR8/mDNRuPbJUsEeFrXClFYnZEd4Vt0Q==
@@ -4620,6 +4620,14 @@ pbkdf2@^3.0.3:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+photo-sphere-viewer@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/photo-sphere-viewer/-/photo-sphere-viewer-4.2.1.tgz#ba13578f15cf1793d49198368e941d6a36b65dd8"
+  integrity sha512-df/DUs/rwGgh3KawbccF/g4CMAT5Mwjqdgaf/PkWQ39A17BbppD7eTT6wkyo/dSsUPalUMPDcvfV2zf5ECk/Cg==
+  dependencies:
+    three "^0.126.0"
+    uevent "~2.0.0"
+
 picomatch@^2.0.4, picomatch@^2.2.1:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
@@ -5981,6 +5989,11 @@ terser@^4.1.2:
     source-map "~0.6.1"
     source-map-support "~0.5.12"
 
+three@0.126.1, three@^0.126.0:
+  version "0.126.1"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.126.1.tgz#cf4e4e52060fd952f6f0d5440cbd422c66bc4be7"
+  integrity sha512-eOEXnZeE1FDV0XgL1u08auIP13jxdN9LQBAEmlErYzMxtIIfuGIAZbijOyookALUhqVzVOx0Tywj6n192VM+nQ==
+
 through2@^2.0.0:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -6092,6 +6105,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+uevent@~2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/uevent/-/uevent-2.0.1.tgz#eda5226f957772a09f0d84868fea634421160d44"
+  integrity sha512-jKGgT4/BVWVRSwGyGjZLen/VvUSKaW5E4JQPD0zBXVc5RP/PHZQrXBJwH1cBynhBV6pSLSbujNMydEC9Dho7ng==
 
 unbox-primitive@^1.0.0:
   version "1.0.0"
