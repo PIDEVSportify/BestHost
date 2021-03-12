@@ -10,8 +10,12 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
-
+/**
+ * @Route("/gerant")
+ */
 class GerantController extends AbstractController
 {
     /**
@@ -63,9 +67,6 @@ class GerantController extends AbstractController
      * @Route("/edit/{Id_gerant}", name="gerant_edit", methods={"GET","POST"})
      */
 
-
-
-
     public function edit(Request $request, Gerant $gerant): Response
     {
         $form = $this->createForm(Gerant1Type::class, $gerant);
@@ -97,5 +98,84 @@ class GerantController extends AbstractController
         }
 
         return $this->redirectToRoute('gerant_index');
+    }
+    /**
+     * @Route("/list/{Id_gerant}", name="gerant_list", methods={"GET"})
+     */
+    public function listp(Gerant $produits) : Response
+    {
+// Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('gerant/list.html.twig', [
+            'gerant' =>$produits,
+        ]);
+
+        $html .= '<link type="text/css" href="/public/assets/css/bootstrap.min.css" rel="stylesheet" media="screen,print" />';
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("mypdf.pdf", [
+            "Attachment" => false
+        ]);
+
+
+
+    }
+    /**
+     * @Route("/tri", name="tri_g")
+     */
+    public function TriAction(Request $request)
+    {
+
+
+
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT e FROM App\Entity\Gerant e
+    ORDER BY e.Id_gerant ');
+
+
+
+        $candidats = $query->getResult();
+
+        return $this->render('gerant/index.html.twig', array(
+            'gerants' => $candidats));
+
+    }
+    /**
+     * @Route("/recherche", name="recherche_g")
+     */
+    public function searchAction(Request $request)
+    {
+
+        $data = $request->request->get('search');
+
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery('SELECT e FROM App\Entity\Gerant e WHERE e.Id_gerant    LIKE :data')
+            ->setParameter('data', '%'.$data.'%');
+
+
+        $events = $query->getResult();
+
+        return $this->render('gerant/index.html.twig', [
+            'gerants' => $events,
+        ]);
     }
 }

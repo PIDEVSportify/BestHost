@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Entity;
-
+use App\Entity\ActLike;
 use App\Repository\ActivityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\User;
 
 
 /**
@@ -16,7 +20,6 @@ class Activity
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="REQUIRED")
      */
     private $id;
 
@@ -56,6 +59,16 @@ class Activity
      * @Assert\NotBlank(message="REQUIRED")
      */
     private $gerant;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ActLike::class, mappedBy="post")
+     */
+    private $Likes;
+
+    public function __construct()
+    {
+        $this->Likes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -132,6 +145,49 @@ class Activity
         $this->gerant = $gerant;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|ActLike[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->Likes;
+    }
+
+    public function addLike(ActLike $like): self
+    {
+        if (!$this->Likes->contains($like)) {
+            $this->Likes[] = $like;
+            $like->setPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(ActLike $like): self
+    {
+        if ($this->Likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getPost() === $this) {
+                $like->setPost(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param User $user
+     * @return bool
+     */
+    public function  isLikedByUser(User $user) : bool
+    {
+        foreach ($this->Likes as $like){
+            if($like->getUser() === $user) return true;
+        }
+        return false;
+
     }
 }
 

@@ -41,14 +41,13 @@ class Gerant
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank(message="REQUIRED")
-     * @Assert\Date()
+     * @Assert\Email(message="Email {{value}} is not validmessage=REQUIRED")
      */
     private $Ad_Email;
 
     /**
      * @ORM\Column(type="string", length=8)
      * @Assert\NotBlank(message="REQUIRED")
-     * @Assert\Email(message="Email {{value}} is not validmessage="REQUIRED"")
      */
     private $Cin;
 

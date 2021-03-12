@@ -3,13 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\Activity;
+use App\Entity\ActLike;
 use App\Form\ActivityType;
 use App\Repository\ActivityRepository;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ActLikeRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 /**
  * @Route("/activity")
@@ -25,6 +31,18 @@ class ActivityController extends AbstractController
             'activities' => $activityRepository->findAll(),
         ]);
     }
+    /**
+     * @Route("/user", name="activity_user")
+     */
+    public function user(ActivityRepository $activityRepository): Response
+    {
+        return $this->render('activity/user.html.twig', [
+            'activities' => $activityRepository->findAll(),
+        ]);
+
+
+
+    }
 
     /**
      * @Route("/new", name="activity_new", methods={"GET","POST"})
@@ -36,6 +54,7 @@ class ActivityController extends AbstractController
         $form->add('ajouter',SubmitType::class,['attr'=>
             ['class'=>'btn_3']]);
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -57,6 +76,15 @@ class ActivityController extends AbstractController
     public function show(Activity $activity): Response
     {
         return $this->render('activity/show.html.twig', [
+            'activity' => $activity,
+        ]);
+    }
+    /**
+     * @Route("/user/{id}", name="us_show")
+     */
+    public function usershow(Activity $activity): Response
+    {
+        return $this->render('activity/usershow.html.twig', [
             'activity' => $activity,
         ]);
     }
@@ -96,4 +124,115 @@ class ActivityController extends AbstractController
 
         return $this->redirectToRoute('activity_index');
     }
+
+    /**
+     * @Route("/activity/{id}/like" , name="act_like")
+     * @param Activity $activity
+     * @param EntityManagerInterface $manager
+     * @param ActLikeRepository $likeRepo
+     * @return Response
+     */
+public function like(Activity $activity, EntityManagerInterface $manager , ActLikeRepository $likeRepo) : Response
+{
+    $user = $this->getUser();
+    if(!$user) return $this->redirectToRoute('app_login');
+
+    if($activity->isLikedByUser($user)){
+        $like = $likeRepo->findOneBy([
+            'post' => $activity,
+            'user'=> $user]);
+        $manager->remove($like);
+        $manager->flush();
+        return $this->redirectToRoute('activity_user');
+    }
+    $like = new ActLike();
+    $like->setPost($activity)
+        ->setUser($user);
+    $manager->persist($like);
+    $manager->flush();
+
+    return $this->redirectToRoute('activity_user');
+
+}
+    /**
+     * @Route("/recherche", name="recherche")
+     */
+    public function searchAction(Request $request)
+    {
+
+        $data = $request->request->get('search');
+
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery('SELECT e FROM App\Entity\Activity e WHERE e.Id_act    LIKE :data')
+            ->setParameter('data', '%'.$data.'%');
+
+
+        $events = $query->getResult();
+
+        return $this->render('activity/index.html.twig', [
+            'activities' => $events,
+        ]);
+    }
+    /**
+     * @Route("/tri", name="tri")
+     */
+    public function TriAction(Request $request)
+    {
+
+
+
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT e FROM App\Entity\Activity e
+    ORDER BY e.Id_act ');
+
+
+
+        $candidats = $query->getResult();
+
+        return $this->render('activity/index.html.twig', array(
+            'activities' => $candidats));
+
+    }
+
+    /**
+     * @Route("/list/{id}", name="activity_list", methods={"GET"})
+     */
+    public function listp(Activity $produits) : Response
+    {
+// Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+
+
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('activity/list.html.twig', [
+            'activity' =>$produits,
+        ]);
+
+        $html .= '<link type="text/css" href=" assets/css/bootstrap.min.css" rel="stylesheet" media="screen,print" />';
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("mypdf.pdf", [
+            "Attachment" => true
+        ]);
+
+
+
+    }
+
 }

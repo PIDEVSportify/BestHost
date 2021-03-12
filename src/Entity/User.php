@@ -3,22 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
-
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\Table(name="`user`")
- * @UniqueEntity(
- *     fields={"email"},
- *      message="email existant"
- * )
  */
-class User implements  UserInterface
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -27,69 +20,31 @@ class User implements  UserInterface
      */
     private $id;
 
-
-
     /**
-     * @ORM\Column(type="string", length=255)
-     *
+     * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $first_name;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $last_name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min="8",minMessage="Password needs to be at least 8 characters long")
-     *
-     **/
-    private $password;
-    /**
-     * @Assert\EqualTo (propertyPath="password",message="password mismatch")
-     *
-     */
-    private $confirm_password;
-
-    /**
-     * @ORM\Column(type="string", nullable=true,length=255)
-     */
-    private $google_id;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $avatar;
-
-    /**
-     * @ORM\Column(type="json", nullable=true)
+     * @ORM\Column(type="json")
      */
     private $roles = [];
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
-    private $cin;
+    private $password;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\OneToMany(targetEntity=ActLike::class, mappedBy="user")
      */
-    private $created_at;
-
+    private $likes;
 
     public function __construct()
     {
-        $this->created_at=DateTime::createFromFormat('d-m-Y H:i:s','now');
+        $this->likes = new ArrayCollection();
     }
-
-
-
 
     public function getId(): ?int
     {
@@ -108,33 +63,41 @@ class User implements  UserInterface
         return $this;
     }
 
-    public function getFirstName(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        return $this->first_name;
+        return (string) $this->email;
     }
 
-    public function setFirstName(?string $first_name): self
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        $this->first_name = $first_name;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }
 
-    public function getLastName(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
     {
-        return $this->last_name;
-    }
-
-    public function setLastName(?string $last_name): self
-    {
-        $this->last_name = $last_name;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
+        return (string) $this->password;
     }
 
     public function setPassword(string $password): self
@@ -144,95 +107,53 @@ class User implements  UserInterface
         return $this;
     }
 
-    public function getGoogleId(): ?string
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
     {
-        return $this->google_id;
+        return null;
     }
 
-    public function setGoogleId(?string $google_id): self
-    {
-        $this->google_id = $google_id;
-
-        return $this;
-    }
-
-    public function getConfirmPassword():?string
-    {
-            return $this->confirm_password;
-    }
-    public function getAvatar(): ?string
-    {
-        return $this->avatar;
-    }
-
-    public function setAvatar(?string $avatar): self
-    {
-        $this->avatar = $avatar;
-
-        return $this;
-    }
-    public function getCin(): ?int
-    {
-        return $this->cin;
-    }
-
-    public function setCin(?int $cin): self
-    {
-        $this->cin = $cin;
-
-        return $this;
-    }
-
-    public function setConfirmPassword(?string  $confirm_password):self
-    {
-        $this->confirm_password=$confirm_password;
-        return $this;
-    }
-
-
-    public function getSalt()
-    {
-        // TODO: Implement getSalt() method.
-    }
-
-    public function getUsername()
-    {
-       return $this->email;
-    }
-
+    /**
+     * @see UserInterface
+     */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
-
-    public function getRoles():array
+    /**
+     * @return Collection|ActLike[]
+     */
+    public function getLikes(): Collection
     {
-        $roles = $this->roles;
-
-
-        return array_unique($roles);
+        return $this->likes;
     }
 
-    public function setRoles(?array $roles): self
+    public function addLike(ActLike $like): self
     {
-        $this->roles = $roles;
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setUser($this);
+        }
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function removeLike(ActLike $like): self
     {
-        return $this->created_at;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $created_at): self
-    {
-        $this->created_at = $created_at;
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getUser() === $this) {
+                $like->setUser(null);
+            }
+        }
 
         return $this;
     }
-
-
-
 }
