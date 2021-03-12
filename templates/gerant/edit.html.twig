@@ -1,5 +1,5 @@
 
-    {% extends 'base.html.twig' %}
+    {% extends 'back.html.twig' %}
 
        {% block title %}Edit Gerant{% endblock %}
     {% block head %}
@@ -21,5 +21,5 @@
 
       {{ include('gerant/_form.html.twig',{'button_label': 'Update'}) }}
 
-    <a href="{{ path('gerant_index') }}">back to list</a>
+    <a href="{{ path('gerant_index') }}" class="btn btn-light">back to list</a>
     {% endblock %}

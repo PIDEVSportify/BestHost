@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'back.html.twig' %}
 
 {% block title %}Gerant{% endblock %}
 
@@ -34,9 +34,11 @@
         </tbody>
     </table>
 
-    <a href="{{ path('gerant_index') }}">back to list</a>
+    <a href="{{ path('gerant_index') }}" class="btn btn-light">back to list</a>
 
-    <a href="{{ path('gerant_edit', {'Id_gerant': gerant.Idgerant}) }}">edit</a>
+    <a href="{{ path('gerant_edit', {'Id_gerant': gerant.Idgerant}) }}" class="btn btn-light">edit</a>
+    <a href="{{ path('gerant_list', {'Id_gerant': gerant.Idgerant}) }}" class="btn btn-light">imprimer</a>
+
 
     {{ include('gerant/_delete_form.html.twig') }}
 {% endblock %}

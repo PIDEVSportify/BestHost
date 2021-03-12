@@ -1,9 +1,27 @@
-{% extends 'base.html.twig' %}
+{% extends 'back.html.twig' %}
 
 {% block title %}Gerant index{% endblock %}
 
 {% block content %}
     <h1>Gerant index</h1>
+    <form role="search" id="nav-search-form" method="post" action="{{ path('recherche_g') }}">
+
+        <input type="text" class="form-control round" id="search"  name="search" placeholder="Search">
+        <br>
+        <button class="btn" type="submit" > Search </button>
+
+    </form>
+    <form role="search" id="nav-search-form" method="post" action="{{ path('tri_g') }}">
+
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Programmatic control">
+            <div class="btn-group btn-group-sm" aria-label="Set Select2 option">
+                <button class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1">
+                    Sort by Id
+                </button>
+            </div>
+        </div>
+    </form>
 
     <table class="table">
         <thead>
@@ -39,5 +57,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('gerant_new') }}">Create new</a>
+    <a href="{{ path('gerant_new') }}" class="btn btn-light">Create new</a>
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'back.html.twig' %}
 
 {% block title %}New Gerant{% endblock %}
 
@@ -7,5 +7,5 @@
 
     {{ include('gerant/_form.html.twig') }}
 
-    <a href="{{ path('gerant_index') }}">back to list</a>
+    <a href="{{ path('gerant_index') }}" class="btn btn-light">back to list</a>
 {% endblock %}
