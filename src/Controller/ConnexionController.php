@@ -18,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Form\InscriptionType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class ConnexionController extends AbstractController
 {
@@ -31,15 +32,17 @@ class ConnexionController extends AbstractController
     }
 
 
-
     /**
      * @Route("/login", name="login")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
      */
-    public function login(): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->isGranted('IS_AUTHENTICATED_FULLY'))
             return $this->redirectToRoute('accueil');
-        return $this->render('connexion/login.html.twig');
+
+        return $this->render('connexion/login.html.twig',['error'=>$authenticationUtils->getLastAuthenticationError()]);
     }
 
     /**

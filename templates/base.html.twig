@@ -75,15 +75,7 @@
                                                 <li><a href="blog-details.html">Blog Details</a></li>
                                             </ul>
                                         </li>
-                                        {% if app.user  %}
-                                        {%  for role in app.user.roles %}
-                                        {% if role=="ROLE_ADMIN" %}
-                                            <li><a href="{{ path('admin_showUsers') }}">show users</a></li>
-                                            <li><a href="{{ path('admin_showStats') }}">show statistics</a></li>
 
-                                            {% endif %}
-                                        {% endfor %}
-                                        {% endif %}
 
 
                                         <li ><a href="contact.html">Contact</a></li>

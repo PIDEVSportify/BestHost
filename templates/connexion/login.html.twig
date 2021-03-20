@@ -45,6 +45,17 @@
                             <div class="login_part_form_iner">
                                 <h3>Welcome Back ! <br>
                                     Please Sign in now</h3>
+                                <h5 class="row">
+                                {% if error %}
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ error.messageKey|trans(error.messageData,'security') }}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                {% endif %}
+                                </h5>
+
                                 <form class="row contact_form" action="{{ path('login') }}" method="post" novalidate="novalidate">
                                     <div class="col-md-12 form-group p_star">
                                         <input type="text" class="form-control" id="email" name="_username" value=""

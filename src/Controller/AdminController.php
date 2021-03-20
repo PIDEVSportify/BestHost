@@ -33,7 +33,7 @@ class AdminController extends AbstractController
      */
    public function dashboard ()
    {
-       return $this->render('admin/dashboard.html.twig');
+       return $this->render('dashboard/index.html.twig');
    }
 
 
@@ -147,7 +147,7 @@ class AdminController extends AbstractController
 
 
             $form=$this->createForm(InscriptionType::class,$user)
-                ->add('modifier',SubmitType::class,['attr'=>['class'=>'btn_3','value'=> $user->getId()]]);
+                ->add('modifier',SubmitType::class,['attr'=>['class'=>'btn  bg-navy btn-block','value'=> $user->getId()]]);
 
             $form->handleRequest($request);
 
@@ -183,7 +183,40 @@ class AdminController extends AbstractController
             return $this->render('admin/modifyUser.html.twig',['form'=>$form->createView()]);
         }
 
+    /**
+     * @param Request $request
+     * @param UserRepository $repo
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/banUser",name="banUser")
+     */
+    public function banUser(Request $request ,UserRepository $repo)
+    {
 
+        $user = $repo->find($request->get('ban'));
+
+        $user->ban();
+        $this->getDoctrine()->getManager()->flush();
+        $this->addFlash('success',"utilisateur banni");
+        return $this->redirectToRoute('admin_showUsers');
+
+    }
+
+    /**
+     * @param Request $request
+     * @param UserRepository $repo
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("/unbanUser",name="unbanUser")
+     */
+    public function unbanUser(Request $request ,UserRepository $repo)
+    {
+
+        $user = $repo->find($request->get('unban'));
+        $user->unban();
+        $this->getDoctrine()->getManager()->flush();
+        $this->addFlash('success',"utilisateur n'est plus banni");
+        return $this->redirectToRoute('admin_showUsers');
+
+    }
 
 
 }
