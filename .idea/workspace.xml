@@ -11,25 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7857afa-e1bd-47d6-a9cc-1450b4f07127" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/dashboard/dashboard_base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ChartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ChartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ConnexionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ConnexionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/modifyUser.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/modifyUser.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/showStatistics.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/showStatistics.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/showUsers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/showUsers.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/connexion/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/connexion/login.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,24 +158,26 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/user" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Test\templates\admin" />
-      <recent name="C:\wamp64\www\Test\templates" />
-      <recent name="C:\wamp64\www\Test\templates\home" />
-      <recent name="C:\wamp64\www\Test\templates\prestataire" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Test\templates\user" />
       <recent name="C:\wamp64\www\Test\src\Security" />
       <recent name="C:\wamp64\www\Test\templates\admin" />
       <recent name="C:\wamp64\www\Test\templates\connexion" />
       <recent name="C:\wamp64\www\Test\templates\bundles\TwigBundle\Exception" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Test\templates\user" />
+      <recent name="C:\wamp64\www\Test\templates\admin" />
+      <recent name="C:\wamp64\www\Test\templates" />
+      <recent name="C:\wamp64\www\Test\templates\home" />
+      <recent name="C:\wamp64\www\Test\templates\prestataire" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -241,6 +227,7 @@
       <workItem from="1615543735179" duration="1579000" />
       <workItem from="1616196226799" duration="1062000" />
       <workItem from="1616198684115" duration="22330000" />
+      <workItem from="1616320307880" duration="12669000" />
     </task>
     <servers />
   </component>
@@ -322,9 +309,9 @@
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616213750902" />
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1615216448178" />
-    <state x="346" y="49" width="672" height="160" key="search.everywhere.popup" timestamp="1616219961623">
+    <state x="346" y="49" width="672" height="160" key="search.everywhere.popup" timestamp="1616325711666">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="160" key="search.everywhere.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616219961623" />
+    <state x="346" y="49" width="672" height="160" key="search.everywhere.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616325711666" />
   </component>
 </project>
