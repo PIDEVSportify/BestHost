@@ -39,6 +39,7 @@ class UserController extends AbstractController
             ->add('first_name',TextType::class)
             ->add('last_name',TextType::class)
             ->add('email',EmailType::class)
+            ->add('cin',TextType::class)
             ->add('submit',SubmitType::class)->getForm();
 
         $form->handleRequest($request);
@@ -66,10 +67,29 @@ class UserController extends AbstractController
     }
 
    /**
-    * @Route("/profile/update", name="update_profile")
+    * @Route("/facebook/unlink", name="facebook_unlink")
     */
-   public function update_profile(Request $request,UserRepository $repo)
+   public function facebookUnlink(Request $request,UserRepository $repo)
    {
+    $user=$repo->findOneBy(['email'=>$request->get('email')]);
+    $user->setFacebookId(null);
+    $this->getDoctrine()->getManager()->flush();
+    $this->addFlash('success',"modification effectuée");
+       return $this->redirectToRoute('user_profile');
+
+   }
+
+   /**
+    * @route("/google/unlink",name="google_unlink")
+    */
+
+   public function googleUnlink(Request $request ,UserRepository $repo)
+   {
+       $user=$repo->findOneBy(['email'=>$request->get('email')]);
+       $user->setGoogleId(null);
+       $this->getDoctrine()->getManager()->flush();
+       $this->addFlash('success',"modification effectuée");
+       return $this->redirectToRoute('user_profile');
 
    }
 

@@ -2,7 +2,34 @@
 {% block title %}Profil{% endblock title %}
 
 
+{% block stylesheets %}
+{{ parent() }}
+    <style>
+        #unlink-facebook:hover{
+            background-color :cornflowerblue;
+
+        }
+        #unlink-google:hover{
+            background-color: #F98D39;
+        }
+
+    </style>
+{% endblock stylesheets %}
+
 {% block body %}
+    <div class="slider-area ">
+        <div class="single-slider slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Profil</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container" style="margin-top: 5%">
         <div class="row justify-content-center">
@@ -26,6 +53,13 @@
                         <a class="nav-link "   id="security-tab" data-toggle="tab" href="#security" role="tab"
                            aria-controls="security" aria-selected="false" style="color: #0f0f0f ">Sécurité</a>
                     </li>
+                    {% if app.user.FacebookId or app.user.GoogleId %}
+                    <li class="nav-item">
+                        <a class="nav-link" id="social-tab" data-toggle="tab" href="#social" role="tab"
+                           aria-controls="social" aria-selected="true" style="color: #0f0f0f">Réseaux Sociaux</a>
+
+                    </li>
+                    {% endif %}
 
                 </ul>
 
@@ -45,7 +79,7 @@
                     {{ form_start(form) }}
                         <div class="col-md-12 form-group p_star ">
                             {{ form_errors(form.first_name) }}
-                            {{ form_label(form.last_name,'Nom') }}
+                            {{ form_label(form.first_name,'Nom') }}
                             {{ form_widget(form.first_name,{ 'attr':{  'class':'form-control' }}) }}
                         </div>
                         <div class="col-md-12 form-group p_star ">
@@ -55,8 +89,13 @@
                         </div>
                         <div class="col-md-12 form-group p_star ">
                             {{ form_errors(form.email) }}
-                            {{ form_label(form.last_name,'Email') }}
+                            {{ form_label(form.email,'Email') }}
                             {{ form_widget(form.email,{ 'attr':{'placeholder':'Email', 'class':'form-control' ,'readonly':true}}) }}
+                        </div>
+                        <div class="col-md-12 form-group p_star ">
+                            {{ form_errors(form.cin) }}
+                            {{ form_label(form.cin,'Cin') }}
+                            {{ form_widget(form.cin,{ 'attr':{'placeholder':'Cin', 'class':'form-control' ,'readonly':true}}) }}
                         </div>
                       <div class="col-md-12 form-group p_star text-center ">
                          {{ form_widget(form.submit,{'attr':{'class':'btn_3'},'label':'Mettre à jour'}) }}
@@ -81,7 +120,45 @@
                     </div>
                     {{ form_end(password_form) }}
 
-                </div>
+                    </div>
+
+
+                <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
+
+                {% if app.user.FacebookId %}
+                    <div class="col-md-12 form-group text-center" >
+                        <form action="{{ path('user_facebook_unlink') }}" method="post">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text" ><i class="fab fa-facebook-f"> </i></div>
+                            </div>
+
+                            <button type="submit"    id="unlink-facebook" name="email"  class="form-control" value="{{ app.user.email }}"> Dissocier</button>
+
+                        </div>
+                        </form>
+                    </div>
+
+
+                {% endif %}
+
+                    {% if app.user.GoogleId %}
+                        <div class="col-md-12 form-group text-center" >
+                            <form action="{{ path('user_google_unlink') }}" method="post">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text" ><i class="fab fa-google"> </i></div>
+                            </div>
+
+                            <button type="submit"   id="unlink-google" name="email"  class="form-control" value="{{ app.user.email }}"> Dissocier</button>
+
+                        </div>
+                            </form>
+                    </div>
+
+                    {% endif %}
+
+                   </div>
                 </div>
             </div>
             <div class="col-md-3"></div>

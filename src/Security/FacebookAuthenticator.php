@@ -79,6 +79,9 @@ $user = $this->em->getRepository(User::class)
         $this->em->persist($user);
         $this->em->flush();
     }
+
+    $user->setFacebookId($facebookUser->getId());
+    $this->em->flush();
 return $user;
 }
 

@@ -192,7 +192,7 @@ class AdminController extends AbstractController
     public function banUser(Request $request ,UserRepository $repo)
     {
 
-        $user = $repo->find($request->get('ban'));
+        $user = $repo->findOneBy(['email'=>$request->get('ban')]);
 
         $user->ban();
         $this->getDoctrine()->getManager()->flush();
