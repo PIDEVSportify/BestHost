@@ -116,5 +116,14 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jquery-ui" level="application" />
     <orderEntry type="library" name="jquery-1.12.4" level="application" />
+    <orderEntry type="library" name="polyfill" level="application" />
+    <orderEntry type="library" name="alertify" level="application" />
+    <orderEntry type="library" name="bootstrap.rtl" level="application" />
+    <orderEntry type="library" name="semantic.rtl" level="application" />
+    <orderEntry type="library" name="default.rtl" level="application" />
+    <orderEntry type="library" name="alertify.rtl" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="semantic" level="application" />
+    <orderEntry type="library" name="default" level="application" />
   </component>
 </module>

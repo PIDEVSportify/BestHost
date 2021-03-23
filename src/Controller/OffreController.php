@@ -33,6 +33,7 @@ class OffreController extends AbstractController
             ->add('nombre_places_offre', NumberType::class)
             ->add('date_debut_offre', DateType::class)
             ->add('date_fin_offre', DateType::class)
+            ->add('prix_offre', NumberType::class)
             ->getForm();
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
@@ -67,6 +68,7 @@ class OffreController extends AbstractController
         $date_fin = new \DateTime($request1->request->get('fin'));
         $offre->setDateDebutOffre($date_debut);
         $offre->setDateFinOffre($date_fin);
+        $offre->setPrixOffre($request1->request->get('prix'));
         $this->addFlash("success", "The offer has been updated");
         $entityManager->flush();
         return $this->redirectToRoute('Afficher_offre');

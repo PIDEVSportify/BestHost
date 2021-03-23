@@ -26,7 +26,7 @@ class CampingRepository extends ServiceEntityRepository
     public function sql(Request $request):array
     {
         $conn = $this->getEntityManager();
-        $dql=$conn->createQuery('SELECT c FROM App\Entity\Camping c WHERE 15 > :min and 15 < :max');
+        $dql=$conn->createQuery('SELECT c FROM App\Entity\Camping c,App\Entity\Offre o  WHERE o.prix_offre >= :min and o.prix_offre <= :max and c.offre_id=o.id');
 
         $dql->setParameter('min',$request->request->get('min_price'));
         $dql->setParameter('max',$request->request->get('max_price'));

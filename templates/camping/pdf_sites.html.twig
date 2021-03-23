@@ -76,6 +76,7 @@
         <th>Nombre des places</th>
         <th>Date debut</th>
         <th>Date fin</th>
+        <th>Prix Dt</th>
     </tr>
     </thead>
     <tbody>
@@ -86,6 +87,7 @@
         <td >  {{ o.getNombrePlacesOffre() }} </td>
         <td >  {{ o.getDateDebutOffre() |date("m/d/Y")}} </td>
         <td >  {{ o.getDateFinOffre() |date("m/d/Y")}} </td>
+        <td >  {{ o.getPrixOffre()}} </td>
     </tr>
     </tbody>
     {% endfor %}

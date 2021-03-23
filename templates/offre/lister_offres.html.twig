@@ -29,6 +29,7 @@
             <th>Nombre des places</th>
             <th>Date debut</th>
             <th>Date fin</th>
+            <th>Prix Dt</th>
             <th>Modifier</th>
             <th>Supprimer</th>
         </tr>
@@ -41,12 +42,14 @@
             <td >  {{ o.getNombrePlacesOffre() }} </td>
             <td >  {{ o.getDateDebutOffre() |date("m/d/Y")}} </td>
             <td >  {{ o.getDateFinOffre() |date("m/d/Y")}} </td>
+            <td >  {{ o.getPrixOffre()}} </td>
             <td> <form  action="{{ path('Afficher_offre')}}" method="post"  >
                     <input id="in1" hidden type="number" value="{{ o.getId()}}" name="id" >
                     <input id="in2" hidden type="number" value="{{ o.getNombrePlacesOffre() }}" name="nombre" >
                     <input id="in3" hidden type="text" value="{{ o.getDateDebutOffre() |date("m/d/Y")}}" name="date_debut" >
                     <input id="in4" hidden type="text" value="{{ o.getDateFinOffre() |date("m/d/Y")}}" name="date_fin" >
-                    <button id="in5" type="submit" class="btn btn-dark">Modifier</button>
+                    <input id="in5" hidden type="number" value="{{ o.getPrixOffre()}}" name="prix" >
+                    <button id="in6" type="submit" class="btn btn-dark">Modifier</button>
                 </form></td>
             <td> <form action="{{ path('Supprimer_offre')}}" method="post" onsubmit="return ConfirmDelete()">
                     <input id="in1" hidden type="number" value="{{ o.getId()}}" name="id" >
@@ -64,7 +67,9 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 {{ form_start(formoffre,{'attr': {'novalidate': 'novalidate'}}) }}
+                <div class="my-custom-class-for-errors">
                 {{ form_errors(formoffre) }}
+                </div>
                 <div class="modal-header">
                     <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> Offre</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -72,18 +77,22 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{ form_row(formoffre.id, { 'label': 'Id' }) }}
-                    {{ form_row(formoffre.nombre_places_offre, { 'label': 'Nombre des places' }) }}
-                    {{ form_row(formoffre.date_debut_offre, { 'label': 'Date debut' }) }}
-                    {{ form_row(formoffre.date_fin_offre, { 'label': 'Date fin' }) }}
+                    {{ form_row(formoffre.id, { 'label': 'Id', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formoffre.nombre_places_offre, { 'label': 'Nombre des places', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formoffre.date_debut_offre, { 'label': 'Date debut', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formoffre.date_fin_offre, { 'label': 'Date fin', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formoffre.prix_offre, { 'label': 'Prix', 'label_attr': {'class': 'disabled'} }) }}
                     <div class="modal-footer">
                     </div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-success"><i class="ti-save"></i> Enregistrer</button>
+                    <button type="reset" class="btn btn-success">Réinitialiser</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-top: 1%;">Fermer</button>
                 </div>
                 {{ form_end(formoffre) }}
             </div>
         </div>
     </div>
-</form>
+    <form  action="{{ path('generate')}}" method="post" >
+        <button id="in10" type="submit" class="btn btn-dark" style="margin-left: 17%; margin-top: -85px" >Generate pdf</button>
+    </form>
 {% endblock %}

@@ -91,8 +91,10 @@
     <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                {{ form_start(formcamping,{'attr': {'novalidate': 'novalidate'}}) }}
+                {{ form_start(formcamping,{'attr': {'novalidate': 'novalidate' }}) }}
+                <div class="my-custom-class-for-errors">
                 {{ form_errors(formcamping) }}
+                </div>
                 <div class="modal-header">
                     <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> site camping</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -100,20 +102,23 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{ form_row(formcamping.id, { 'label': 'Id' }) }}
-                    {{ form_row(formcamping.localisation_camping,{ 'label': 'Position' }) }}
-                    {{ form_row(formcamping.description_camping, { 'label': 'Déscription' }) }}
-                    {{ form_row(formcamping.type_camping, { 'label': 'Type' }) }}
-                    {{ form_row(formcamping.imageFile, { 'label': 'Image' }) }}
-                    {{ form_row(formcamping.find_offre, { 'label': 'Offre' }) }}
+                    {{ form_row(formcamping.id, { 'label': 'Id' , 'label_attr': {'class': 'disabled'}}) }}
+                    {{ form_row(formcamping.localisation_camping,{ 'label': 'Position', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formcamping.description_camping, { 'label': 'Déscription', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formcamping.type_camping, { 'label': 'Type', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formcamping.imageFile, { 'label': 'Image', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formcamping.find_offre, { 'label': 'Offre', 'label_attr': {'class': 'disabled'} }) }}
                     <div class="modal-footer">
                     </div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                     <button type="submit" class="btn btn-success"><i class="ti-save"></i> Enregistrer</button>
+                    <button type="reset" class="btn btn-success">Réinitialiser</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-top: 1%;">Fermer</button>
                 </div>
                 {{ form_end(formcamping) }}
             </div>
         </div>
     </div>
+    <form  action="{{ path('generate')}}" method="post" >
+    <button id="in10" type="submit" class="btn btn-dark" style="margin-left: 22%; margin-top: -85px" >Generate pdf</button>
     </form>
 {% endblock %}

@@ -198,7 +198,7 @@ class CampingController extends AbstractController
     }
 
     /**
-     * @Route("/generate_pdf")
+     * @Route("/generate_pdf",name="generate")
      */
     public function generate_pdf()
     {

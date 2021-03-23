@@ -87,4 +87,3 @@ function average(aver,index){
     }
 
 }
-window.onload = average;

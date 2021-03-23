@@ -23,7 +23,8 @@ class Offre
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Number of places is required")
-     * @Assert\Range(min=4,max=10,minMessage="le nombre minimum de places est <= 4 ",maxMessage="le nombre maximum de places est >=10 ")
+     * @Assert\Positive
+     * @Assert\Range(min=4,max=10,minMessage="minimum value must be 4",maxMessage="maximum value must be 10")
      */
     private $nombre_places_offre;
 
@@ -45,6 +46,14 @@ class Offre
      * @ORM\OneToMany(targetEntity=Camping::class, mappedBy="offre_id")
      */
     private $camping_id;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank(message="Price is required")
+     * @Assert\Positive
+     * @Assert\Range(min=1,max=100,minMessage="minimum value must be 1",maxMessage="maximum value must be 100")
+     */
+    private $prix_offre;
 
     public function __construct()
     {
@@ -124,6 +133,18 @@ class Offre
                 $campingId->setOffreId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrixOffre(): ?int
+    {
+        return $this->prix_offre;
+    }
+
+    public function setPrixOffre(?int $prix_offre): self
+    {
+        $this->prix_offre = $prix_offre;
 
         return $this;
     }

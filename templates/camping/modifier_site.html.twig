@@ -5,13 +5,15 @@
     <h1 style="text-align: center">Modifier Site</h1>
     <div class="container" style="margin-top: 20px">
     {{ form_start(formcamping,{'attr': {'enctype': 'multipart/form-data'}}) }}
+    <div class="my-custom-class-for-errors">
         {{ form_errors(formcamping) }}
-        {{ form_row(formcamping.id, { 'label': 'Id' }) }}
-        {{ form_row(formcamping.localisation_camping,{ 'label': 'Position' }) }}
-        {{ form_row(formcamping.description_camping, { 'label': 'Déscription' }) }}
-        {{ form_row(formcamping.type_camping, { 'label': 'Type' }) }}
-        {{ form_row(formcamping.imageFile, { 'label': 'Image' }) }}
-        {{ form_row(formcamping.find_offre, { 'label': 'Offre' }) }}
+    </div>
+        {{ form_row(formcamping.id, { 'label': 'Id', 'label_attr': {'class': 'disabled'} }) }}
+        {{ form_row(formcamping.localisation_camping,{ 'label': 'Position', 'label_attr': {'class': 'disabled'} }) }}
+        {{ form_row(formcamping.description_camping, { 'label': 'Déscription', 'label_attr': {'class': 'disabled'} }) }}
+        {{ form_row(formcamping.type_camping, { 'label': 'Type', 'label_attr': {'class': 'disabled'} }) }}
+        {{ form_row(formcamping.imageFile, { 'label': 'Image', 'label_attr': {'class': 'disabled'} }) }}
+        {{ form_row(formcamping.find_offre, { 'label': 'Offre', 'label_attr': {'class': 'disabled'} }) }}
         <button type="submit" class="btn btn-success"><i class="ti-save"></i> Enregistrer</button>
     {{ form_end(formcamping) }}
             <form  action="{{ path('Afficher_site')}}" method="post"  >
