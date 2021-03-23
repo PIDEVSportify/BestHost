@@ -3,13 +3,14 @@
 
 
 {% block stylesheets %}
-{{ parent() }}
+    {{ parent() }}
     <style>
-        #unlink-facebook:hover{
-            background-color :cornflowerblue;
+        #unlink-facebook:hover {
+            background-color: cornflowerblue;
 
         }
-        #unlink-google:hover{
+
+        #unlink-google:hover {
             background-color: #F98D39;
         }
 
@@ -35,7 +36,11 @@
         <div class="row justify-content-center">
             <div class="col-md-4"></div>
             <div class="col-md-4 text-center">
-                <img src="{{ app.user.Avatar }}" class="rounded" width="150px" height="150px">
+                {% if app.user.avatar matches '/^uploads/' %}
+                    <img src="{{ asset(app.user.avatar) }} " height="200px" width="200px" style="border-radius:10%"></td>
+                {% else %}
+                    <img src="{{ app.user.avatar }} " height="200px" width="200px" style="border-radius:10%"> </td>
+                {% endif %}
             </div>
             <div class="col-md-4"></div>
         </div>
@@ -50,33 +55,38 @@
                            aria-controls="settings" aria-selected="true" style="color: #0f0f0f">Paramètres</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link "   id="security-tab" data-toggle="tab" href="#security" role="tab"
+                        <a class="nav-link " id="security-tab" data-toggle="tab" href="#security" role="tab"
                            aria-controls="security" aria-selected="false" style="color: #0f0f0f ">Sécurité</a>
                     </li>
                     {% if app.user.FacebookId or app.user.GoogleId %}
-                    <li class="nav-item">
-                        <a class="nav-link" id="social-tab" data-toggle="tab" href="#social" role="tab"
-                           aria-controls="social" aria-selected="true" style="color: #0f0f0f">Réseaux Sociaux</a>
+                        <li class="nav-item">
+                            <a class="nav-link" id="social-tab" data-toggle="tab" href="#social" role="tab"
+                               aria-controls="social" aria-selected="true" style="color: #0f0f0f">Réseaux Sociaux</a>
 
-                    </li>
+                        </li>
                     {% endif %}
+
+                    <li class="nav-item  ">
+                        <a class="nav-link " id="avatar-tab" data-toggle="tab" href="#avatar" role="tab"
+                           aria-controls="avatar" aria-selected="true" style="color: #0f0f0f">Avatar</a>
+                    </li>
 
                 </ul>
 
-                    {% for message in app.flashes('success') %}
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ message }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    {% endfor %}
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
 
 
                 <div class="tab-content" id="myTabContent" style="margin-top: 5%">
                     <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
 
-                    {{ form_start(form) }}
+                        {{ form_start(form) }}
                         <div class="col-md-12 form-group p_star ">
                             {{ form_errors(form.first_name) }}
                             {{ form_label(form.first_name,'Nom') }}
@@ -97,73 +107,90 @@
                             {{ form_label(form.cin,'Cin') }}
                             {{ form_widget(form.cin,{ 'attr':{'placeholder':'Cin', 'class':'form-control' ,'readonly':true}}) }}
                         </div>
-                      <div class="col-md-12 form-group p_star text-center ">
-                         {{ form_widget(form.submit,{'attr':{'class':'btn_3'},'label':'Mettre à jour'}) }}
-                         {{ form_end(form) }}
-                      </div>
+                        <div class="col-md-12 form-group p_star text-center ">
+                            {{ form_widget(form.submit,{'attr':{'class':'btn_3'},'label':'Mettre à jour'}) }}
+                            {{ form_end(form) }}
+                        </div>
                     </div>
 
 
+                    <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                        {{ form_start(password_form) }}
+                        <div class="col-md-12 form-group p_star">
+                            {{ form_errors(password_form.password) }}
+                            {{ form_widget(password_form.password,{'attr':{'class':'form-control','placeholder':'Nouveau mot de passe'}}) }}
+                        </div>
+                        <div class="col-md-12 form-group p_star">
+                            {{ form_errors(password_form.confirm_password) }}
+                            {{ form_widget(password_form.confirm_password,{'attr':{'class':'form-control','placeholder':'Confirmer mot de passe'}}) }}
+                        </div>
+                        <div class="col-md-12 form-group p_star" style="text-align: center">
+                            <button class="btn_3">Mettre à jour</button>
+                        </div>
+                        {{ form_end(password_form) }}
 
-                <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
-                    {{ form_start(password_form) }}
-                    <div class="col-md-12 form-group p_star" >
-                        {{ form_errors(password_form.password) }}
-                        {{ form_widget(password_form.password,{'attr':{'class':'form-control','placeholder':'Nouveau mot de passe'}}) }}
                     </div>
-                    <div class="col-md-12 form-group p_star" >
-                        {{ form_errors(password_form.confirm_password) }}
-                        {{ form_widget(password_form.confirm_password,{'attr':{'class':'form-control','placeholder':'Confirmer mot de passe'}}) }}
-                    </div>
-                    <div class="col-md-12 form-group p_star" style="text-align: center">
-                        <button class="btn_3">Mettre à jour</button>
-                    </div>
-                    {{ form_end(password_form) }}
-
-                    </div>
 
 
-                <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
+                    <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
 
-                {% if app.user.FacebookId %}
-                    <div class="col-md-12 form-group text-center" >
-                        <form action="{{ path('user_facebook_unlink') }}" method="post">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text" ><i class="fab fa-facebook-f"> </i></div>
+                        {% if app.user.FacebookId %}
+                            <div class="col-md-12 form-group text-center">
+                                <form action="{{ path('user_facebook_unlink') }}" method="post">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fab fa-facebook-f"> </i></div>
+                                        </div>
+
+                                        <button type="submit" id="unlink-facebook" name="email" class="form-control"
+                                                value="{{ app.user.email }}"> Dissocier
+                                        </button>
+
+                                    </div>
+                                </form>
                             </div>
 
-                            <button type="submit"    id="unlink-facebook" name="email"  class="form-control" value="{{ app.user.email }}"> Dissocier</button>
 
-                        </div>
-                        </form>
-                    </div>
+                        {% endif %}
 
+                        {% if app.user.GoogleId %}
+                            <div class="col-md-12 form-group text-center">
+                                <form action="{{ path('user_google_unlink') }}" method="post">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fab fa-google"> </i></div>
+                                        </div>
 
-                {% endif %}
+                                        <button type="submit" id="unlink-google" name="email" class="form-control"
+                                                value="{{ app.user.email }}"> Dissocier
+                                        </button>
 
-                    {% if app.user.GoogleId %}
-                        <div class="col-md-12 form-group text-center" >
-                            <form action="{{ path('user_google_unlink') }}" method="post">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text" ><i class="fab fa-google"> </i></div>
+                                    </div>
+                                </form>
                             </div>
 
-                            <button type="submit"   id="unlink-google" name="email"  class="form-control" value="{{ app.user.email }}"> Dissocier</button>
+                        {% endif %}
 
-                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="avatar" role="tabpanel" aria-labelledby="avatar-tab">
+
+                        <div class="col-md-12 form-group p_star">
+                            <form  enctype="multipart/form-data"
+                                  action="{{ path('user_update_avatar')  }}"    method="post">
+                                <input type="file" class="filepond"
+                                       data-allow-reorder="true"
+                                       data-max-file-size="1G"
+                                       data-max-files="1"
+                                name="avatar">
+                            <button type="submit" class="btn_3 btn-block btn-primary"  id="avatar_submit" name="avatar_submit" value="{{app.user.email}}" >Mettre à jour</button>
                             </form>
+                        </div>
+
                     </div>
-
-                    {% endif %}
-
-                   </div>
                 </div>
             </div>
             <div class="col-md-3"></div>
         </div>
-
 
 
     </div>
@@ -187,4 +214,11 @@
             $(this).tab('show')
         })
     </script>
+<script>
+
+
+</script>
+
+
+
 {% endblock scripts %}

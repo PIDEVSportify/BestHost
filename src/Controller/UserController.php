@@ -4,6 +4,11 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\ChangePasswordFormType;
 use App\Repository\UserRepository;
+use DateTime;
+use Doctrine\ORM\Mapping\Driver\DatabaseDriver;
+use PhpParser\Node\Scalar\MagicConst\File;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use  Symfony\Component\HttpFoundation\Request;
@@ -63,6 +68,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_profile');
         }
 
+
         return $this->render('user/profil.html.twig',['form'=>$form->createView(),'password_form'=>$password_form->createView()]);
     }
 
@@ -91,6 +97,35 @@ class UserController extends AbstractController
        $this->addFlash('success',"modification effectuée");
        return $this->redirectToRoute('user_profile');
 
+   }
+
+   /**
+    * @Route("/avatar",name="update_avatar")
+    */
+   public function updateAvatar(Request $request,UserRepository $repo)
+   {
+
+       $filesystem = new Filesystem();
+
+       $user=$repo->find($this->getUser());
+       $filename= json_decode($request->get('avatar'))->name;
+
+       /** @var UploadedFile $uploadedFile */
+
+       $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
+       $originalFilename = pathinfo($filename, PATHINFO_FILENAME);
+       $extension=pathinfo($filename,PATHINFO_EXTENSION);
+
+       $date= new DateTime('now');
+       $newFilename = $originalFilename.$date->format('mmddyyyHHiiSS').'.'.$extension;
+        $data=base64_decode(json_decode($request->get('avatar'))->data);
+
+        $filesystem->dumpFile($destination."/".$newFilename,$data);
+       $user->setAvatar("uploads/".$newFilename);
+      $this->getDoctrine()->getManager()->flush();
+
+      $this->addFlash('success',"Photo modifiée avec succès");
+    return $this->redirectToRoute('user_profile');
    }
 
 

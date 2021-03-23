@@ -29,9 +29,9 @@
 
 
             <link rel="stylesheet" type="text/css" href="  https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
-
-
-
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" integrity="sha256-e47xOkXs1JXFbjjpoRr1/LhVcqSzRmGmPqsrUQeVs+g=" crossorigin="anonymous" />
+            <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+            <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
         {% endblock %}
 
         {% block javascripts %}
@@ -179,6 +179,37 @@
             var image = document.getElementById('output');
             image.src = URL.createObjectURL(event.target.files[0]);
         };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js" integrity="sha256-cs4thShDfjkqFGk5s2Lxj35sgSRr4MRcyccmi0WKqCM=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+    <!-- Turn all file input elements into ponds -->
+    <script>
+    FilePond.registerPlugin(
+        FilePondPluginImagePreview,
+        FilePondPluginImageCrop,
+        FilePondPluginImageResize,
+        FilePondPluginFileEncode,
+        FilePondPluginFileValidateType,);
+    const inputElement = document.querySelector('input[type="file"]');
+
+    // FilePond.parse(document.body);
+     FilePond.create(inputElement,{
+         acceptedFileTypes: ['image/*'],
+         labelIdle:'Sélectionner une photo',
+         imagePreviewHeight: "300",
+         allowFileEncode: true,
+         maxFiles: 1,
+
+
+     });
+
+
     </script>
 
 {% endblock scripts %}
