@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{{ include('dashboard/dashboard_base.html.twig') }}
 
 {% block title %}Hello sites{% endblock %}
 {% form_theme formcamping 'bootstrap_4_horizontal_layout.html.twig' %}
@@ -28,8 +28,8 @@
             </div>
         {% endfor %}
     <br>
-    <p><button class="btn btn-dark" onclick="sortTable()">Sort</button></p>
-    <table class="mb-0 table" id="myTable">
+    <p STYLE="margin-left: 10%"><button class="btn btn-dark" onclick="sortTable()" style="margin-bottom: -5px">Sort</button></p>
+    <table class="mb-0 table" id="myTable" style="height: auto;width: 80%;margin-left: auto;margin-right: auto">
         <thead>
         <tr>
             <th>Id</th>
@@ -87,7 +87,7 @@
         {% endif %}
     </table>
     <br>
-    <button type="button" class="btn btn-dark" href="" data-toggle="modal" data-target="#createmodel" >Ajouter site camping</button>
+    <button type="button" class="btn btn-dark" href="" data-toggle="modal" data-target="#createmodel" style="margin-left: 10%; margin-top: -1% ">Ajouter site camping</button>
     <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -112,13 +112,13 @@
                     </div>
                     <button type="submit" class="btn btn-success"><i class="ti-save"></i> Enregistrer</button>
                     <button type="reset" class="btn btn-success">Réinitialiser</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-top: 1%;">Fermer</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-top: 0%;">Fermer</button>
                 </div>
                 {{ form_end(formcamping) }}
             </div>
         </div>
     </div>
     <form  action="{{ path('generate')}}" method="post" >
-    <button id="in10" type="submit" class="btn btn-dark" style="margin-left: 22%; margin-top: -85px" >Generate pdf</button>
+    <button id="in10" type="submit" class="btn btn-dark" style="margin-left: 24%; margin-top: -67px" >Generate pdf</button>
     </form>
 {% endblock %}

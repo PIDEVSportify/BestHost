@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{{ include('dashboard/dashboard_base.html.twig') }}
 
 {% block title %}Modifier{% endblock %}
 {% block body %}
@@ -11,7 +11,7 @@
     <br>
     <br>
     <label class="disabled">Nombre des palces:</label>
-    <input id="in2" type="number" name="Nombre" style="margin-left: 36px; " value="{{ request.request.get('nombre')}}" min="4" max="10">
+    <input id="in2" type="number" name="Nombre" style="margin-left: 43px; " value="{{ request.request.get('nombre')}}" min="4" max="10">
     <br>
     <br>
     <label class="disabled">Date debut:</label>
@@ -30,7 +30,7 @@
     <input id="in7" type="number" name="prix" style="margin-left: 148px;" value="{{ request.request.get('prix')}}">
     <br>
     <br>
-    <button id="in6" type="submit" class="btn btn-success" style="margin-left: 290px;margin-top: 20px;"><i class="ti-save"></i> Enregistrer</button>
+    <button id="in6" type="submit" class="btn btn-success" style="margin-left: 246px;margin-top: 20px; margin-bottom: 10px"><i class="ti-save"></i> Enregistrer</button>
 </form>
     <form  action="{{ path('Afficher_offre')}}" method="post"  >
         <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="margin-top: -85px;MARGIN-LEFT: 11%;">Fermer</button>

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{{ include('dashboard/dashboard_base.html.twig') }}
 
 {% block title %}Lister{% endblock %}
 {% form_theme formoffre 'bootstrap_4_horizontal_layout.html.twig' %}
@@ -21,8 +21,8 @@
         </div>
     {% endfor %}
     <br>
-    <p><button class="btn btn-dark" onclick="sortTable()">Sort</button></p>
-    <table class="mb-0 table" id="myTable">
+    <p STYLE="margin-left: 10%"><button class="btn btn-dark" onclick="sortTable()" style="margin-bottom: -5px">Sort</button></p>
+    <table class="mb-0 table" id="myTable" style="height: auto;width: 80%;margin-left: auto;margin-right: auto">
         <thead>
         <tr>
             <th>Id</th>
@@ -62,7 +62,7 @@
         {% endif %}
     </table>
     <br>
-    <button type="button" class="btn btn-dark" href="" data-toggle="modal" data-target="#createmodel" >Ajouter Offre</button>
+    <button type="button" class="btn btn-dark" href="" data-toggle="modal" data-target="#createmodel" style="margin-left: 10%; margin-top: -1% ">Ajouter Offre</button>
     <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -93,6 +93,6 @@
         </div>
     </div>
     <form  action="{{ path('generate')}}" method="post" >
-        <button id="in10" type="submit" class="btn btn-dark" style="margin-left: 17%; margin-top: -85px" >Generate pdf</button>
+        <button id="in10" type="submit" class="btn btn-dark" style="margin-left: 24%; margin-top: -67px" >Generate pdf</button>
     </form>
 {% endblock %}

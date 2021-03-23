@@ -96,6 +96,10 @@ class CampingController extends AbstractController
             $camping = $entityManager->getRepository(Camping::class)->find($request1->request->get('form')['id']);
             dump($camping);
         }
+        if($request1->request->get('Id_offre'))
+        $camping->setFindOffre($camping->getOffreId()->getId());
+        else
+            $camping->setFindOffre(0);
         $form = $this->createFormBuilder($camping)
             ->add('id', NumberType::class)
             ->add('localisation_camping', TextType::class)
