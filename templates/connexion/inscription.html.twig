@@ -62,12 +62,13 @@
                                 <div class="col-md-12 form-group  p_star" >
                                     <div class="row justify-content-center">
                                         <div class="col">
-                                            {{ form_errors(form.avatar) }}
-                                            {{form_widget(form.avatar,{'attr': {'id':'inscription_avatar', 'onchange':'loadFile(event)'  }})}}
+                                            <input type="file" class="filepond"
+                                                   data-allow-reorder="true"
+                                                   data-max-file-size="1G"
+                                                   data-max-files="1"
+                                                   name="avatar">
                                         </div>
-                                        <div class="col">
-                                            <img id="output" width="100" />
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="row justify-content-center">

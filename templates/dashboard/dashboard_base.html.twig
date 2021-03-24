@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="{{ asset('dashboard/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('dashboard/plugins/summernote/summernote-bs4.min.css') }}">
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
 {%  endblock stylesheets %}
 
 </head>
@@ -752,7 +754,8 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item">
+                                {% block backButton %}<a href="{{ path('admin_dashboard') }}">Home</a>{% endblock backButton %}</li>
                             <li class="breadcrumb-item active">Dashboard v1</li>
                         </ol>
                     </div><!-- /.col -->
@@ -815,22 +818,52 @@
             <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
             <script src="{{ asset('dashboard/dist/js/pages/dashboard.js') }}"></script>
 
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+    <!-- Turn all file input elements into ponds -->
+    <script>
+        FilePond.registerPlugin(
+            FilePondPluginImagePreview,
+            FilePondPluginImageCrop,
+            FilePondPluginImageResize,
+            FilePondPluginFileEncode,
+            FilePondPluginFileValidateType,);
+        const inputElement = document.querySelector('input[type="file"]');
+
+        // FilePond.parse(document.body);
+        FilePond.create(inputElement,{
+            acceptedFileTypes: ['image/*'],
+            labelIdle:'Sélectionner une photo',
+            imagePreviewHeight: "300",
+            allowFileEncode: true,
+            maxFiles: 1,
+            labelFileTypeNotAllowed:'Votre fichier doit être une image',
+            fileValidateTypeLabelExpectedTypes:'Exemple : .jpg .jpeg .png'
+
+
+        });
+        </script>
 
 
 
 
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    var url ='{{ path(app.request.get('_route')) }}';
+{#        <script type="text/javascript">#}
+{#                $(document).ready(function () {#}
+{#                    var url ='{{ path(app.request.get('_route')) }}';#}
 
 
 
-                    $('ul.nav  a').filter(function() {
+{#                    $('ul.nav  a').filter(function() {#}
 
-                        return this.href.endsWith(url);
-                    }).parent().addClass('active');
-                });
-            </script>
+{#                        return this.href.endsWith(url);#}
+{#                    }).parent().addClass('active');#}
+{#                });#}
+{#            </script>#}
         {% endblock scripts %}
 
 </body>

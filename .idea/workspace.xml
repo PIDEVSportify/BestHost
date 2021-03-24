@@ -11,18 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7857afa-e1bd-47d6-a9cc-1450b4f07127" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PrestataireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PrestataireController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ChangePasswordFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ChangePasswordFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/InscriptionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InscriptionType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PrestataireType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PrestataireType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/modifyUser.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/modifyUser.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/showUsers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/showUsers.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/connexion/inscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/connexion/inscription.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dashboard/dashboard_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard/dashboard_base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/prestataire/inscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prestataire/inscription.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/user/profil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/profil.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,19 +188,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Test\templates\user" />
-      <recent name="C:\wamp64\www\Test\src\Security" />
-      <recent name="C:\wamp64\www\Test\templates\admin" />
-      <recent name="C:\wamp64\www\Test\templates\connexion" />
-      <recent name="C:\wamp64\www\Test\templates\bundles\TwigBundle\Exception" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\Test\templates\user" />
       <recent name="C:\wamp64\www\Test\templates\admin" />
       <recent name="C:\wamp64\www\Test\templates" />
       <recent name="C:\wamp64\www\Test\templates\home" />
       <recent name="C:\wamp64\www\Test\templates\prestataire" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Test\templates\user" />
+      <recent name="C:\wamp64\www\Test\src\Security" />
+      <recent name="C:\wamp64\www\Test\templates\admin" />
+      <recent name="C:\wamp64\www\Test\templates\connexion" />
+      <recent name="C:\wamp64\www\Test\templates\bundles\TwigBundle\Exception" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -250,7 +253,8 @@
       <workItem from="1616320307880" duration="12956000" />
       <workItem from="1616395956989" duration="3366000" />
       <workItem from="1616399865906" duration="11985000" />
-      <workItem from="1616484834487" duration="28688000" />
+      <workItem from="1616484834487" duration="29364000" />
+      <workItem from="1616574083282" duration="8596000" />
     </task>
     <servers />
   </component>
@@ -284,35 +288,35 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616217594016" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616217382399">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616584818487">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616217382399" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616584818487" />
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1614890500208" />
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1614262685630">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614262685630" />
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1614036845108" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1616486629342">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1616515540056">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616486629342" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616515540056" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1615459310960" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1616486629341">
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1616515540056">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616486629341" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616515540056" />
     <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1615459310959" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1616486629341">
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1616515540055">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616486629341" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616515540055" />
     <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1615459310958" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1616486629341">
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1616515540056">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616486629341" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616515540056" />
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1615459310959" />
     <state x="201" y="11" key="SettingsEditor" timestamp="1616212680041">
       <screen x="0" y="0" width="1366" height="728" />

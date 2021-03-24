@@ -39,8 +39,7 @@ class PrestataireType extends AbstractType
                 'label'=>'Rôles',
 
             ])
-            ->add('avatar',FileType::class,[
-                'mapped' => false])
+
 
 
         ;

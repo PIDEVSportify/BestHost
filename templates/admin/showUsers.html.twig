@@ -77,7 +77,7 @@
                              </td>
                              <td>
 
-                                 <form method="post" action="{{ path('admin_modifyUser') }}">
+                                 <form method="post" action="{{ path('admin_modifyUser',{id: user.id }) }}">
                                      <button class="btn btn-secondary" type="submit" name="modifier"
                                              value="{{ user.id }}"> Modifier
                                      </button>

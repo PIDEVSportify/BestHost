@@ -20,8 +20,7 @@ class InscriptionType extends AbstractType
             ->add('first_name',TextType::class,array('attr'=>array('placeholder'=>'Email'))
             )
             ->add('last_name')
-            ->add('avatar',FileType::class,[
-            'mapped' => false])
+
             ->add('email')
 
             ->add('password',PasswordType::class)

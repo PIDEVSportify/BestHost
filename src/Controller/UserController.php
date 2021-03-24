@@ -67,6 +67,10 @@ class UserController extends AbstractController
             $this->addFlash('success',"Mot de passe modifié avec succès");
             return $this->redirectToRoute('user_profile');
         }
+        if ( $password_form->isSubmitted() && !$password_form->isValid())
+        {
+            $this->addFlash('error',"Vérifier les champs du mot de passe");
+        }
 
 
         return $this->render('user/profil.html.twig',['form'=>$form->createView(),'password_form'=>$password_form->createView()]);
@@ -77,6 +81,8 @@ class UserController extends AbstractController
     */
    public function facebookUnlink(Request $request,UserRepository $repo)
    {
+
+
     $user=$repo->findOneBy(['email'=>$request->get('email')]);
     $user->setFacebookId(null);
     $this->getDoctrine()->getManager()->flush();
@@ -124,7 +130,7 @@ class UserController extends AbstractController
        $user->setAvatar("uploads/".$newFilename);
       $this->getDoctrine()->getManager()->flush();
 
-      $this->addFlash('success',"Photo modifiée avec succès");
+      $this->addFlash('success',"Avatar modifié avec succès");
     return $this->redirectToRoute('user_profile');
    }
 

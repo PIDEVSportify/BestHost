@@ -4,79 +4,215 @@
     Admin | Modifier
 {% endblock title %}
 
+{% block stylesheets %}
+{{ parent() }}
+    <style>
+        #unlink-facebook:hover {
+            background-color: cornflowerblue;
+
+        }
+
+        #unlink-google:hover {
+            background-color: #F98D39;
+        }
+
+    </style>
+{% endblock stylesheets %}
+{% block backButton %}<a href="{{ path('admin_showUsers') }}">Précédent</a> {% endblock backButton %}
  {% block body %}
 
 
      <div class="container">
 
 
-         {% for message in app.flashes('success') %}
-             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                 {{ message }}
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                 </button>
-             </div>
-         {% endfor %}
-         {% for message in app.flashes('error') %}
-
-             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                 {{ message }}
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                 </button>
-             </div>
-         {% endfor %}
-
-
          <div class="row justify-content-center">
-             <div class="login_part_form" style="margin-left:25%;margin-right:25%">
-                 <div class="login_part_form_iner">
-                     <h3>
-                         Modifier User</h3>
-                     {{ form_start(form) }}
-                     <div class="col-md-12 form-group p_star ">
-                         {{ form_errors(form.first_name) }}
-                         {{ form_widget(form.first_name,{ 'attr':{'placeholder':'First Name', 'class':'form-control' }}) }}
+             <div class="col-md-4"></div>
+             <div class="col-md-4 text-center">
+                 {% if user.avatar matches '/^uploads/' %}
+                     <img src="{{ asset(user.avatar) }} " height="200px" width="200px" style="border-radius:10%"></td>
+                 {% else %}
+                     <img src="{{ user.avatar }} " height="200px" width="200px" style="border-radius:10%"> </td>
+                 {% endif %}
+             </div>
+             <div class="col-md-4"></div>
+         </div>
+         <div class="row">
+
+             <div class="col-md-3"></div>
+             <div class="col-md-6">
+                 <hr>
+                 <ul class="nav nav-tabs   nav-fill" id="myTab" role="tablist">
+                     <li class="nav-item  ">
+                         <a class="nav-link active" id="settings-tab" data-toggle="tab" href="#settings" role="tab"
+                            aria-controls="settings" aria-selected="true" style="color: #0f0f0f">Paramètres</a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link " id="security-tab" data-toggle="tab" href="#security" role="tab"
+                            aria-controls="security" aria-selected="false" style="color: #0f0f0f ">Sécurité</a>
+                     </li>
+                     {% if user.FacebookId or user.GoogleId %}
+                         <li class="nav-item">
+                             <a class="nav-link" id="social-tab" data-toggle="tab" href="#social" role="tab"
+                                aria-controls="social" aria-selected="true" style="color: #0f0f0f">Réseaux Sociaux</a>
+
+                         </li>
+                     {% endif %}
+
+                     <li class="nav-item  ">
+                         <a class="nav-link " id="avatar-tab" data-toggle="tab" href="#avatar" role="tab"
+                            aria-controls="avatar" aria-selected="true" style="color: #0f0f0f">Avatar</a>
+                     </li>
+
+                 </ul>
+
+                 {% for message in app.flashes('success') %}
+                     <div class="alert alert-success alert-dismissible fade show" role="alert">
+                         {{ message }}
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
                      </div>
-                     <div class="col-md-12 form-group p_star ">
-                         {{ form_errors(form.last_name) }}
-                         {{ form_widget(form.last_name,{ 'attr':{'placeholder':'Last Name', 'class':'form-control' }}) }}
+                 {% endfor %}
+                 {% for message in app.flashes('error') %}
+                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                         {{ message }}
+                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
                      </div>
-                     <div class="col-md-12 form-group p_star ">
-                         {{ form_errors(form.email) }}
-                         {{ form_widget(form.email,{ 'attr':{'placeholder':'Email', 'class':'form-control' }}) }}
+                 {% endfor %}
+
+
+
+                 <div class="tab-content" id="myTabContent" style="margin-top: 5%">
+                     <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+
+                         {{ form_start(form) }}
+                         <div class="col-md-12 form-group p_star ">
+                             {{ form_errors(form.first_name) }}
+                             {{ form_label(form.first_name,'Nom') }}
+                             {{ form_widget(form.first_name,{ 'attr':{  'class':'form-control' }}) }}
+                         </div>
+                         <div class="col-md-12 form-group p_star ">
+                             {{ form_errors(form.last_name) }}
+                             {{ form_label(form.last_name,'Prenom') }}
+                             {{ form_widget(form.last_name,{ 'attr':{  'class':'form-control' }}) }}
+                         </div>
+                         <div class="col-md-12 form-group p_star ">
+                             {{ form_errors(form.email) }}
+                             {{ form_label(form.email,'Email') }}
+                             {{ form_widget(form.email,{ 'attr':{'placeholder':'Email', 'class':'form-control' ,'readonly':true}}) }}
+                         </div>
+                         <div class="col-md-12 form-group p_star ">
+                             {{ form_errors(form.cin) }}
+                             {{ form_label(form.cin,'Cin') }}
+                             {{ form_widget(form.cin,{ 'attr':{'placeholder':'Cin', 'class':'form-control' ,'readonly':true}}) }}
+                         </div>
+                         <div class="col-md-12 form-group p_star text-center ">
+                             {{ form_widget(form.submit,{'attr':{'class':'btn btn-primary btn-block '},'label':'Mettre à jour'}) }}
+                             {{ form_end(form) }}
+                         </div>
                      </div>
-                     <div class="col-md-12 form-group p_star">
-                         {{ form_errors(form.password) }}
-                         {{ form_widget(form.password,{ 'attr':{'placeholder':'Password', 'class':'form-control' }}) }}
+
+
+                     <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                         {{ form_start(password_form) }}
+                         <div class="col-md-12 form-group p_star">
+                             {{ form_errors(password_form.password) }}
+                             {{ form_widget(password_form.password,{'attr':{'class':'form-control','placeholder':'Nouveau mot de passe'}}) }}
+                         </div>
+                         <div class="col-md-12 form-group p_star">
+                             {{ form_errors(password_form.confirm_password) }}
+                             {{ form_widget(password_form.confirm_password,{'attr':{'class':'form-control','placeholder':'Confirmer mot de passe'}}) }}
+                         </div>
+                         <div class="col-md-12 form-group p_star" style="text-align: center">
+                             <button class="btn btn-primary btn-block ">Mettre à jour</button>
+                         </div>
+                         {{ form_end(password_form) }}
+
                      </div>
-                     <div class="col-md-12 form-group p_star">
-                         {{ form_errors(form.confirm_password) }}
-                         {{ form_widget(form.confirm_password,{ 'attr':{'placeholder':'Confirm Password', 'class':'form-control' }}) }}
-                     </div>
-                     <div class="col-md-12 form-group p_star">
-                         <div class="row justify-content-center">
-                             <div class="col">
-                                 {{ form_errors(form.avatar) }}
-                                 {{ form_widget(form.avatar,{'attr': {'id':'inscription_avatar', 'onchange':'loadFile(event)'  }}) }}
+
+
+                     <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab">
+
+                         {% if user.FacebookId %}
+                             <div class="col-md-12 form-group text-center">
+                                 <form action="{{ path('admin_facebook_unlink') }}" method="post">
+                                     <div class="input-group">
+                                         <div class="input-group-prepend">
+                                             <div class="input-group-text"><i class="fab fa-facebook-f"> </i></div>
+                                         </div>
+
+                                         <button type="submit" id="unlink-facebook" name="email" class="form-control"
+                                                 value="{{ user.email }}"> Dissocier
+                                         </button>
+
+                                     </div>
+                                 </form>
                              </div>
-                             <div class="col">
-                                 <img id="output" width="100"/>
+
+
+                         {% endif %}
+
+                         {% if user.GoogleId %}
+                             <div class="col-md-12 form-group text-center">
+                                 <form action="{{ path('admin_google_unlink') }}" method="post">
+                                     <div class="input-group">
+                                         <div class="input-group-prepend">
+                                             <div class="input-group-text"><i class="fab fa-google"> </i></div>
+                                         </div>
+
+                                         <button type="submit" id="unlink-google" name="email" class="form-control"
+                                                 value="{{ user.email }}"> Dissocier
+                                         </button>
+
+                                     </div>
+                                 </form>
                              </div>
+
+                         {% endif %}
+
+                     </div>
+                     <div class="tab-pane fade" id="avatar" role="tabpanel" aria-labelledby="avatar-tab">
+
+                         <div class="col-md-12 form-group p_star">
+                             <form  enctype="multipart/form-data"
+                                    action="{{ path('admin_update_avatar')  }}"    method="post">
+                                 <input type="file" class="filepond"
+                                        data-allow-reorder="true"
+                                        data-max-file-size="1G"
+                                        data-max-files="1"
+                                        name="avatar">
+                                 <button type="submit" class="btn btn-block btn-primary"  id="avatar_submit" name="avatar_submit" value="{{user.email}}" >Mettre à jour</button>
+                             </form>
                          </div>
 
                      </div>
-                     <div class="container">
-                         {{ form_end(form) }}
-                     </div>
                  </div>
              </div>
+             <div class="col-md-3"></div>
          </div>
-     </div>
 
 
      </div>
  {% endblock body %}
+
+
+{% block scripts %}
+    {{ parent() }}
+    <script>
+        $('#myList a').on('click', function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
+
+    <script>
+        $('#myTab a').on('click', function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
+{% endblock scripts %}
 
 
