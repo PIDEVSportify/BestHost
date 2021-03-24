@@ -126,5 +126,7 @@
     <orderEntry type="library" name="semantic" level="application" />
     <orderEntry type="library" name="default" level="application" />
     <orderEntry type="library" name="ionicons" level="application" />
+    <orderEntry type="library" name="mapbox-gl" level="application" />
+    <orderEntry type="library" name="leaflet" level="application" />
   </component>
 </module>

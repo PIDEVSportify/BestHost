@@ -13,6 +13,9 @@
             padding: 5px;
             text-align: left;
         }
+        #map {
+            position: sticky; top: 0; right: 0; left: 0; height: 80vh ;width: 80%; margin-left: 15%;
+        }
     </style>
     <h1 style="text-align: center">l'affichage des sites camping</h1>
     <br>
@@ -42,21 +45,21 @@
             <th>Supprimer</th>
         </tr>
         </thead>
+        <div class="container">
         <tbody>
         {% if liste['0']['site'] is not empty  %}
+        <div class="lsit">
         {%  for s in liste['0']['site'] %}
-        {% set index =0 %}
+            {% if s.getOffreId() is not null %}
+            <div class="item js-marker" data-lat="{{ s.getLatitudeCamping() }}" data-lng="{{ s.LongitudeCamping() }}" data-parent="Type :{{ s.getTypeCamping() }}, Description :{{ s.getDescriptionCamping() }}, le prix de l'offre ={{s.getOffreId().getPrixOffre() }} Dt"  >
+            {% else %}
+                <div class="item js-marker" data-lat="{{ s.getLatitudeCamping() }}" data-lng="{{ s.LongitudeCamping() }}" data-parent="Type :{{ s.getTypeCamping() }}, Description :{{ s.getDescriptionCamping() }}, pas d'offre pour le moment" >
+                {% endif %}
         <tr>
             <td >  {{ s.getId() }} </td>
-            {%  for c in liste['1']['offre'] %}
                 {% if s.getOffreId() is not null %}
-                    {% if s.getOffreId().getid()==c.getId() %}
-                        {% set index=1 %}
                         <td >  {{ s.getOffreId().getId() }} </td>
-                    {%  endif %}
-                {%  endif %}
-            {% endfor %}
-            {% if not index %}
+                    {% else %}
                 <td>Pas d'offre pour le moment</td>
             {% endif %}
             <td >  {{ s.getLocalisationCamping() }} </td>
@@ -82,9 +85,13 @@
                     <button id="in10" type="submit" class="btn btn-dark" >Supprimer</button>
                 </form></td>
         </tr>
-        </tbody>
+            </div>
         {% endfor %}
+        </div>
+        </div>
         {% endif %}
+        </tbody>
+        </div>
     </table>
     <br>
     <button type="button" class="btn btn-dark" href="" data-toggle="modal" data-target="#createmodel" style="margin-left: 10%; margin-top: -1% ">Ajouter site camping</button>
@@ -121,4 +128,6 @@
     <form  action="{{ path('generate')}}" method="post" >
     <button id="in10" type="submit" class="btn btn-dark" style="margin-left: 24%; margin-top: -67px" >Generate pdf</button>
     </form>
+    <div id="map" ></div>
+    <script src="{{ asset("Map.js")}}"></script>
 {% endblock %}

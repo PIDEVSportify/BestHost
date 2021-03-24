@@ -62,6 +62,16 @@ class Camping
      */
     private $average_rating;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $longitude_camping;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $latitude_camping;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -164,6 +174,30 @@ class Camping
     public function setAverageRating(?float $average_rating): self
     {
         $this->average_rating = $average_rating;
+
+        return $this;
+    }
+
+    public function getLongitudeCamping(): ?string
+    {
+        return $this->longitude_camping;
+    }
+
+    public function setLongitudeCamping(?string $longitude_camping): self
+    {
+        $this->longitude_camping = $longitude_camping;
+
+        return $this;
+    }
+
+    public function getLatitudeCamping(): ?string
+    {
+        return $this->latitude_camping;
+    }
+
+    public function setLatitudeCamping(?string $latitude_camping): self
+    {
+        $this->latitude_camping = $latitude_camping;
 
         return $this;
     }

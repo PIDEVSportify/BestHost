@@ -31,7 +31,7 @@ class CampingController extends AbstractController
     {
         $get_sites=$this->getDoctrine()->getRepository(Camping::class);
         $site=$get_sites->findAll();
-        $liste=array(array('site'=>$site),array('offre'=>$this->getDoctrine()->getRepository(Offre::class)->findAll()));
+        $liste=array(array('site'=>$site));
         $camping =new Camping();
         $form = $this->createFormBuilder($camping)
             ->add('id', NumberType::class)
@@ -59,18 +59,18 @@ class CampingController extends AbstractController
             $get_sites1=$this->getDoctrine()->getRepository(Offre::class);
             $find=$get_sites1->find($camping->getFindOffre());
             $entityManager = $this->getDoctrine()->getManager();
-            if($find){
-                $camping->setImageCamping($newFilename);
+            if($find)
                 $camping->setOffreId($find);
-                $entityManager->persist($camping);
-                $entityManager->flush();
-            }
-            else{
-                $camping->setImageCamping($newFilename);
+
+            else
                 $camping->setOffreId(Null);
-                $entityManager->persist($camping);
-                $entityManager->flush();
-            }
+            $latitude= substr($camping->getLocalisationCamping(),0, strpos($camping->getLocalisationCamping(), ","));
+            $longitude= substr($camping->getLocalisationCamping(),strpos($camping->getLocalisationCamping(), ",")+2);
+            $camping->setLongitudeCamping($longitude);
+            $camping->setLatitudeCamping($latitude);
+            $camping->setImageCamping($newFilename);
+            $entityManager->persist($camping);
+            $entityManager->flush();
             return $this->redirectToRoute('Afficher_site');
         }
 
@@ -130,6 +130,10 @@ class CampingController extends AbstractController
                 $this->addFlash("warning", "No Offer found for id_offer");
                 $this->redirectToRoute('Afficher_site');
             }
+            $latitude= substr($camping->getLocalisationCamping(),0, strpos($camping->getLocalisationCamping(), ","));
+            $longitude= substr($camping->getLocalisationCamping(),strpos($camping->getLocalisationCamping(), ",")+2);
+            $camping->setLongitudeCamping($longitude);
+            $camping->setLatitudeCamping($latitude);
             $camping->setOffreId($find);
             $entityManager->flush();
             $this->addFlash("success", "The site has been updated");
