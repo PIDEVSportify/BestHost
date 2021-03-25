@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints as CaptchaAssert;
 
 /**
  * @ORM\Entity(repositoryClass=OffreRepository::class)
@@ -54,6 +55,13 @@ class Offre
      * @Assert\Range(min=1,max=100,minMessage="minimum value must be 1",maxMessage="maximum value must be 100")
      */
     private $prix_offre;
+
+    /**
+     * @CaptchaAssert\ValidCaptcha(
+     *      message = "CAPTCHA validation failed, try again."
+     * )
+     */
+    protected $captchaCode;
 
     public function __construct()
     {
@@ -105,6 +113,16 @@ class Offre
         $this->date_fin_offre = $date_fin_offre;
 
         return $this;
+    }
+
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
     }
 
     /**

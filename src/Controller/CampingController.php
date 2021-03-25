@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Camping;
 use App\Entity\Offre;
 use App\Entity\Urlizer;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use phpDocumentor\Reflection\Types\Null_;
@@ -42,6 +43,9 @@ class CampingController extends AbstractController
                 'mapped' => false
             ])
             ->add('find_offre', NumberType::class)
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptcha'
+            ))
             ->getForm();
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
@@ -109,6 +113,9 @@ class CampingController extends AbstractController
                 'mapped' => false
             ])
             ->add('find_offre', NumberType::class)
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptcha'
+            ))
             ->getForm();
         $form->handleRequest($request1);
         if ($form->isSubmitted() && $form->isValid()) {

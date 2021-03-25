@@ -4,7 +4,7 @@
 {% block body %}
 <h1 style="text-align: center">Modifier Offre</h1>
     <div class="container" style="margin-top: 20px">
-<form name="F1" method="POST" action="{{ path('Modifier_offre')}}" id="formu2" onsubmit="return compare()" >
+<form name="F1" method="POST" action="{{ path('Modifier_offre')}}" id="formu2"  >
     <label class="disabled">Id:</label>
     <input id="in5" hidden type="number" name="save" style="margin-left: 80px;" value="{{ request.request.get('id') }}">
     <input id="in1" type="number" name="Id" style="margin-left: 160px;" value="{{ request.request.get('id') }}" >
@@ -30,7 +30,7 @@
     <input id="in7" type="number" name="prix" style="margin-left: 148px;" value="{{ request.request.get('prix')}}">
     <br>
     <br>
-    <button id="in6" type="submit" class="btn btn-success" style="margin-left: 246px;margin-top: 20px; margin-bottom: 10px"><i class="ti-save"></i> Enregistrer</button>
+    <button data-callback='onSubmit' data-action='submit' data-sitekey="6LfxtY4aAAAAAN8TgczTGzIH14bLbrEXDiysa2s_" id="in6" class="btn btn-success g-recaptcha" style="margin-left: 246px;margin-top: 20px; margin-bottom: 10px"><i class="ti-save"></i> Enregistrer</button>
 </form>
     <form  action="{{ path('Afficher_offre')}}" method="post"  >
         <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="margin-top: -85px;MARGIN-LEFT: 11%;">Fermer</button>

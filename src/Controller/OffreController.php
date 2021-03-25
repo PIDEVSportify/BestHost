@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 
 class OffreController extends AbstractController
 {
@@ -34,6 +35,9 @@ class OffreController extends AbstractController
             ->add('date_debut_offre', DateType::class)
             ->add('date_fin_offre', DateType::class)
             ->add('prix_offre', NumberType::class)
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptcha'
+            ))
             ->getForm();
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())

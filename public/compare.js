@@ -1,4 +1,4 @@
-function compare() {
+function onSubmit(token) {
     if(document.getElementById('in3').value > document.getElementById('in4').value) {
         alertify.alert("Error","Date debut is greater than date fin",function(){ alertify.error("Something went wrong"); })
         return false;
@@ -7,5 +7,6 @@ function compare() {
         alertify.alert("Error","The price must be greater than 0 and less than 100",function(){ alertify.error("Something went wrong"); })
         return false;
     }
+    document.getElementById("formu2").submit();
     return true;
 }

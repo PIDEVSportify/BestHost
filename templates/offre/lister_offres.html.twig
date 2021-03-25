@@ -82,11 +82,12 @@
                     {{ form_row(formoffre.date_debut_offre, { 'label': 'Date debut', 'label_attr': {'class': 'disabled'} }) }}
                     {{ form_row(formoffre.date_fin_offre, { 'label': 'Date fin', 'label_attr': {'class': 'disabled'} }) }}
                     {{ form_row(formoffre.prix_offre, { 'label': 'Prix', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formoffre.captchaCode, { 'label': 'Captcha', 'label_attr': {'class': 'disabled'} }) }}
                     <div class="modal-footer">
                     </div>
                     <button type="submit" class="btn btn-success"><i class="ti-save"></i> Enregistrer</button>
                     <button type="reset" class="btn btn-success">Réinitialiser</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-top: 1%;">Fermer</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-top: 0%;">Fermer</button>
                 </div>
                 {{ form_end(formoffre) }}
             </div>
