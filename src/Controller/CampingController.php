@@ -8,6 +8,8 @@ use App\Entity\Urlizer;
 use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+use Knp\Snappy\Pdf;
 use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DomCrawler\Image;
@@ -21,6 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Knp\Bundle\SnappyBundle\Snappy\Response\JpegResponse;
 
 class CampingController extends AbstractController
 {
@@ -236,6 +239,31 @@ class CampingController extends AbstractController
         $pdf->stream("speaky.pdf", [
             "Attachment" => true
         ]);
+    }
+
+    /**
+     * @Route("/pdf", name="custompdf")
+     */
+    public function pdfAction(Pdf $snappy)
+    {
+        $get_sites=$this->getDoctrine()->getRepository(Camping::class);
+        $site=$get_sites->findAll();
+        $liste=array(array('site'=>$site),array('offre'=>$this->getDoctrine()->getRepository(Offre::class)->findAll()));
+
+        $snappy->setOption("encoding","UTF-8");
+        $snappy->setOption("enable-local-file-access",true);
+        $html = $this->renderView('camping/pdf_sites.html.twig', [
+            'title' => 'CampingData_OfferData',
+            'email' => 'selimbenaichesprit@gmail.com',
+            'liste' => $liste
+        ]);
+        $filename = 'SnappyPDF';
+        return new Response(
+            $snappy->getOutputFromHtml($html),200,array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
+            )
+        );
     }
 
 }
