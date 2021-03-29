@@ -16,6 +16,8 @@ use App\Repository\ActLikeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Symfony\Bridge\Twig\Mime\NotificationEmail;
+
 
 /**
  * @Route("/activity")
@@ -132,10 +134,11 @@ class ActivityController extends AbstractController
      * @param ActLikeRepository $likeRepo
      * @return Response
      */
-public function like(Activity $activity, EntityManagerInterface $manager , ActLikeRepository $likeRepo) : Response
+public function like(Activity $activity, EntityManagerInterface $manager , ActLikeRepository $likeRepo, \Swift_Mailer $mailer) : Response
 {
     $user = $this->getUser();
     if(!$user) return $this->redirectToRoute('app_login');
+    $mail = $user->getUsername();
 
     if($activity->isLikedByUser($user)){
         $like = $likeRepo->findOneBy([
@@ -143,6 +146,7 @@ public function like(Activity $activity, EntityManagerInterface $manager , ActLi
             'user'=> $user]);
         $manager->remove($like);
         $manager->flush();
+
         return $this->redirectToRoute('activity_user');
     }
     $like = new ActLike();
@@ -150,6 +154,12 @@ public function like(Activity $activity, EntityManagerInterface $manager , ActLi
         ->setUser($user);
     $manager->persist($like);
     $manager->flush();
+    $email = (new \Swift_Message($activity->getIdAct()))
+        ->setFrom('ahmed.jelassi@esprit.tn')
+        ->setTo('ahmed.jelassi@esprit.tn')
+        ->setBody($activity->getDescription())
+    ;
+    $mailer->send($email);
 
     return $this->redirectToRoute('activity_user');
 
@@ -215,7 +225,7 @@ public function like(Activity $activity, EntityManagerInterface $manager , ActLi
             'activity' =>$produits,
         ]);
 
-        $html .= '<link type="text/css" href=" assets/css/bootstrap.min.css" rel="stylesheet" media="screen,print" />';
+        $html .= '<link type="text/css" href=" /public/assets/css/bootstrap.min.css" rel="stylesheet" media="screen,print" />';
 
         // Load HTML to Dompdf
         $dompdf->loadHtml($html);
