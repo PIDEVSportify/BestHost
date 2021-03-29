@@ -29,6 +29,9 @@
     "doctrine/dbal": {
         "version": "2.12.1"
     },
+    "doctrine/deprecations": {
+        "version": "v0.2.0"
+    },
     "doctrine/doctrine-bundle": {
         "version": "2.0",
         "recipe": {
@@ -86,6 +89,15 @@
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
+    },
+    "fungio/google-map": {
+        "version": "dev-master"
+    },
+    "fungio/google-map-bundle": {
+        "version": "4.3.x-dev"
+    },
+    "fungio/json-builder": {
+        "version": "3.0-dev"
     },
     "guzzlehttp/guzzle": {
         "version": "7.2.0"
@@ -552,12 +564,14 @@
             "./templates/base.html.twig"
         ]
     },
+
     "symfony/twig-pack": {
         "version": "v1.0.1"
     },
     "symfony/ux-chartjs": {
         "version": "v1.2.0"
     },
+
     "symfony/validator": {
         "version": "4.3",
         "recipe": {
