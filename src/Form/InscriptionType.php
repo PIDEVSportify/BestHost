@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,6 +20,7 @@ class InscriptionType extends AbstractType
             ->add('first_name',TextType::class,array('attr'=>array('placeholder'=>'Email'))
             )
             ->add('last_name')
+
             ->add('email')
 
             ->add('password',PasswordType::class)

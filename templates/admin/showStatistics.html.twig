@@ -1,0 +1,53 @@
+{% extends  'dashboard/dashboard_base.html.twig' %}
+
+
+{% block title %} Admin | Statistiques {% endblock title %}
+{% block header_title %}Statistiques{% endblock header_title %}
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"> Nombre des utilisateurs par mois</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="display:block">
+                        <div class="chart">
+                            {{ render_chart(chart) }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Répartition des rôles
+                        </h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" style="display:block">
+                        {{ render_chart(chart_cat) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

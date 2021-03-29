@@ -11,7 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7857afa-e1bd-47d6-a9cc-1450b4f07127" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/admin/dashboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PrestataireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PrestataireController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ChangePasswordFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ChangePasswordFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/InscriptionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/InscriptionType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PrestataireType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PrestataireType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/modifyUser.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/modifyUser.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/showUsers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/showUsers.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/connexion/inscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/connexion/inscription.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dashboard/dashboard_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard/dashboard_base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/prestataire/inscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prestataire/inscription.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/profil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/profil.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +153,23 @@
       <path value="$PROJECT_DIR$/vendor/knpuniversity/oauth2-client-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
       <path value="$PROJECT_DIR$/vendor/league/oauth2-google" />
+      <path value="$PROJECT_DIR$/vendor/omines/datatables-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfonycasts/reset-password-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/ux-chartjs" />
+      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/vendor/almasaeed2010/adminlte" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/routing" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/pipeline" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/support" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/session" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/contracts" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/container" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/http" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/sopamo/laravel-filepond" />
     </include_path>
   </component>
   <component name="ProjectId" id="1orCZjqAlfKLgiVucLQ58xR8lxt" />
@@ -150,21 +181,26 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/user" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Test\templates\connexion" />
-      <recent name="C:\wamp64\www\Test\templates\bundles\TwigBundle\Exception" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Test\templates\user" />
+      <recent name="C:\wamp64\www\Test\templates\admin" />
       <recent name="C:\wamp64\www\Test\templates" />
       <recent name="C:\wamp64\www\Test\templates\home" />
       <recent name="C:\wamp64\www\Test\templates\prestataire" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Test\templates\user" />
+      <recent name="C:\wamp64\www\Test\src\Security" />
+      <recent name="C:\wamp64\www\Test\templates\admin" />
+      <recent name="C:\wamp64\www\Test\templates\connexion" />
+      <recent name="C:\wamp64\www\Test\templates\bundles\TwigBundle\Exception" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -193,7 +229,32 @@
       <workItem from="1614681728542" duration="1605000" />
       <workItem from="1614684340316" duration="5372000" />
       <workItem from="1614694848212" duration="9460000" />
-      <workItem from="1614704773076" duration="3741000" />
+      <workItem from="1614704773076" duration="4497000" />
+      <workItem from="1614763169081" duration="2323000" />
+      <workItem from="1614765595892" duration="18414000" />
+      <workItem from="1614804898005" duration="55000" />
+      <workItem from="1614852990347" duration="2535000" />
+      <workItem from="1614857520388" duration="3256000" />
+      <workItem from="1614863107194" duration="6548000" />
+      <workItem from="1614875016621" duration="4506000" />
+      <workItem from="1614882702264" duration="6893000" />
+      <workItem from="1614889802070" duration="1045000" />
+      <workItem from="1614891249025" duration="105000" />
+      <workItem from="1614891483138" duration="3260000" />
+      <workItem from="1614933698985" duration="2121000" />
+      <workItem from="1615214570952" duration="9424000" />
+      <workItem from="1615366138019" duration="328000" />
+      <workItem from="1615367191573" duration="9554000" />
+      <workItem from="1615457518618" duration="26370000" />
+      <workItem from="1615487777707" duration="3622000" />
+      <workItem from="1615543735179" duration="1579000" />
+      <workItem from="1616196226799" duration="1062000" />
+      <workItem from="1616198684115" duration="22330000" />
+      <workItem from="1616320307880" duration="12956000" />
+      <workItem from="1616395956989" duration="3366000" />
+      <workItem from="1616399865906" duration="11985000" />
+      <workItem from="1616484834487" duration="29364000" />
+      <workItem from="1616574083282" duration="8596000" />
     </task>
     <servers />
   </component>
@@ -213,35 +274,71 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="451" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614591826445">
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615472468550">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="451" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614591826445" />
-    <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser" timestamp="1614440910139">
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1615472468550" />
+    <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1614893635786" />
+    <state x="451" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1616214523991">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614440910139" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614705527418">
+    <state x="451" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616214523991" />
+    <state x="451" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1614885004144" />
+    <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser" timestamp="1616217594016">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614705527418" />
+    <state x="488" y="46" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616217594016" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616584818487">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616584818487" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1614890500208" />
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1614262685630">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614262685630" />
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1614036845108" />
-    <state x="201" y="11" key="SettingsEditor" timestamp="1614608584059">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1616515540056">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="201" y="11" key="SettingsEditor/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614608584059" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1614689098455">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616515540056" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1615459310960" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1616515540056">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614600504236" />
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1614689098455" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1614702238243">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616515540056" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1615459310959" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1616515540055">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1614702238243" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616515540055" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1615459310958" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1616515540056">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616515540056" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1615459310959" />
+    <state x="201" y="11" key="SettingsEditor" timestamp="1616212680041">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="201" y="11" key="SettingsEditor/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616212680041" />
+    <state x="201" y="11" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1614869398405" />
+    <state width="498" height="451" key="SwitcherDM" timestamp="1614888308262">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="498" height="451" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1614888308262" />
+    <state x="390" y="0" width="585" height="728" key="find.popup" timestamp="1616213898350">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="390" y="0" width="585" height="728" key="find.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616213898350" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1616213750902">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616213750902" />
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1615216448178" />
+    <state x="346" y="49" width="672" height="160" key="search.everywhere.popup" timestamp="1616512334243">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="160" key="search.everywhere.popup/0.0.1366.728/1366.0.1920.1040@0.0.1366.728" timestamp="1616512334243" />
   </component>
 </project>

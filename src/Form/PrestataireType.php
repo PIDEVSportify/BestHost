@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
@@ -23,6 +24,7 @@ class PrestataireType extends AbstractType
             ->add('email',EmailType::class)
             ->add('first_name',TextType::class)
             ->add('last_name',TextType::class)
+            ->add('cin',NumberType::class)
             ->add('password',PasswordType::class)
             ->add('confirm_password',PasswordType::class)
             ->add('roles',ChoiceType::class,
@@ -37,7 +39,8 @@ class PrestataireType extends AbstractType
                 'label'=>'Rôles',
 
             ])
-            ->add('cin',NumberType::class)
+
+
 
         ;
 

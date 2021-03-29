@@ -32,7 +32,7 @@
                 <div class="row align-items-center">
 
 
-                        <div class="login_part_form" style="margin-left:25%;margin-right:25%">
+                        <div class="login_part_form" style="margin-left:20%;margin-right:20%">
                             <div class="login_part_form_iner">
                                 <h3>
                                     Please Sign up now</h3>
@@ -54,8 +54,22 @@
                                         {{form_widget(form.password,{ 'attr':{'placeholder':'Password', 'class':'form-control' }})}}
                                     </div>
                                 <div class="col-md-12 form-group p_star" >
+
                                     {{ form_errors(form.confirm_password) }}
                                     {{form_widget(form.confirm_password,{ 'attr':{'placeholder':'Confirm Password', 'class':'form-control' }})}}
+                                </div>
+
+                                <div class="col-md-12 form-group  p_star" >
+                                    <div class="row justify-content-center">
+                                        <div class="col">
+                                            <input type="file" class="filepond"
+                                                   data-allow-reorder="true"
+                                                   data-max-file-size="1G"
+                                                   data-max-files="1"
+                                                   name="avatar">
+                                        </div>
+
+                                    </div>
                                 </div>
                                 <div class="row justify-content-center">
                                 {{ form_end(form) }}

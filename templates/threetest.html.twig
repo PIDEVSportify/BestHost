@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} BestHost | Tour {% endblock title %}
+
+{% block stylesheet %}
+{{ parent() }}
+
+{% endblock stylesheet %}
+{%  block javascripts %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.css"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uevent@2/browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/photo-sphere-viewer@4/dist/photo-sphere-viewer.min.js"></script>
+
+{%  endblock javascripts %}
+{% block body %}
+
+    <div class="container"  style=" margin-top: 10%">
+
+        <a href="{{ path('maisons') }}" class="btn_3"> Retour</a>
+    <div id="viewer" style="text-align: center"></div>
+    </div>
+
+    <style>
+        /* the viewer container must have a defined size */
+        #viewer {
+
+            height: 60vh;
+        }
+    </style>
+{% endblock body %}
+
+{% block scripts %}
+
+    {{ parent() }}
+    <script>
+        var viewer = new PhotoSphereViewer.Viewer({
+            container: document.querySelector('#viewer'),
+            panorama: '{{ asset('uploads/'~house.image) }}',
+            navbar: [
+                'zoom',
+                'fullscreen'
+            ],
+
+        });
+    </script>
+{% endblock scripts %}

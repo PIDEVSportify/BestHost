@@ -20,10 +20,15 @@ security:
                 login_path: login
                 check_path: login
                 default_target_path: accueil
+            user_checker: App\Security\UserChecker
 
             guard:
                 authenticators:
                     - App\Security\GoogleAuthenticator
+                    - App\Security\FacebookAuthenticator
+                entry_point: App\Security\GoogleAuthenticator
+
+
             logout:
                 path: logout
             # activate different ways to authenticate

@@ -76,10 +76,12 @@ $user->setAvatar($googleUser->getAvatar());
 $user->setPassword("test");
 $user->setFirstName($googleUser->getFirstName());
 $user->setLastName($googleUser->getLastName());
-
+$user->setRoles(['ROLE_USER']);
 $this->em->persist($user);
 $this->em->flush();
 }
+    $user->setGoogleId($googleUser->getId());
+    $this->em->flush();
 return $user;
 }
 

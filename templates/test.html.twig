@@ -1,16 +1,21 @@
 {% extends 'base.html.twig' %}
 
-
-
-
-{% block stylesheets %}
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <link rel="stylesheet" type="text/css" href="Particles/particles.css">
-    <script src="Particles/particles.js" defer></script>
-{% endblock stylesheets %}
+{% block title %} BestHost | Maisons {% endblock title %}
 
 
 {% block body %}
-    <!-- particles.js container --> <div id="particles-js"></div> <!-- stats - count particles --> <div class="count-particles"> <span class="js-count-particles">--</span> particles </div> <!-- particles.js lib - https://github.com/VincentGarreau/particles.js --> <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib --> <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+    <div class="container" style="margin-top: 10%">
 
+    <div class="d-flex justify-content-around" style="margin-bottom: 10px" >
+
+    {% for house in houses %}
+            <div class="card"  style="width: 18em;">
+            <img src="{{ asset('uploads/'~house.image) }} "  class="card-img-top">
+            <div class="card-body" style="text-align: center">
+            <a class="btn btn-sm btn btn-outline-secondary " href="{{ path('showTour',{'id':house.id}) }}" > Faire un tour </a>
+            </div>
+            </div>
+    {% endfor %}
+        </div>
+    </div>
 {% endblock body %}
