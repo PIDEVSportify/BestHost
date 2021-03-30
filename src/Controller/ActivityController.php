@@ -17,6 +17,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Symfony\Bridge\Twig\Mime\NotificationEmail;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 /**
