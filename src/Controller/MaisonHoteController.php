@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -13,14 +14,17 @@ use phpDocumentor\Reflection\Types\Null_;
 use App\Entity\MaisonHote;
 use App\Entity\MaisonImages;
 use App\Entity\MaisonRecherche;
+use App\Form\ContactType;
 use App\Form\MaisonHoteType;
 use App\Form\MaisonRechercheType;
+use App\Notification\ContactNotification;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpParser\Node\Stmt\Return_;
 use Symfony\Component\DomCrawler\Image;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
+use PhpParser\Node\Expr\AssignOp\Concat;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -127,11 +131,27 @@ class MaisonHoteController extends AbstractController
      * @Route("/maison_hote/{id}", name="maison_hote_show")
      */
 
-    public function show($id)
+    public function show($id, Request $request, ContactNotification $notification)
     {
+        $contact = new Contact();
+
+
         $maison = $this->getDoctrine()->getRepository(MaisonHote::class)->find($id);
+
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $notification->notify($contact);
+            $this->addFlash('success', 'votre email a ete envoyer');
+            return $this->redirectToRoute('maison_hote_list');
+        }
+
+
         return $this->render('maison_hote/show.html.twig', [
-            'maison' => $maison
+            'maison' => $maison,
+            'form' => $form->createView()
         ]);
     }
 

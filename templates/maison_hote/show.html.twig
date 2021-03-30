@@ -94,9 +94,43 @@
 
 
 				{% else %}
+					<a href="{{ path('edit_maison_hote', {'id': maison.id}) }}" class="btn btn-light">reserver</a>
 					<div class="row">
+						<div id="contactForm" class="mt-3">
+							{{form_start(form)}}
+							<div class="row">
+								<div class="col">
 
-						<a href="{{ path('edit_maison_hote', {'id': maison.id}) }}" class="btn btn-light">reserver</a>
+									{{form_row(form.firstname)}}
+
+								</div>
+								<div class="col">
+
+									{{form_row(form.lastname)}}
+
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col">
+
+									{{form_row(form.phone)}}
+
+								</div>
+								<div class="col">
+
+									{{form_row(form.email)}}
+
+								</div>
+							</div>
+							{{form_rest(form)}}
+							<div class="form-group">
+								<button class="btn btn-primary">
+									envoyer
+								</button>
+							</div>
+							{{form_end(form)}}
+						</div>
 					</div>
 				{% endif %}
 			{% endif %}
@@ -121,10 +155,10 @@
 
 
 	<!--Load the API from the specified URL
-																				     * The async attribute allows the browser to render the page while the API loads
-																				     * The key parameter will contain your own API key (which is not needed for this tutorial)
-																				     * The callback parameter executes the initMap() function
-																				     -->
+																													     * The async attribute allows the browser to render the page while the API loads
+																													     * The key parameter will contain your own API key (which is not needed for this tutorial)
+																													     * The callback parameter executes the initMap() function
+																													     -->
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAObzCbk0hwnk8LbUcTeFguDk5ZDr36VS4&callback=initMap"></script>
 	<script>
 
