@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'dashboard/dashboard_base.html.twig' %}
 
 {% block title %}Maisons d'hotes
 {% endblock %}
@@ -6,18 +6,7 @@
 {% block body %}
 	<div class="jumbotron">
 		<div class="container">
-			{{form_start(form)}}
-			<div class="form-row">
-				<div class="col">
-					{{ form_row(form.nom) }}
-				</div>
-
-				<div class="col">
-					<button class="btn btn-primary">Recherche</button>
-				</div>
-
-			</div>
-			{{form_end(form)}}
+			
 
 
 		</div>
@@ -80,7 +69,7 @@
 
 
 								<p class="card-text">{{maison.description}}</p>
-								<a href="/maison_hote/{{maison.id}}" class="btn btn-primary">show</a>
+								<a href="/backmaison/{{maison.id}}" class="btn btn-primary">show</a>
 							</div>
 						</div>
 

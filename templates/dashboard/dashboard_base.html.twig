@@ -257,22 +257,22 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
-                                    Layout Options
+                                    Maison Hote
                                     <i class="fas fa-angle-left right"></i>
                                     <span class="badge badge-info right">6</span>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/layout/top-nav.html" class="nav-link">
+                                    <a href="{{ path('new_maison_hote') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Top Navigation</p>
+                                        <p>Ajouter Maison</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                                    <a href="{{ path('backmaison') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Top Navigation + Sidebar</p>
+                                        <p>Liste maison</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -827,26 +827,27 @@
 
     <!-- Turn all file input elements into ponds -->
     <script>
-        FilePond.registerPlugin(
-            FilePondPluginImagePreview,
-            FilePondPluginImageCrop,
-            FilePondPluginImageResize,
-            FilePondPluginFileEncode,
-            FilePondPluginFileValidateType,);
-        const inputElement = document.querySelector('input[type="file"]');
+       FilePond.registerPlugin(
+        FilePondPluginImagePreview,
+        FilePondPluginImageCrop,
+        FilePondPluginImageResize,
+        FilePondPluginFileEncode,
+        FilePondPluginFileValidateType,);
 
-        // FilePond.parse(document.body);
-        FilePond.create(inputElement,{
-            acceptedFileTypes: ['image/*'],
-            labelIdle:'Sélectionner une photo',
-            imagePreviewHeight: "300",
-            allowFileEncode: true,
-            maxFiles: 1,
-            labelFileTypeNotAllowed:'Votre fichier doit être une image',
-            fileValidateTypeLabelExpectedTypes:'Exemple : .jpg .jpeg .png'
+    const inputElement = document.querySelector('input[class="filepond"]');
 
+    // FilePond.parse(document.body);
+     FilePond.create(inputElement,{
+         acceptedFileTypes: ['image/*'],
+         labelIdle:'Sélectionner une photo',
+         imagePreviewHeight: "300",
+         allowFileEncode: true,
+         maxFiles: 1,
+         labelFileTypeNotAllowed:'Votre fichier doit être une image',
+         fileValidateTypeLabelExpectedTypes:'Exemple : .jpg .jpeg .png'
 
-        });
+     });
+
         </script>
 
 
