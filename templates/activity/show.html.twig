@@ -33,10 +33,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('activity_index') }}" class="btn btn-light">back to list</a>
+    <a href="{{ path('activity_index') }}" class="btn btn-dark">back to list</a>
 
-    <a href="{{ path('activity_edit', {'id': activity.id}) }}" class="btn btn-light">edit</a>
-    <a href="{{ path('activity_list', {'id': activity.id}) }}" class="btn btn-light">Download pdf</a>
+    <a href="{{ path('activity_edit', {'id': activity.id}) }}" class="btn btn-success ban-btn">edit</a>
+    <a href="{{ path('activity_list', {'id': activity.id}) }}" class="btn btn-secondary">Download pdf</a>
 
 
     {{ include('activity/_delete_form.html.twig') }}
