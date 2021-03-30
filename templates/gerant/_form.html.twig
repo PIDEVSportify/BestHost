@@ -1,0 +1,45 @@
+
+<section class="login_part section_padding ">
+    <div class="container">
+        <div class="row justify-content-center">
+
+
+            <div class="tab-content" id="myTabContent" style="margin-top: 5%">
+                <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                    {{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+                    <div class="col-md-12 form-group p_star ">
+                        {{ form_errors(form.Id_gerant) }}
+                        {{form_widget(form.Id_gerant,{ 'attr':{'placeholder':'Identifiant', 'class':'form-control' }}) }}
+                    </div>
+                    <div class="col-md-12 form-group p_star ">
+                        {{ form_errors(form.Nom) }}
+                        {{form_widget(form.Nom,{ 'attr':{'placeholder':'Nom', 'class':'form-control' }}) }}
+                    </div>
+                    <div class="col-md-12 form-group p_star" >
+                        {{ form_errors(form.Prenom) }}
+                        {{form_widget(form.Prenom,{ 'attr':{'placeholder':'Prenom', 'class':'form-control' }})}}
+                    </div>
+                    <div class="col-md-12 form-group p_star ">
+                        {{ form_errors(form.Ad_Email) }}
+                        {{form_widget(form.Ad_Email,{ 'attr':{'placeholder':'Email', 'class':'form-control' }}) }}
+                    </div>
+                    <div class="col-md-12 form-group p_star" id="example-date-input" >
+                        {{ form_errors(form.Date_nais) }}
+                        {{form_widget(form.Date_nais,{ 'attr':{'placeholder':'Date de naissance', 'class':'Datetype' }})}}
+                    </div>
+                    <div class="col-md-12 form-group p_star" >
+                        {{ form_errors(form.Cin) }}
+                        {{form_widget(form.Cin,{ 'attr':{'placeholder':'CIN', 'class':'form-control' }})}}
+                    </div>
+
+
+
+                    <div class="row justify-content-center">
+                        {{ form_end(form) }}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div></section>

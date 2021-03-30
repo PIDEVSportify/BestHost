@@ -1,0 +1,62 @@
+{% extends 'dashboard/index.html.twig' %}
+
+{% block title %}Activity index{% endblock %}
+
+{% block body %}
+    <h1>Activity index</h1>
+    <form role="search" id="nav-search-form" method="post" action="{{ path('recherche') }}">
+
+        <input type="text" class="form-control round" id="search"  name="search" placeholder="Search">
+        <br>
+        <button class="btn" type="submit" > Search </button>
+
+    </form>
+    <form role="search" id="nav-search-form" method="post" action="{{ path('tri') }}">
+
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Programmatic control">
+            <div class="btn-group btn-group-sm" aria-label="Set Select2 option">
+                <button class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1">
+                    Sort by Id
+                </button>
+            </div>
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id_act</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Date_val</th>
+                <th>Categorie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activity in activities %}
+            <tr>
+                <td>{{ activity.id }}</td>
+                <td>{{ activity.IdAct }}</td>
+                <td>{{ activity.Type }}</td>
+                <td>{{ activity.Description }}</td>
+                <td>{{ activity.DateVal ? activity.DateVal|date('Y-m-d') : '' }}</td>
+                <td>{{ activity.Categorie }}</td>
+                <td>
+                    <a href="{{ path('activity_show', {'id': activity.id}) }}" class="btn btn-light">show</a>
+                    <a href="{{ path('activity_edit', {'id': activity.id}) }}" class="btn btn-light">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('activity_new') }}" class="btn btn-light">Create new</a>
+{% endblock %}
+

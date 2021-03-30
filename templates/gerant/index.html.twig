@@ -1,0 +1,61 @@
+{% extends 'dashboard/dashboard_base.html.twig' %}
+
+{% block title %}Gerant index{% endblock %}
+
+{% block body %}
+    <h1>Gerant index</h1>
+    <form role="search" id="nav-search-form" method="post" action="{{ path('recherche_g') }}">
+
+        <input type="text" class="form-control round" id="search"  name="search" placeholder="Search">
+        <br>
+        <button class="btn" type="submit" > Search </button>
+
+    </form>
+    <form role="search" id="nav-search-form" method="post" action="{{ path('tri_g') }}">
+
+
+        <div class="btn-toolbar" role="toolbar" aria-label="Programmatic control">
+            <div class="btn-group btn-group-sm" aria-label="Set Select2 option">
+                <button class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1">
+                    Sort by Id
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id_gerant</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Date_nais</th>
+                <th>Ad_Email</th>
+                <th>Cin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gerant in gerants %}
+            <tr>
+                <td>{{ gerant.IdGerant }}</td>
+                <td>{{ gerant.Nom }}</td>
+                <td>{{ gerant.Prenom }}</td>
+                <td>{{ gerant.DateNais ? gerant.DateNais|date('Y-m-d') : '' }}</td>
+                <td>{{ gerant.AdEmail }}</td>
+                <td>{{ gerant.Cin }}</td>
+                <td>
+                    <a href="{{ path('gerant_show', {'Id_gerant': gerant.Idgerant}) }}" class="btn btn-light">show</a>
+                    <a href="{{ path('gerant_edit', {'Id_gerant': gerant.Idgerant}) }}" class="btn btn-light">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('gerant_new') }}" class="btn btn-light">Create new</a>
+{% endblock %}

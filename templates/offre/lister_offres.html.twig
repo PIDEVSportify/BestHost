@@ -1,0 +1,102 @@
+{{ include('dashboard/dashboard_base.html.twig') }}
+
+{% block title %}Lister{% endblock %}
+{% form_theme formoffre 'bootstrap_4_horizontal_layout.html.twig' %}
+{% block body %}
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+    <h1 style="text-align: center">l'affichage des offres</h1>
+    <br>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <br>
+    <p STYLE="margin-left: 10%"><button class="btn btn-dark" onclick="sortTable()" style="margin-bottom: -5px">Sort</button></p>
+    <table class="mb-0 table" id="myTable" style="height: auto;width: 80%;margin-left: auto;margin-right: auto">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre des places</th>
+            <th>Date debut</th>
+            <th>Date fin</th>
+            <th>Prix Dt</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if offre is not empty  %}
+        {%  for o in offre %}
+        <tr>
+            <td>  {{ o.getId()}}   </td>
+            <td >  {{ o.getNombrePlacesOffre() }} </td>
+            <td >  {{ o.getDateDebutOffre() |date("m/d/Y")}} </td>
+            <td >  {{ o.getDateFinOffre() |date("m/d/Y")}} </td>
+            <td >  {{ o.getPrixOffre()}} </td>
+            <td> <form  action="{{ path('Afficher_offre')}}" method="post"  >
+                    <input id="in1" hidden type="number" value="{{ o.getId()}}" name="id" >
+                    <input id="in2" hidden type="number" value="{{ o.getNombrePlacesOffre() }}" name="nombre" >
+                    <input id="in3" hidden type="text" value="{{ o.getDateDebutOffre() |date("m/d/Y")}}" name="date_debut" >
+                    <input id="in4" hidden type="text" value="{{ o.getDateFinOffre() |date("m/d/Y")}}" name="date_fin" >
+                    <input id="in5" hidden type="number" value="{{ o.getPrixOffre()}}" name="prix" >
+                    <button id="in6" type="submit" class="btn btn-dark">Modifier</button>
+                </form></td>
+            <td> <form action="{{ path('Supprimer_offre')}}" method="post" onsubmit="return ConfirmDelete()">
+                    <input id="in1" hidden type="number" value="{{ o.getId()}}" name="id" >
+                    <button id="in4" type="submit" class="btn btn-dark">Supprimer</button>
+                </form>
+                </td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        {% endif %}
+    </table>
+    <div class="navigation" style="margin-left: 10%">
+        {{ knp_pagination_render(offre) }}
+    </div>
+    <br>
+    <button type="button" class="btn btn-dark" href="" data-toggle="modal" data-target="#createmodel" style="margin-left: 10%; margin-top: -1% ">Ajouter Offre</button>
+    <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                {{ form_start(formoffre,{'attr': {'novalidate': 'novalidate'}}) }}
+                <div class="my-custom-class-for-errors">
+                {{ form_errors(formoffre) }}
+                </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> Offre</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ form_row(formoffre.id, { 'label': 'Id', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formoffre.nombre_places_offre, { 'label': 'Nombre des places', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formoffre.date_debut_offre, { 'label': 'Date debut', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formoffre.date_fin_offre, { 'label': 'Date fin', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formoffre.prix_offre, { 'label': 'Prix', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formoffre.captchaCode, { 'label': 'Captcha', 'label_attr': {'class': 'disabled'} }) }}
+                    <div class="modal-footer">
+                    </div>
+                    <button type="submit" class="btn btn-success"><i class="ti-save"></i> Enregistrer</button>
+                    <button type="reset" class="btn btn-success">Réinitialiser</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-top: 0%;">Fermer</button>
+                </div>
+                {{ form_end(formoffre) }}
+            </div>
+        </div>
+    </div>
+    <form  action="{{ path('custompdf')}}" method="post" >
+        <button id="in10" type="submit" class="btn btn-dark" style="margin-left: 24%; margin-top: -67px" >Generate pdf</button>
+    </form>
+{% endblock %}

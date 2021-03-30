@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activity{% endblock %}
+
+{% block body %}
+    <h1>Activity</h1>
+<div class="jumbotron">
+    <div class="container">
+
+
+    <div class="row">
+
+    <div class="col">
+            <label>Id</label>
+            <h1>{{ activity.id }}</h1>
+        </div>
+        <div class="col">
+            <label>Id_act</label>
+            <h1>{{ activity.IdAct }}</h1>
+        </div>
+        <div class="col">
+            <label>Type</label>
+            <h1>{{ activity.Type }}</h1>
+        </div>
+        <div class="col">
+            <label>Description</label>
+            <h1>{{ activity.Description }}</h1>
+        </div>
+        <div class="col">
+            <label>Date_val</label>
+            <h1>{{ activity.DateVal ? activity.DateVal|date('Y-m-d') : '' }}</h1>
+        </div>
+        <div class="col">
+            <label>Categorie</label>
+            <h1>{{ activity.Categorie }}</h1>
+        </div>
+    </div>
+    </div>
+</div>
+    <a href="{{ path('activity_user') }}" class="btn btn-light">back to list</a>
+
+{% endblock %}

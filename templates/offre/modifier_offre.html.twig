@@ -1,0 +1,39 @@
+{{ include('dashboard/dashboard_base.html.twig') }}
+
+{% block title %}Modifier{% endblock %}
+{% block body %}
+<h1 style="text-align: center">Modifier Offre</h1>
+    <div class="container" style="margin-top: 20px">
+<form name="F1" method="POST" action="{{ path('Modifier_offre')}}" id="formu2"  >
+    <label class="disabled">Id:</label>
+    <input id="in5" hidden type="number" name="save" style="margin-left: 80px;" value="{{ request.request.get('id') }}">
+    <input id="in1" type="number" name="Id" style="margin-left: 160px;" value="{{ request.request.get('id') }}" >
+    <br>
+    <br>
+    <label class="disabled">Nombre des palces:</label>
+    <input id="in2" type="number" name="Nombre" style="margin-left: 43px; " value="{{ request.request.get('nombre')}}" min="4" max="10">
+    <br>
+    <br>
+    <label class="disabled">Date debut:</label>
+    <input id="in3" type="date" name="debut" style="
+        margin-left: 97px;
+    " value="{{ request.request.get('date_debut') |date("Y-m-d")}}">
+    <br>
+    <br>
+    <label class="disabled">Date fin:</label>
+    <input id="in4" type="date" name="fin" style="
+        margin-left: 121px;
+    " value="{{ request.request.get('date_fin') |date("Y-m-d")}}">
+    <br>
+    <br>
+    <label class="disabled">Prix:</label>
+    <input id="in7" type="number" name="prix" style="margin-left: 148px;" value="{{ request.request.get('prix')}}">
+    <br>
+    <br>
+    <button data-callback='onSubmit' data-action='submit' data-sitekey="6LfxtY4aAAAAAN8TgczTGzIH14bLbrEXDiysa2s_" id="in6" class="btn btn-success g-recaptcha" style="margin-left: 246px;margin-top: 20px; margin-bottom: 10px"><i class="ti-save"></i> Enregistrer</button>
+</form>
+    <form  action="{{ path('Afficher_offre')}}" method="post"  >
+        <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="margin-top: -85px;MARGIN-LEFT: 11%;">Fermer</button>
+    </form>
+    </div>
+{% endblock %}

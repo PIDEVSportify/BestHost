@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Repository;
+
+use App\Entity\Message;
+use App\Entity\MessageLike;
+use App\Entity\User;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
+
+/**
+ * @method MessageLike|null find($id, $lockMode = null, $lockVersion = null)
+ * @method MessageLike|null findOneBy(array $criteria, array $orderBy = null)
+ * @method MessageLike[]    findAll()
+ * @method MessageLike[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
+class MessageLikeRepository extends ServiceEntityRepository
+{
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, MessageLike::class);
+    }
+
+    public function findMessageLikeByUser(Message $message, User $user): ?MessageLike
+    {
+        return $this->findOneBy(['message' => $message, 'user' => $user]);
+    }
+}

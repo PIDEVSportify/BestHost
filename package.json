@@ -1,0 +1,27 @@
+{
+    "devDependencies": {
+        "@symfony/stimulus-bridge": "^0.32.1",
+        "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/Resources/assets",
+        "@symfony/webpack-encore": "^1.1.2",
+        "core-js": "^3.0.0",
+        "regenerator-runtime": "^0.13.2",
+        "stimulus": "^2.0.0",
+        "webpack-notifier": "^1.13.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "dependencies": {
+        "ckeditor": "^4.12.1",
+        "file-loader": "^6.2.0",
+        "filepond": "^4.26.0",
+        "photo-sphere-viewer": "^4.2.1",
+        "three": "0.126.1",
+        "vue-filepond": "^7.0.0"
+    }
+}

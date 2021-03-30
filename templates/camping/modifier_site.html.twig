@@ -1,0 +1,25 @@
+{{ include('dashboard/dashboard_base.html.twig') }}
+
+{% block title %}Modifier{% endblock %}
+{% form_theme formcamping 'bootstrap_4_horizontal_layout.html.twig' %}
+{% block body %}
+    <h1 style="text-align: center">Modifier Site</h1>
+    <div class="container" style="margin-top: 20px">
+    {{ form_start(formcamping,{'attr': {'enctype': 'multipart/form-data'}}) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(formcamping) }}
+    </div>
+        {{ form_row(formcamping.id, { 'label': 'Id', 'label_attr': {'class': 'disabled'} }) }}
+        {{ form_row(formcamping.localisation_camping,{ 'label': 'Position', 'label_attr': {'class': 'disabled'} }) }}
+        {{ form_row(formcamping.description_camping, { 'label': 'Déscription', 'label_attr': {'class': 'disabled'} }) }}
+        {{ form_row(formcamping.type_camping, { 'label': 'Type', 'label_attr': {'class': 'disabled'} }) }}
+        {{ form_row(formcamping.imageFile, { 'label': 'Image', 'label_attr': {'class': 'disabled'} }) }}
+        {{ form_row(formcamping.find_offre, { 'label': 'Offre', 'label_attr': {'class': 'disabled'} }) }}
+        {{ form_row(formcamping.captchaCode, { 'label': 'Captcha', 'label_attr': {'class': 'disabled'} }) }}
+        <button type="submit" class="btn btn-success"><i class="ti-save"></i> Enregistrer</button>
+    {{ form_end(formcamping) }}
+            <form  action="{{ path('Afficher_site')}}" method="post"  >
+            <button type="submit" class="btn btn-secondary" data-dismiss="modal" STYLE="margin-top: 2%">Fermer</button>
+            </form>
+    </div>
+{% endblock %}

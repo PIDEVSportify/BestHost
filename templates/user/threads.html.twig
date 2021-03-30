@@ -1,0 +1,46 @@
+{% extends 'layouts/full-width.html.twig' %}
+
+{% block title %}
+    {{ app.user == user ? 'Mes sujets' : 'Profil de ' ~ user ~ ' : sujets' }}
+{% endblock %}
+
+{% block content %}
+    {% do append_breadcrumb(path('page.members'), 'Membres') %}
+    {% do append_breadcrumb(path('user.profile', {'slug': user.slug}), user.pseudo) %}
+    {% do set_active_label('Sujets créés') %}
+
+    {{ include('partials/_breadcrumb.html.twig') }}
+
+    <div class="row">
+        <div class="col col-lg-12 col-md-12 col-sm-12">
+            <h3>{{ user }}
+                - {{ user.threads|length }} {{ user.threads|length <= 1 ? 'sujet crée' : 'sujets créés' }}</h3>
+
+            {% if pagination.getTotalItemCount > 0 %}
+                <table class="table table-hover table-sm">
+                    <thead>
+                    <tr>
+                        <th scope="col">Sujet</th>
+                        <th scope="col">Nombre de réponses</th>
+                        <th scope="col">Dernier message</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for thread in pagination %}
+                        <tr>
+                            <td><a href="{{ path('thread.show', {'slug': thread.slug}) }}">{{ thread.title }}</a></td>
+                            <td>{{ thread.totalAnswers }}</td>
+                            <td>
+                                <a href="{{ path('message.show', {'id': thread.lastMessage.id}) }}">{{ thread.lastMessage.createdAt|ago }}</a>
+                                par {{ thread.author.FirstName }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {{ knp_pagination_render(pagination) }}
+            {% else %}
+                Cet utilisateur n'a pas encore créé de sujet
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
