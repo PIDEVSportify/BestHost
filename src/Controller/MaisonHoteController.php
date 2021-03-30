@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 
 
+
+use phpDocumentor\Reflection\Types\Null_;
 
 use App\Entity\MaisonHote;
 use App\Entity\MaisonImages;
@@ -15,6 +19,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpParser\Node\Stmt\Return_;
 use Symfony\Component\DomCrawler\Image;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,7 +37,7 @@ class MaisonHoteController extends AbstractController
     /**
      * @Route("/maison_hote", name="maison_hote_list" ,methods={"GET","POST"})
      */
-    public function index(Request $request): Response
+    public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $search = new MaisonRecherche();
 
@@ -45,8 +51,16 @@ class MaisonHoteController extends AbstractController
             $nom = $search->getNom();
             if ($nom != "")
                 $maison = $this->getDoctrine()->getRepository(MaisonHote::class)->findBy(['nom' => $nom]);
-            else
-                $maison = $this->getDoctrine()->getRepository(MaisonHote::class)->findAll();
+            else {
+                $donnees = $this->getDoctrine()->getRepository(MaisonHote::class)->findAll();
+                $maison = $paginator->paginate(
+
+                    $donnees,
+                    $request->query->getInt('page', 1),
+                    2
+
+                );
+            }
         }
 
         //  $maison = $this->getDoctrine()->getRepository(MaisonHote::class)->findall($search);
@@ -62,6 +76,7 @@ class MaisonHoteController extends AbstractController
 
 
     /**
+     * @IsGranted("ROLE_GERANT_MAISON_HOTE")
      * @Route("/maison_hote/new", name="new_maison_hote")
      * Method({"GET","POST"})
      */
@@ -85,7 +100,7 @@ class MaisonHoteController extends AbstractController
 
                 $image->move(
                     $this->getParameter('images_direcoty'),
-                    $fichier
+                    $fichier,
                 );
 
                 $img = new MaisonImages();
@@ -196,5 +211,4 @@ class MaisonHoteController extends AbstractController
             return new JsonResponse(['error' => 'Token Invalide'], 400);
         }
     }
-   
 }

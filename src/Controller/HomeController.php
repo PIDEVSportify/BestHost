@@ -25,11 +25,9 @@ class HomeController extends AbstractController
     /**
      * @Route ("/houses",name="maisons")
      */
-    public function showHouses(MaisonRepository $repo)
+    public function showHouses()
     {
-        $houses= $repo->findAll();
-         return $this->render('test.html.twig', ['houses'=>$houses]);
-
+        
 
     }
 
@@ -38,10 +36,8 @@ class HomeController extends AbstractController
     /**
      * @Route ("/tour/{id}",name="showTour")
      */
-    public function tour($id,MaisonRepository $repo)
+    public function tour($id)
     {
-        $house=$repo->find($id);
-        return $this->render('threetest.html.twig',['house'=>$house]);
-
+        
     }
 }
