@@ -14,7 +14,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 
 /**
- * @Route("/gerant")
+ * @Route("/admin/gerant")
  */
 class GerantController extends AbstractController
 {
