@@ -14,7 +14,77 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7857afa-e1bd-47d6-a9cc-1450b4f07127" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210330102420.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images_maisons/04c03561f24347d7401046160ee7f7df.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images_maisons/089a247cf34b5147f4f1977e1d00fb91.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images_maisons/10d76418ff66abe97494263da374635e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images_maisons/3a9dc55d82348d7bf9d4cb2d86d59b84.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images_maisons/84b6d76731f89025be21dee17af650c4.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images_maisons/b097d8d1bd9172bdd78463b65e655ee3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images_maisons/c289469ea6f5d54d8c60a81add51bd2f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images_maisons/e3c3b1b2a79eacb78e2dd49331c3df4f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/images.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/477945860303303021212114141414thth.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/N.Tesla0303303021212114143434thth.jfif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/6f7d81d38eca874ee957f31abe44ccf3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/70efec1aa1f3611c8f1e1bedfe2d01c4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/8e4d821b0317e5981ad6b8e48295f282" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/b7ffe873896c43b816b8ba8b87cbf2d2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/e2bfce66765df72fc4b89c802927bf42" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/php26F8.tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/MaisonHoteController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Contact.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/MaisonHote.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/MaisonImages.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/MaisonRecherche.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/MaisonHoteType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/MaisonRechercheType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Notification/ContactNotification.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MaisonHoteRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MaisonImagesRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/emails/contact.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/maison_hote/backmaison.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/maison_hote/edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/maison_hote/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/maison_hote/maisonbackshow.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/maison_hote/new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/maison_hote/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/knp_paginator.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/knp_paginator.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/swiftmailer.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/swiftmailer.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ConnexionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ConnexionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PrestataireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PrestataireController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ResetPasswordController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/connexion/inscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/connexion/inscription.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/connexion/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/connexion/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dashboard/dashboard_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard/dashboard_base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/prestataire/inscription.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prestataire/inscription.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reset_password/check_email.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reset_password/check_email.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reset_password/email.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reset_password/email.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reset_password/request.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reset_password/request.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,19 +282,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Test\templates\user" />
-      <recent name="C:\wamp64\www\Test\src\Security" />
-      <recent name="C:\wamp64\www\Test\templates\admin" />
-      <recent name="C:\wamp64\www\Test\templates\connexion" />
-      <recent name="C:\wamp64\www\Test\templates\bundles\TwigBundle\Exception" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\BestHost-main" />
       <recent name="C:\wamp64\www\BestHost-main\templates\admin" />
       <recent name="C:\wamp64\www\BestHost-main\public\build" />
       <recent name="C:\wamp64\www\BestHost-main\templates" />
       <recent name="C:\wamp64\www\BestHost-main\templates\activity" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Test\templates\user" />
+      <recent name="C:\wamp64\www\Test\src\Security" />
+      <recent name="C:\wamp64\www\Test\templates\admin" />
+      <recent name="C:\wamp64\www\Test\templates\connexion" />
+      <recent name="C:\wamp64\www\Test\templates\bundles\TwigBundle\Exception" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
