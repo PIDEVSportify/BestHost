@@ -17,6 +17,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Symfony\Bridge\Twig\Mime\NotificationEmail;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 /**
@@ -25,13 +26,19 @@ use Symfony\Bridge\Twig\Mime\NotificationEmail;
 class ActivityController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/admin", name="activity_index", methods={"GET"})
      *
      */
-    public function index(ActivityRepository $activityRepository): Response
+    public function index(ActivityRepository $activityRepository, Request $request, PaginatorInterface $paginator): Response
     {
+        $donnes= $this->getDoctrine()->getRepository(Activity::class)->findAll();
+        $activites = $paginator->paginate(
+            $donnes,
+            $request->query->getInt('page',1),3
+        );
         return $this->render('activity/index.html.twig', [
-            'activities' => $activityRepository->findAll(),
+            'activities' => $activites
         ]);
     }
     /**
@@ -48,6 +55,7 @@ class ActivityController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/admin/new", name="activity_new", methods={"GET","POST"})
      *
      */
@@ -75,6 +83,7 @@ class ActivityController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/admin/{id}", name="activity_show", methods={"GET"})
      */
     public function show(Activity $activity): Response
@@ -94,6 +103,7 @@ class ActivityController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/admin/{id}/edit", name="activity_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Activity $activity): Response
