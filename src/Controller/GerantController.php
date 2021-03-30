@@ -14,12 +14,12 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 
 /**
- * @Route("/admin/gerant")
+ * @Route("/gerant")
  */
 class GerantController extends AbstractController
 {
     /**
-     * @Route("/show", name="gerant_index", methods={"GET"})
+     * @Route("/show/admin", name="gerant_index", methods={"GET"})
      */
     public function index(GerantRepository $gerantRepository): Response
     {
@@ -29,7 +29,7 @@ class GerantController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="gerant_new", methods={"GET","POST"})
+     * @Route("/new/admin", name="gerant_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -54,7 +54,7 @@ class GerantController extends AbstractController
     }
 
     /**
-     * @Route("/{Id_gerant}", name="gerant_show", methods={"GET"})
+     * @Route("/{Id_gerant}/admin", name="gerant_show", methods={"GET"})
      */
     public function show(Gerant $gerant): Response
     {
@@ -64,7 +64,7 @@ class GerantController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{Id_gerant}", name="gerant_edit", methods={"GET","POST"})
+     * @Route("/edit/{Id_gerant}/admin", name="gerant_edit", methods={"GET","POST"})
      */
 
     public function edit(Request $request, Gerant $gerant): Response
