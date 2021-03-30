@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Accueil' %}
+
+{% block body %}
+    <div class="container">
+        {% for category in categories %}
+            <div class="row{{ loop.first ? ' mt-5' }}">
+                <div class="col col-lg-12 col-md-12 col-sm-12">
+                    <div class="card bg-secondary mb-4">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-6 col-sm-8">
+                                    <a href="{{ path('category.show', {'slug': category.slug}) }}">{{ category.title }}</a>
+                                </div>
+                                <div class="col-lg-2 col-md-3 col-sm-4 d-none d-sm-block text-center">SUJETS</div>
+                                <div class="col-lg-2 col-md-3 d-none d-md-block text-center">MESSAGES</div>
+                                <div class="col-lg-3 d-none d-lg-block">DERNIER MESSAGE</div>
+                            </div>
+                        </div>
+
+                        {% for forum in category.forums %}
+                            {{ include('forum/_forum_card.html.twig') }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="row{{ categories|length == 0 ? ' mt-5' }}">
+            <div class="col col-lg-12 col-md-12 col-sm-12">
+                <div class="card bg-secondary mb-4">
+                    <div class="card-header">Statistiques</div>
+                    <div class="card-body">
+                        {% if onlineUsers|length > 0 %}
+                            Membres connectés :
+                            {% for user in onlineUsers %}
+                           {{ last_message.author.FirstName ~ "  " ~ last_message.author.LastName}}
+                            {% endfor %}
+                            <br>
+                        {% endif %}
+
+                        {% if maxOnlineUsersDate is not null %}
+                            Le record du nombre d'utilisateurs en ligne est de {{ maxOnlineUsers }} le {{ maxOnlineUsersDate }}.
+                            <br>
+                        {% endif %}
+
+                        {% if lastRegistered is null %}
+                            {{ nbThreads }} sujets, {{ nbUsers }} membres.
+                        {% else %}
+                            {{ nbMessages }} messages, {{ nbThreads }} sujets, {{ nbUsers }} membres, le dernier membre inscrit est
+                    user_profile_link
+                        {% endif %}
+
+                        <br><a class="float-right" href="{{ path('page.team') }}">Équipe du forum</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

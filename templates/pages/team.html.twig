@@ -1,0 +1,49 @@
+{% extends 'layouts/full-width.html.twig' %}
+
+{% block title %}Membres de l'équipe{% endblock %}
+
+{% block content %}
+    <h1>Membres de l'équipe</h1>
+
+    <div class="mt-3">
+        <h4>Administrateurs</h4>
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Inscription</th>
+                <th>Dernière activité</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for administrator in administrators %}
+                <tr>
+                    <td>{{ administrator.FirstName }}</td>
+                    <td>{{ administrator.createdAt|format_datetime('medium', 'none') }}</td>
+                    <td>{{ administrator.lastActivityAt ? administrator.lastActivityAt|ago : 'Jamais' }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <h4>Modérateurs</h4>
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th >Name</th>
+                <th>Inscription</th>
+                <th>Dernière activité</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for moderator in moderators %}
+                <tr>
+                    <td>{{ moderator.FirstName }}</td>
+                    <td>{{ moderator.createdAt|format_datetime('medium', 'none') }}</td>
+                    <td>{{ moderator.lastActivityAt ? moderator.lastActivityAt|ago : 'Jamais' }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>  
+{% endblock %}

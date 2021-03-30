@@ -26,6 +26,7 @@ class ActivityController extends AbstractController
 {
     /**
      * @Route("/admin", name="activity_index", methods={"GET"})
+     *
      */
     public function index(ActivityRepository $activityRepository): Response
     {
@@ -48,6 +49,7 @@ class ActivityController extends AbstractController
 
     /**
      * @Route("/admin/new", name="activity_new", methods={"GET","POST"})
+     *
      */
     public function new(Request $request): Response
     {

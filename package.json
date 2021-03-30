@@ -17,6 +17,10 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+
+        "ckeditor": "^4.12.1",
+        "file-loader": "^6.2.0",
+
         "filepond": "^4.26.0",
         "photo-sphere-viewer": "^4.2.1",
         "three": "0.126.1",

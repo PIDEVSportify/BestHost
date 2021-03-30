@@ -93,9 +93,24 @@
     "egulias/email-validator": {
         "version": "2.1.25"
     },
+<<<<<<< HEAD
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
+=======
+    "fakerphp/faker": {
+        "version": "v1.14.1"
+    },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.3"
+    },
+    "gregwar/captcha": {
+        "version": "v1.1.9"
+    },
+    "gregwar/captcha-bundle": {
+        "version": "v2.1.4"
+    },
+>>>>>>> 931f19d24943ce2df2e423613eca1b91609277ec
     "guzzlehttp/guzzle": {
         "version": "7.2.0"
     },
@@ -150,6 +165,12 @@
             "./config/packages/knp_snappy.yaml"
         ]
     },
+<<<<<<< HEAD
+=======
+    "knplabs/knp-time-bundle": {
+        "version": "v1.16.0"
+    },
+>>>>>>> 931f19d24943ce2df2e423613eca1b91609277ec
     "knpuniversity/oauth2-client-bundle": {
         "version": "1.20",
         "recipe": {
@@ -699,6 +720,12 @@
     "twig/extra-bundle": {
         "version": "v3.3.0"
     },
+<<<<<<< HEAD
+=======
+    "twig/intl-extra": {
+        "version": "v3.3.0"
+    },
+>>>>>>> 931f19d24943ce2df2e423613eca1b91609277ec
     "twig/twig": {
         "version": "v3.3.0"
     },

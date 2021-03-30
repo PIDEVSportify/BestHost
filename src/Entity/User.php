@@ -10,6 +10,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use App\Entity\Traits\CreatedAtTrait;
+use App\Entity\Traits\PrimaryKeyTrait;
+use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -102,6 +109,42 @@ class User implements UserInterface
     private $isBanned;
 
     /**
+
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $lastActivityAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Thread::class, mappedBy="author")
+     */
+    private $threads;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Message::class, mappedBy="author")
+     */
+    private $messages;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Message::class, mappedBy="updatedBy")
+     */
+    private $updatedMessages;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MessageLike::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $likes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="reportedBy")
+     */
+    private $reports;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="treatedBy")
+     */
+    private $treatedReports;
+    /**
+
      * User constructor.
      */
     public function __construct()
@@ -242,6 +285,21 @@ class User implements UserInterface
 
         return $this;
     }
+
+    
+    public function getLastActivityAt(): ?DateTimeInterface
+    {
+        return $this->lastActivityAt;
+    }
+
+    public function setLastActivityAt(DateTimeInterface $lastActivityAt): self
+    {
+        $this->lastActivityAt = $lastActivityAt;
+
+        return $this;
+    }
+
+
 
     public function getCreatedAt(): ?\DateTimeInterface
     {

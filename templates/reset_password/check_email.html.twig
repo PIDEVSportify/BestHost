@@ -6,10 +6,12 @@
     <div class="container" style="margin-top:2em;text-align: center">
         <div class="row justify-content-center" style="margin-top: 7em" >
     <p>
+
         Un email contenant un lien de réinitialization du mot de passe a été envoyé.
         Le lien va expirer dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
     </p>
     <p>Veuillez vérifier votre boite de spam sinon  <a href="{{ path('app_forgot_password_request') }}" style="size:20px;color: darkred">essayer à nouveau </a>.</p>
+
 
         </div>
     </div>

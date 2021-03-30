@@ -85,8 +85,15 @@
 
 
 
+
                                         <li ><a href="contact.html">Contact</a></li>
                                         <li class="hot"> <a href="{{ path('prestataire_inscription') }}">  Devenir Hôte  </a></li>
+
+                                        <li ><a href="contact.html">Contact</a></li>
+                                        <li > <a href="{{ path('prestataire_inscription') }}">  Devenir Hôte  </a></li>
+                                        
+                                        <li class="hot"> <a href="{{ path('forum.index') }}">  Forum  </a></li>
+
                                     </ul>
                                 </nav>
                             </div>
@@ -198,7 +205,9 @@
         FilePondPluginImageResize,
         FilePondPluginFileEncode,
         FilePondPluginFileValidateType,);
+
     const inputElement = document.querySelector('input[class="filepond"]');
+
 
     // FilePond.parse(document.body);
      FilePond.create(inputElement,{

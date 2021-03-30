@@ -20,6 +20,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
+use App\Repository\MessageRepository;
+use App\Repository\ThreadRepository;
+use Knp\Component\Pager\PaginatorInterface;
+
 /**
  * Class UserController
  * @package App\Controller
@@ -133,6 +137,43 @@ class UserController extends AbstractController
       $this->addFlash('success',"Avatar modifié avec succès");
     return $this->redirectToRoute('user_profile');
    }
+
+
+    /**
+     * @Route("/{slug}/threads", name="threads", methods="GET")
+     */
+    public function threads(User $user, ThreadRepository $threadRepository, Request $request, PaginatorInterface $paginator): Response
+    {
+        $pagination = $paginator->paginate(
+            $threadRepository->findThreadsByUserQb($user),
+            $request->query->getInt('page', 1),
+            25
+        );
+
+        return $this->render('user/threads.html.twig', [
+            'user' => $user,
+            'pagination' => $pagination,
+        ]);
+    }
+
+    /**
+     * @Route("/{slug}/messages", name="messages", methods="GET")
+     */
+    public function messages(User $user, MessageRepository $messageRepository, Request $request, PaginatorInterface $paginator): Response
+    {
+        $pagination = $paginator->paginate(
+            $messageRepository->findMessagesByUserQb($user),
+            $request->query->getInt('page', 1),
+            25
+        );
+
+        return $this->render('user/messages.html.twig', [
+            'user' => $user,
+            'pagination' => $pagination,
+        ]);
+    }
+
+
 
 
 
