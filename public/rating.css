@@ -1,0 +1,28 @@
+.rating{
+    display: flex;
+    color: #9e9e9e;
+}
+[type=radio]{
+    display: none;
+}
+form label{
+    margin:0 5px;
+}
+form label:hover{
+    color: orange;
+}
+#submit_rate{
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 5px ;
+    margin-left: 15px;
+}
+#submit_rate:hover{
+    background-color: black;
+    color: white;
+    border: 2px solid gray;
+}
+.disabled {
+    pointer-events: none;
+}

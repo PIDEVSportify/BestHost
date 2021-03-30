@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="PROJECT" libraries="{api, bootstrap, datatables, dropzone, filepond, filepond-plugin-file-encode, filepond-plugin-file-validate-type, filepond-plugin-image-crop, filepond-plugin-image-preview, filepond-plugin-image-resize, ionicons, jquery-3.2.1.slim, leaflet, mapbox-gl, popper.js}" />
+  </component>
+</project>

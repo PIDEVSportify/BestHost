@@ -1,0 +1,31 @@
+
+    <h1>Activity</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ activity.id }}</td>
+        </tr>
+        <tr>
+            <th>Id_act</th>
+            <td>{{ activity.IdAct }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ activity.Type }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ activity.Description }}</td>
+        </tr>
+        <tr>
+            <th>Date_val</th>
+            <td>{{ activity.DateVal ? activity.DateVal|date('Y-m-d') : '' }}</td>
+        </tr>
+        <tr>
+            <th>Categorie</th>
+            <td>{{ activity.Categorie }}</td>
+        </tr>
+        </tbody>
+    </table>

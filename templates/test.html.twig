@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} BestHost | Maisons {% endblock title %}
+
+
+{% block body %}
+    <div class="container" style="margin-top: 10%">
+
+    <div class="d-flex justify-content-around" style="margin-bottom: 10px" >
+
+    {% for house in houses %}
+            <div class="card"  style="width: 18em;">
+            <img src="{{ asset('uploads/'~house.image) }} "  class="card-img-top">
+            <div class="card-body" style="text-align: center">
+            <a class="btn btn-sm btn btn-outline-secondary " href="{{ path('showTour',{'id':house.id}) }}" > Faire un tour </a>
+            </div>
+            </div>
+    {% endfor %}
+        </div>
+    </div>
+{% endblock body %}

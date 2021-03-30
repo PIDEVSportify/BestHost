@@ -1,0 +1,134 @@
+{{ include('dashboard/dashboard_base.html.twig') }}
+
+{% block title %}Hello sites{% endblock %}
+{% form_theme formcamping 'bootstrap_4_horizontal_layout.html.twig' %}
+{% block body %}
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+        #map {
+            position: sticky; top: 0; right: 0; left: 0; height: 80vh ;width: 80%; margin-left: 15%;
+        }
+    </style>
+    <h1 style="text-align: center">l'affichage des sites camping</h1>
+    <br>
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <br>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+    <br>
+    <p STYLE="margin-left: 10%"><button class="btn btn-dark" onclick="sortTable()" style="margin-bottom: -5px">Sort</button></p>
+    <table class="mb-0 table" id="myTable" style="height: auto;width: 80%;margin-left: auto;margin-right: auto">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Offre</th>
+            <th>localisation</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Image</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+        <div class="container">
+        <tbody>
+        {% if liste['0']['site'] is not empty  %}
+        <div class="lsit">
+        {%  for s in liste['0']['site'] %}
+            {% if s.getOffreId() is not null %}
+            <div class="item js-marker" data-lat="{{ s.getLatitudeCamping() }}" data-lng="{{ s.LongitudeCamping() }}" data-parent="Type :{{ s.getTypeCamping() }}, Description :{{ s.getDescriptionCamping() }}, le prix de l'offre ={{s.getOffreId().getPrixOffre() }} Dt"  >
+            {% else %}
+                <div class="item js-marker" data-lat="{{ s.getLatitudeCamping() }}" data-lng="{{ s.LongitudeCamping() }}" data-parent="Type :{{ s.getTypeCamping() }}, Description :{{ s.getDescriptionCamping() }}, pas d'offre pour le moment" >
+                {% endif %}
+        <tr>
+            <td >  {{ s.getId() }} </td>
+                {% if s.getOffreId() is not null %}
+                        <td >  {{ s.getOffreId().getId() }} </td>
+                    {% else %}
+                <td>Pas d'offre pour le moment</td>
+            {% endif %}
+            <td >  {{ s.getLocalisationCamping() }} </td>
+            <td >  {{ s.getDescriptionCamping() }} </td>
+            <td >  {{ s.getTypeCamping() }} </td>
+            <td >  <img id="taswira" src="uploads/{{ s.getImageCamping() }}"/> </td>
+            <td> <form  action="{{ path('Modifier_camping')}}" method="post"  >
+                    <input id="in1" hidden type="number" value="{{ s.getId()}}" name="id" >
+                    <input id="in2" hidden type="text" value="{{ s.getLocalisationCamping() }}" name="Localisation" >
+                    <input id="in3" hidden type="text" value="{{ s.getDescriptionCamping() }}" name="Description" >
+                    {% if s.getOffreId() is not null %}
+                        <input id="in4" hidden type="text" value="{{ s.getOffreId().getId()}}" name="Id_offre" >
+                    {% else %}
+                        <input id="in5" hidden type="text" value="{{0}}" name="Id_offre" >
+
+                    {%  endif %}
+                    <input id="in6" hidden type="text" value="{{ s.getTypeCamping() }}" name="Type" >
+                    <input id="in7" hidden type="text" value="{{ s.getImageCamping() }}" name="Image" >
+                    <button id="in8" type="submit" class="btn btn-dark" >Modifier</button>
+                </form></td>
+            <td> <form  action="{{ path('Supprimer_camping')}}" method="post" onsubmit="return ConfirmDelete()"  >
+                    <input id="in9" hidden type="number" value="{{ s.getId()}}" name="id" >
+                    <button id="in10" type="submit" class="btn btn-dark" >Supprimer</button>
+                </form></td>
+        </tr>
+            </div>
+        {% endfor %}
+        </div>
+        </div>
+        {% endif %}
+        </tbody>
+        </div>
+    </table>
+    <br>
+    <button type="button" class="btn btn-dark" href="" data-toggle="modal" data-target="#createmodel" style="margin-left: 10%; margin-top: -1% ">Ajouter site camping</button>
+    <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                {{ form_start(formcamping,{'attr': {'novalidate': 'novalidate' }}) }}
+                <div class="my-custom-class-for-errors">
+                {{ form_errors(formcamping) }}
+                </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> site camping</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ form_row(formcamping.id, { 'label': 'Id' , 'label_attr': {'class': 'disabled'}}) }}
+                    {{ form_row(formcamping.localisation_camping,{ 'label': 'Position', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formcamping.description_camping, { 'label': 'Déscription', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formcamping.type_camping, { 'label': 'Type', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formcamping.imageFile, { 'label': 'Image', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formcamping.find_offre, { 'label': 'Offre', 'label_attr': {'class': 'disabled'} }) }}
+                    {{ form_row(formcamping.captchaCode, { 'label': 'Captcha', 'label_attr': {'class': 'disabled'} }) }}
+                    <div class="modal-footer">
+                    </div>
+                    <button type="submit" class="btn btn-success"><i class="ti-save"></i> Enregistrer</button>
+                    <button type="reset" class="btn btn-success">Réinitialiser</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-top: 0%;">Fermer</button>
+                </div>
+                {{ form_end(formcamping) }}
+            </div>
+        </div>
+    </div>
+    <form  action="{{ path('custompdf')}}" method="post" >
+    <button id="in10" type="submit" class="btn btn-dark" style="margin-left: 24%; margin-top: -67px" >Generate pdf</button>
+    </form>
+    <div id="map" ></div>
+    <script src="{{ asset("Map.js")}}"></script>
+{% endblock %}

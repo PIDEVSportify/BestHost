@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="{{ asset("filtrage.css")}}">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    {% set min =5%}
+    {% set max=40 %}
+    {% if filtre['0']['min'] is not empty %}
+    {% set min =filtre['0']['min'] %}
+    {% endif %}
+    {% if filtre['1']['max'] is not empty %}
+    {% set max =filtre['1']['max'] %}
+    {% endif %}
+
+    <script type="text/javascript">
+
+        $(function() {
+            $( "#slider-range" ).slider({
+                range: true,
+                min: 0,
+                max: 100,
+                values: [ {{ min }}, {{ max}} ],
+            slide: function( event, ui ) {
+                $( "#amount" ).html( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                $( "#min" ).val(ui.values[ 0 ]);
+                $( "#max" ).val(ui.values[ 1 ]);
+            }
+        });
+            $( "#amount" ).html( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+                " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+        });
+    </script>
+</head>
+<body>
+<div class="bg-image"></div>
+<div class="bg-5edma">
+    <div class="form-price-range-filter">
+        <form method="post" action="">
+            <div>
+                <input type="" id="min" name="min_price"
+                       value="{{ min}}">
+                <div id="slider-range"></div>
+                <input type="" id="max" name="max_price"
+                       value="{{ max}}">
+            </div>
+            <div>
+                <input type="submit" name="submit_range"
+                       value="Filter Camping" class="btn-submit">
+            </div>
+        </form>
+    </div>
+
+{% if filtre['2']['search'] is not empty %}
+    <hr>
+    <div class="container">
+        <table class="tutorial-table" cellspacing="1px" width="100%">
+            <tr>
+                <th>Type</th>
+                <th>Identifiant</th>
+                <th class="text-right">Description</th>
+            </tr>
+    {% for f in filtre['2']['search'] %}
+            <tr>
+                <td><img class="product-thumb" src="uploads/{{ f.getImageCamping() }}" /><a href="">{{ f.getTypeCamping() }}</a></td>
+                <td>{{ f.getId() }}</td>
+                <td class='text-right'>{{f.getDescriptionCamping()}}</td>
+            </tr>
+    {% endfor %}
+   {% else %}
+            <div class="no-result">Pas de résultat</div>
+{% endif %}
+            <div style="MARGIN-TOP: 5%;">
+                <a href="{{ path('Afficher_front')}}" style="text-align: right;font-size: .99rem;color: #fffdfd;margin-left: 92%;">Retour</a>
+            </div>
+        </table>
+    </div>
+</div>
+</body>
+</html>
