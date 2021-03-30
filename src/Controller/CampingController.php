@@ -29,7 +29,7 @@ class CampingController extends AbstractController
 {
 
     /**
-     * @Route("/lister_sites", name="Afficher_site")
+     * @Route("/admin/lister_sites", name="Afficher_site")
      */
     public function index(Request $request)
     {
@@ -86,7 +86,7 @@ class CampingController extends AbstractController
     }
 
     /**
-     * @Route("/modifier_camping", name="Modifier_camping")
+     * @Route("/admin/modifier_camping", name="Modifier_camping")
      */
     public function modifier_camping(Request  $request1)
     {
@@ -154,7 +154,7 @@ class CampingController extends AbstractController
     }
 
     /**
-     * @Route("/supprimer_camping", name="Supprimer_camping")
+     * @Route("/admin/supprimer_camping", name="Supprimer_camping")
      */
     public function supprimer_camping(Request  $request)
     {

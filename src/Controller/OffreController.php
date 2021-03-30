@@ -20,7 +20,7 @@ use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 class OffreController extends AbstractController
 {
     /**
-     * @Route("/lister_offres", name="Afficher_offre")
+     * @Route("/admin/lister_offres", name="Afficher_offre")
      */
 
     public function index(Request $request,PaginatorInterface $paginator)
@@ -64,7 +64,7 @@ class OffreController extends AbstractController
     }
 
     /**
-     * @Route("/modifier_offre",name="Modifier_offre")
+     * @Route("/admin/modifier_offre",name="Modifier_offre")
      */
 
     public function modifier_offre(Request  $request1)
@@ -89,7 +89,7 @@ class OffreController extends AbstractController
     }
 
     /**
-     * @Route("/supprimer_offre", name="Supprimer_offre")
+     * @Route("/admin/supprimer_offre", name="Supprimer_offre")
      */
 
     public function supprimer_offre(Request  $request)
