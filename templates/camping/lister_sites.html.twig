@@ -1,4 +1,4 @@
-{{ include('dashboard/dashboard_base.html.twig') }}
+{% extends 'dashboard/dashboard_base.html.twig' %}
 
 {% block title %}Hello sites{% endblock %}
 {% form_theme formcamping 'bootstrap_4_horizontal_layout.html.twig' %}
@@ -130,5 +130,4 @@
     <button id="in10" type="submit" class="btn btn-dark" style="margin-left: 24%; margin-top: -67px" >Generate pdf</button>
     </form>
     <div id="map" ></div>
-    <script src="{{ asset("Map.js")}}"></script>
 {% endblock %}
