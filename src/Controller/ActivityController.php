@@ -47,7 +47,7 @@ class ActivityController extends AbstractController
     }
 
     /**
-     * @Route("/new/admin", name="activity_new", methods={"GET","POST"})
+     * @Route("/admin/new", name="activity_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -73,7 +73,7 @@ class ActivityController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/admin", name="activity_show", methods={"GET"})
+     * @Route("/admin/{id}", name="activity_show", methods={"GET"})
      */
     public function show(Activity $activity): Response
     {
@@ -92,7 +92,7 @@ class ActivityController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit/admin", name="activity_edit", methods={"GET","POST"})
+     * @Route("/admin/{id}/edit", name="activity_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Activity $activity): Response
     {
