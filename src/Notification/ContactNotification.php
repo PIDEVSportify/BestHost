@@ -30,10 +30,19 @@ class ContactNotification
     public function notify(Contact $contact)
     {
         $message = (new \Swift_Message($contact->getFirstname()))
-            ->setFrom('noreply@server.fr')
-            ->setTo('reserver@maison.fr')
+            ->setSubject('Réservation')
+            ->setFrom('khaled.battiche@esprit.tn')
+            ->setTo('khaled.battiche@esprit.tn')
             ->setReplyTo($contact->getEmail())
-            ->setBody($contact->getMessage());
+            ->setBody(
+            '<html>' .
+            ' <body>' .
+            '  Message : <p>"' . $contact->getMessage() . '"<p/>' .
+            '  Numero : <p>"' . $contact->getPhone() . '"<p/>'  .
+            ' </body>' .
+            '</html>',
+              'text/html' // Mark the content-type as HTML
+        );
         $this->mailer->send($message);
     }
 }

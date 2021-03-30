@@ -38,7 +38,6 @@ class PrestataireController extends AbstractController
         {
 
             $filesystem = new Filesystem();
-            dd($request->get('avatar'));
             $filename= json_decode($request->get('avatar'))->name;
 
 

@@ -61,7 +61,7 @@ class MaisonHoteController extends AbstractController
 
                     $donnees,
                     $request->query->getInt('page', 1),
-                    2
+                    5
 
                 );
             }
@@ -77,10 +77,43 @@ class MaisonHoteController extends AbstractController
         ]);
     }
 
-
-
     /**
-     * @IsGranted("ROLE_GERANT_MAISON_HOTE")
+     * @IsGranted("ROLE_GERANT_MAISON_HOTE","ROLE_ADMIN")
+     * @Route("/backmaison", name="backmaison" ,methods={"GET","POST"})
+     */
+    public function voirmaison()
+    {
+        $maison = new MaisonHote;
+        $maison = $this->getDoctrine()->getRepository(MaisonHote::class)->findall();
+        return $this->render('maison_hote/backmaison.html.twig', [
+            'maisons' => $maison
+
+        ]);
+    }
+    /**
+     * @IsGranted("ROLE_GERANT_MAISON_HOTE","ROLE_ADMIN")
+     * @Route("/backmaison/{id}", name="backmaisonshow" ,methods={"GET","POST"})
+     */
+    public function showmaison($id, Request $request)
+    {
+
+
+
+        $maison = $this->getDoctrine()->getRepository(MaisonHote::class)->find($id);
+
+
+
+
+
+
+
+        return $this->render('maison_hote/maisonbackshow.html.twig', [
+            'maison' => $maison
+
+        ]);
+    }
+    /**
+     * @IsGranted("ROLE_GERANT_MAISON_HOTE","ROLE_ADMIN")
      * @Route("/maison_hote/new", name="new_maison_hote")
      * Method({"GET","POST"})
      */
@@ -125,6 +158,8 @@ class MaisonHoteController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+
 
 
     /**
