@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Gerant;
 use App\Form\Gerant1Type;
 use App\Repository\GerantRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;

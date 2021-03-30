@@ -7,6 +7,7 @@ use App\Entity\ActLike;
 use App\Form\ActivityType;
 use App\Repository\ActivityRepository;
 use Doctrine\Persistence\ObjectManager;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,6 +19,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use Symfony\Bridge\Twig\Mime\NotificationEmail;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Knp\Component\Pager\PaginatorInterface;
 
 
 /**
@@ -28,7 +30,10 @@ class ActivityController extends AbstractController
     /**
      * @IsGranted("ROLE_ADMIN")
      * @Route("/admin", name="activity_index", methods={"GET"})
-     *
+     * @param ActivityRepository $activityRepository
+     * @param Request $request
+     * @param PaginatorInterface $paginator
+     * @return Response
      */
     public function index(ActivityRepository $activityRepository, Request $request, PaginatorInterface $paginator): Response
     {
