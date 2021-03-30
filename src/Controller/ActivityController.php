@@ -27,10 +27,15 @@ class ActivityController extends AbstractController
     /**
      * @Route("/admin", name="activity_index", methods={"GET"})
      */
-    public function index(ActivityRepository $activityRepository): Response
+    public function index(ActivityRepository $activityRepository, Request $request, PaginatorInterface $paginator): Response
     {
+        $donnes= $this->getDoctrine()->getRepository(Activity::class)->findAll();
+        $activites = $paginator->paginate(
+            $donnes,
+            $request->query->getInt('page',1),3
+        );
         return $this->render('activity/index.html.twig', [
-            'activities' => $activityRepository->findAll(),
+            'activities' => $activites
         ]);
     }
     /**
