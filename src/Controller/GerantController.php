@@ -21,11 +21,15 @@ class GerantController extends AbstractController
     /**
      * @Route("/show", name="gerant_index", methods={"GET"})
      */
-    public function index(GerantRepository $gerantRepository): Response
+    public function index(GerantRepository $gerantRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('gerant/index.html.twig', [
-            'gerants' => $gerantRepository->findAll(),
-        ]);
+        $donnes= $this->getDoctrine()->getRepository(Gerant::class)->findAll();
+        $gerants = $paginator->paginate(
+            $donnes,
+            $request->query->getInt('page',1),3
+        );
+        return $this->render('gerant/index.html.twig', ['gerants' =>$gerants]
+        );
     }
 
     /**
