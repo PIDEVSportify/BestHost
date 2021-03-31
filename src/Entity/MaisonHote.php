@@ -70,6 +70,13 @@ class MaisonHote
 
     private $images;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image_360;
+
+
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -220,4 +227,21 @@ class MaisonHote
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getImage360()
+    {
+        return $this->image_360;
+    }
+
+    /**
+     * @param mixed $image_360
+     */
+    public function setImage360($image_360): void
+    {
+        $this->image_360 = $image_360;
+    }
+
 }

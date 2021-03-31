@@ -48,7 +48,15 @@ class MaisonHoteType extends AbstractType
                 'multiple' => true,
                 'mapped' => false,
                 'required' => false
-            ]);
+            ])
+            ->add('image_360', FileType::class, [
+                'attr' => array('class' => 'form-control'),
+                'label' => 'ajouter images 360',
+                'multiple' => false,
+                'mapped' => false,
+                'required' => false
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

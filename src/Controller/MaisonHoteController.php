@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Repository\MaisonHoteRepository;
+use DateTime;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -114,7 +116,7 @@ class MaisonHoteController extends AbstractController
     }
     /**
      * @IsGranted("ROLE_GERANT_MAISON_HOTE","ROLE_ADMIN")
-     * @Route("/maison_hote/new", name="new_maison_hote")
+     * @Route("/admin/maison_hote/new", name="new_maison_hote")
      * Method({"GET","POST"})
      */
     public function new(Request $request): Response
@@ -144,6 +146,24 @@ class MaisonHoteController extends AbstractController
                 $img->setName($fichier);
                 $maison->addImage($img);
             }
+
+            $image360=$form->get('image_360')->getData();
+            if($image360)
+            {
+                /** @var UploadedFile $uploadedFile */
+                $date= new DateTime('now');
+                $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
+                $originalFilename = pathinfo($image360->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename =  $originalFilename.'-'.$date->format('mmddyyyHHiiSS').'.'.$image360->guessExtension();
+                $image360->move(
+                    $destination,
+                    $newFilename
+                );
+                $maison->setImage360($newFilename);
+            }
+
+
+
 
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -266,4 +286,18 @@ class MaisonHoteController extends AbstractController
             return new JsonResponse(['error' => 'Token Invalide'], 400);
         }
     }
-}
+
+
+        /**
+         * @Route ("/tour/{id}",name="showTour")
+         */
+            public function tour($id,MaisonHoteRepository $repo)
+        {
+            $maison=$repo->find($id);
+            return $this->render('maison_hote/tour.html.twig',['maison'=>$maison]);
+
+        }
+
+
+
+    }
