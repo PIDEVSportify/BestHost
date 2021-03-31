@@ -35,9 +35,6 @@
     "doctrine/common": {
         "version": "3.1.1"
     },
-    "doctrine/data-fixtures": {
-        "version": "1.5.0"
-    },
     "doctrine/dbal": {
         "version": "2.12.1"
     },
@@ -54,18 +51,6 @@
             "./config/packages/prod/doctrine.yaml",
             "./src/Entity/.gitignore",
             "./src/Repository/.gitignore"
-        ]
-    },
-    "doctrine/doctrine-fixtures-bundle": {
-        "version": "3.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "3.0",
-            "ref": "e5b542d4ef47d8a003c91beb35650c76907f7e53"
-        },
-        "files": [
-            "./src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -110,18 +95,6 @@
     },
     "egulias/email-validator": {
         "version": "2.1.25"
-    },
-    "exercise/htmlpurifier-bundle": {
-        "version": "3.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "3.0",
-            "ref": "4667fd2103dc4645d234591e1c85f727c6fe0d11"
-        }
-    },
-    "ezyang/htmlpurifier": {
-        "version": "v4.13.0"
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
@@ -191,9 +164,6 @@
         "files": [
             "./config/packages/knp_snappy.yaml"
         ]
-    },
-    "knplabs/knp-time-bundle": {
-        "version": "v1.16.0"
     },
     "knpuniversity/oauth2-client-bundle": {
         "version": "1.20",

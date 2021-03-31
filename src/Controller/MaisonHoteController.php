@@ -63,7 +63,7 @@ class MaisonHoteController extends AbstractController
 
                     $donnees,
                     $request->query->getInt('page', 1),
-                    5
+                    2
 
                 );
             }
@@ -80,7 +80,7 @@ class MaisonHoteController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_GERANT_MAISON_HOTE","ROLE_ADMIN")
+     * @IsGranted("ROLE_GERANT_MAISON_HOTE","ROLE_ADMIN","ROLE_SUPER_USER")
      * @Route("/backmaison", name="backmaison" ,methods={"GET","POST"})
      */
     public function voirmaison()
@@ -93,7 +93,7 @@ class MaisonHoteController extends AbstractController
         ]);
     }
     /**
-     * @IsGranted("ROLE_GERANT_MAISON_HOTE","ROLE_ADMIN")
+     * @IsGranted("ROLE_GERANT_MAISON_HOTE","ROLE_ADMIN","ROLE_SUPER_USER")
      * @Route("/backmaison/{id}", name="backmaisonshow" ,methods={"GET","POST"})
      */
     public function showmaison($id, Request $request)
@@ -115,7 +115,7 @@ class MaisonHoteController extends AbstractController
         ]);
     }
     /**
-     * @IsGranted("ROLE_GERANT_MAISON_HOTE","ROLE_ADMIN")
+     * @IsGranted("ROLE_GERANT_MAISON_HOTE","ROLE_ADMIN","ROLE_SUPER_USER")
      * @Route("/admin/maison_hote/new", name="new_maison_hote")
      * Method({"GET","POST"})
      */
