@@ -13,6 +13,8 @@
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
         "dompdf/dompdf": "^1.0",
+        "fzaninotto/faker": "^1.9",
+        "gedmo/doctrine-extensions": "^3.0",
         "knplabs/knp-snappy-bundle": "^1.8",
         "knpuniversity/oauth2-client-bundle": "^2.7",
         "league/oauth2-facebook": "^2.0",
@@ -22,6 +24,7 @@
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^5.1",
         "sopamo/laravel-filepond": "^0.6.1",
+        "stof/doctrine-extensions-bundle": "^1.6",
         "symfony/asset": "4.4.*",
         "symfony/console": "4.4.*",
         "symfony/dotenv": "4.4.*",
@@ -51,6 +54,7 @@
         "symfony/yaml": "4.4.*",
         "symfonycasts/reset-password-bundle": "^1.5",
         "twig/extra-bundle": "^2.12|^3.0",
+        "twig/intl-extra": "^3.3",
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {

@@ -14,18 +14,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7857afa-e1bd-47d6-a9cc-1450b4f07127" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210330102420.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210330194157.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MaisonHoteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MaisonHoteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/MaisonHote.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/MaisonHote.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/MaisonHoteType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/MaisonHoteType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/dashboard/dashboard_base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard/dashboard_base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maison_hote/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maison_hote/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/maison_hote/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/maison_hote/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/stof_doctrine_extensions.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,6 +199,8 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/twig/intl-extra" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
     </include_path>
   </component>
   <component name="ProjectId" id="1orCZjqAlfKLgiVucLQ58xR8lxt" />
@@ -304,7 +302,7 @@
       <workItem from="1617085528068" duration="3327000" />
       <workItem from="1617101041702" duration="4843000" />
       <workItem from="1617109964457" duration="19558000" />
-      <workItem from="1617171855241" duration="6081000" />
+      <workItem from="1617171855241" duration="8135000" />
     </task>
     <servers />
   </component>
