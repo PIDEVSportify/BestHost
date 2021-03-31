@@ -1,0 +1,17 @@
+{% extends 'dashboard/dashboard_base.html.twig' %}
+
+{% block title %}Catégories - Modification de {{ category.title }}{% endblock %}
+
+{% block body %}
+    {% do append_breadcrumb(path('admin.homepage'), 'Admin') %}
+    {% do append_breadcrumb(path('admin.category.index'), 'Catégories') %}
+    {% do set_active_label('Modification') %}
+
+    {{ include('partials/_breadcrumb.html.twig') }}
+
+    <h1>Modifier la catégorie</h1>
+
+    <div class="mt-3">
+        {{ include('partials/_simple_form.twig', {button_label: 'Modifier'}) }}
+    </div>
+{% endblock %}

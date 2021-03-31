@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractBaseController
 {
     /**
-     * @Route("/admin", name="admin.homepage", methods="GET")
+     * @Route("/admintest", name="admin.homepage", methods="GET")
      */
     public function homepage(ReportRepository $reportRepository): Response
     {

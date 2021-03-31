@@ -31,7 +31,7 @@
             </div>
         {% endfor %}
     <br>
-    <p STYLE="margin-left: 10%"><button class="btn btn-dark" onclick="sortTable()" style="margin-bottom: -5px">Sort</button></p>
+    <p STYLE="margin-left: 5%"><button class="btn btn-dark" onclick="sortTable()" style="margin-bottom: -5px">Sort</button></p>
     <table class="mb-0 table" id="myTable" style="height: auto;width: 80%;margin-left: auto;margin-right: auto">
         <thead>
         <tr>
@@ -65,7 +65,7 @@
             <td >  {{ s.getLocalisationCamping() }} </td>
             <td >  {{ s.getDescriptionCamping() }} </td>
             <td >  {{ s.getTypeCamping() }} </td>
-            <td >  <img id="taswira" src="uploads/{{ s.getImageCamping() }}"/> </td>
+            <td >  <img id="taswira" src="/uploads/{{ s.getImageCamping() }}"/> </td>
             <td> <form  action="{{ path('Modifier_camping')}}" method="post"  >
                     <input id="in1" hidden type="number" value="{{ s.getId()}}" name="id" >
                     <input id="in2" hidden type="text" value="{{ s.getLocalisationCamping() }}" name="Localisation" >
@@ -94,7 +94,7 @@
         </div>
     </table>
     <br>
-    <button type="button" class="btn btn-dark" href="" data-toggle="modal" data-target="#createmodel" style="margin-left: 10%; margin-top: -1% ">Ajouter site camping</button>
+    <button type="button" class="btn btn-dark" href="" data-toggle="modal" data-target="#createmodel" style="margin-left: 5%; margin-top: -1% ">Ajouter site camping</button>
     <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

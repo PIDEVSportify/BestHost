@@ -19,7 +19,7 @@ class ForumAdminController extends AbstractBaseController
      */
     public function index(ForumRepository $forumRepository): Response
     {
-        return $this->render('admin/forum/index.html.twig', [
+        return $this->render('dashboard/forum/index.html.twig', [
             'forums' => $forumRepository->findForumsWithCategories(),
         ]);
     }

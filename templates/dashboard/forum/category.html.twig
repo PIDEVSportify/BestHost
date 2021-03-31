@@ -1,0 +1,25 @@
+{% extends 'dashboard/dashboard_base.html.twig' %}
+
+{% block title %}{{ category.title }}{% endblock %}
+
+{% block body %}
+    {% do append_breadcrumb(path('forum.index'), 'Forums') %}
+    {% do set_active_label(category.title) %}
+
+    {{ include('partials/_breadcrumb.html.twig') }}
+
+    <div class="card bg-secondary mb-4">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-sm-8">{{ category.title }}</div>
+                <div class="col-lg-2 col-md-3 col-sm-4 d-none d-sm-block text-center">SUJETS</div>
+                <div class="col-lg-2 col-md-3 d-none d-md-block text-center">MESSAGES</div>
+                <div class="col-lg-3 d-none d-lg-block">DERNIER MESSAGE</div>
+            </div>
+        </div>
+
+        {% for forum in forums %}
+            {{ include('forum/_forum_card.html.twig') }}
+        {% endfor %}
+    </div>
+{% endblock %}

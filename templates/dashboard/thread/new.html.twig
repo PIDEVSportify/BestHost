@@ -1,0 +1,48 @@
+{% extends 'layouts/full-width.html.twig' %}
+
+{% block title %}Nouveau sujet{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('ckeditor') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('ckeditor') }}
+{% endblock %}
+
+{% block content %}
+    {% do append_breadcrumb(path('forum.index'), 'Forums') %}
+    {% for part in forum|breadcrumb %}
+        {% do append_breadcrumb(part.url, part.title) %}
+    {% endfor %}
+    {% do set_active_label('Nouveau sujet') %}
+
+    {{ include('partials/_breadcrumb.html.twig') }}
+
+    <div class="mb-3">
+        <h2 class="text-center">Nouveau sujet</h2>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {% if is_granted('ROLE_MODERATOR') %}
+            <div class="form-group">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" name="lock" id="lock">
+                    <label class="custom-control-label" for="lock">Verrouiller ce sujet</label>
+                </div>
+            </div>
+        {% endif %}
+        {% if is_granted('ROLE_MODERATOR') %}
+            <div class="form-group">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" name="pin" id="pin">
+                    <label class="custom-control-label" for="pin">Épingler ce sujet</label>
+                </div>
+            </div>
+        {% endif %}
+        <button class="btn btn-primary js-submit-btn">Nouveau sujet</button>
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}

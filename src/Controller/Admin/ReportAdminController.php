@@ -27,7 +27,7 @@ class ReportAdminController extends AbstractBaseController
             25
         );
 
-        return $this->render('admin/report/index.html.twig', [
+        return $this->render('dashboard/report/index.html.twig', [
             'pagination' => $pagination,
             'nbUntreatedReports' => $reportRepository->countUntreatedReports(),
         ]);
@@ -38,7 +38,7 @@ class ReportAdminController extends AbstractBaseController
      */
     public function show(Report $report, ReportRepository $reportRepository): Response
     {
-        return $this->render('admin/report/show.html.twig', [
+        return $this->render('dashboard/report/show.html.twig', [
             'report' => $report,
             'messageReports' => $reportRepository->findByMessage($report->getMessage(), $report),
         ]);
@@ -63,6 +63,6 @@ class ReportAdminController extends AbstractBaseController
         $reportService->closeReport($report);
         $this->addCustomFlash('success', 'Signalement', 'Le signalement a été clôturé !');
 
-        return $this->redirectToRoute('admin.report.index');
+        return $this->redirectToRoute('dashboard.report.index');
     }
 }

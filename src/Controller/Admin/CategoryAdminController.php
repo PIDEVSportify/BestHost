@@ -23,7 +23,7 @@ class CategoryAdminController extends AbstractBaseController
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('admin/category/index.html.twig', [
+        return $this->render('dashboard/category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]);
     }
@@ -43,10 +43,10 @@ class CategoryAdminController extends AbstractBaseController
 
             $this->addCustomFlash('success', 'Catégorie', 'La catégorie a été ajoutée !');
 
-            return $this->redirectToRoute('admin.category.index');
+            return $this->redirectToRoute('dashboard.category.index');
         }
 
-        return $this->render('admin/category/new.html.twig', [
+        return $this->render('dashboard/category/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -64,10 +64,10 @@ class CategoryAdminController extends AbstractBaseController
 
             $this->addCustomFlash('success', 'Catégorie', 'La catégorie a bien été modifiée !');
 
-            return $this->redirectToRoute('admin.category.index');
+            return $this->redirectToRoute('dashboard.category.index');
         }
 
-        return $this->render('admin/category/edit.html.twig', [
+        return $this->render('dashboard/category/edit.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
         ]);
