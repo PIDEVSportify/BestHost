@@ -29,7 +29,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  * Class AdminController
  * @package App\Controller
  * @Route("/admin",name="admin_")
- * @IsGranted("ROLE_SUPER_USER")
+ * @IsGranted("ROLE_SUPER_USER","ROLE_GERANT_MAISON_HOTE","ROLE_ADMIN")
  */
 class AdminController extends AbstractController
 {

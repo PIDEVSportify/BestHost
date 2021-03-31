@@ -15,6 +15,7 @@
         "dompdf/dompdf": "^1.0",
         "fzaninotto/faker": "^1.9",
         "gedmo/doctrine-extensions": "^3.0",
+        "knplabs/knp-paginator-bundle": "^5.4",
         "knplabs/knp-snappy-bundle": "^1.8",
         "knpuniversity/oauth2-client-bundle": "^2.7",
         "league/oauth2-facebook": "^2.0",

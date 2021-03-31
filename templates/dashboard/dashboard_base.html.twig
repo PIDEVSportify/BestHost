@@ -1,363 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        {% block title %} Admin  | Dashboard  {% endblock title %}
-    </title>
-    {%  block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-        <!-- Google Font: Source Sans Pro -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="{{ asset('dashboard/plugins/fontawesome-free/css/all.min.css') }}">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <!-- Tempusdominus Bootstrap 4 -->
-        <link rel="stylesheet" href="{{ asset('dashboard/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-        <!-- iCheck -->
-        <link rel="stylesheet" href="{{ asset('dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-        <!-- JQVMap -->
-        <link rel="stylesheet" href="{{ asset('dashboard/plugins/jqvmap/jqvmap.min.css') }}">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="{{ asset('dashboard/dist/css/adminlte.min.css') }}">
-        <!-- overlayScrollbars -->
-        <link rel="stylesheet" href="{{ asset('dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-        <!-- Daterange picker -->
-        <link rel="stylesheet" href="{{ asset('dashboard/plugins/daterangepicker/daterangepicker.css') }}">
-        <!-- summernote -->
-        <link rel="stylesheet" href="{{ asset('dashboard/plugins/summernote/summernote-bs4.min.css') }}">
-        <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
-        <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
-{#        <link rel="stylesheet" href="{{ asset("rating.css")}}">#}
-        <link rel="stylesheet" href="{{ asset("assets/css/alertify.min.css")}}">
-        <link rel="stylesheet" href="{{ asset("assets/css/themes/default.min.css")}}">
-        <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-              integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-              crossorigin=""/>
-        <style type="text/css">
-            #taswira{
-                float: left;
-                margin: 5px;
-                width:300px;
-                height: 180px;
-            }
-        </style>
-    {%  endblock stylesheets %}
 
-</head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			{% block title %}
+				Admin  | Dashboard
+			{% endblock title %}
+		</title>
+		{%  block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+			<!-- Google Font: Source Sans Pro -->
+			<link
+			rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+			<!-- Font Awesome -->
+			<link
+			rel="stylesheet" href="{{ asset('dashboard/plugins/fontawesome-free/css/all.min.css') }}">
+			<!-- Ionicons -->
+			<link
+			rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+			<!-- Tempusdominus Bootstrap 4 -->
+			<link
+			rel="stylesheet" href="{{ asset('dashboard/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+			<!-- iCheck -->
+			<link
+			rel="stylesheet" href="{{ asset('dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+			<!-- JQVMap -->
+			<link
+			rel="stylesheet" href="{{ asset('dashboard/plugins/jqvmap/jqvmap.min.css') }}">
+			<!-- Theme style -->
+			<link
+			rel="stylesheet" href="{{ asset('dashboard/dist/css/adminlte.min.css') }}">
+			<!-- overlayScrollbars -->
+			<link
+			rel="stylesheet" href="{{ asset('dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+			<!-- Daterange picker -->
+			<link
+			rel="stylesheet" href="{{ asset('dashboard/plugins/daterangepicker/daterangepicker.css') }}">
+			<!-- summernote -->
+			<link rel="stylesheet" href="{{ asset('dashboard/plugins/summernote/summernote-bs4.min.css') }}">
+			<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+			<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+			<link rel="stylesheet" href="{{ asset("rating.css")}}">
+			<link rel="stylesheet" href="{{ asset("assets/css/alertify.min.css")}}">
+			<link rel="stylesheet" href="{{ asset("assets/css/themes/default.min.css")}}">
+			<link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+			<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+			<style type="text/css">
+				#taswira {
+					float: left;
+					margin: 5px;
+					width: 300px;
+					height: 180px;
+				}
+			</style>
+		{%  endblock stylesheets %}
 
-    {% block navbar %}
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ path('admin_dashboard') }}" class="nav-link">Home</a>
-                </li>
+	</head>
+	<body class="hold-transition sidebar-mini layout-fixed">
+		<div class="wrapper">
 
-            </ul>
+			{% block navbar %}
+				<!-- Navbar -->
+				<nav
+					class="main-header navbar navbar-expand navbar-white navbar-light">
+					<!-- Left navbar links -->
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" data-widget="pushmenu" href="#" role="button">
+								<i class="fas fa-bars"></i>
+							</a>
+						</li>
+						<li class="nav-item d-none d-sm-inline-block">
+							<a href="{{ path('admin_dashboard') }}" class="nav-link">Home</a>
+						</li>
 
-
-
-        </nav>
-        <!-- /.navbar -->
-    {% endblock navbar %}
-
-    {% block sidebar %}
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        {% if app.user.avatar matches '/^uploads/' %}
-                            <img src="{{ asset(app.user.avatar)}}" class="img-circle elevation-2" alt="User Image">
-                        {% else %}
-                            <img src="{{ app.user.Avatar }}" class="img-circle elevation-2" alt="User Image">
-                        {% endif %}
-
-                    </div>
-
-                    <div class="info">
-                        <a href="{{ path('admin_modifyUser',{id : app.user.id}) }}" class="d-block">{{ app.user.FirstName|capitalize ~ "  " ~app.user.LastName |capitalize}}</a>
-                    </div>
-                </div>
-
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                             with font-awesome or any other icon font library -->
-                        <li class="nav-item ">
-                            <a href="{{ path('admin_dashboard') }}" class="nav-link ">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-
-                                </p>
-                            </a>
-
-                        </li>
-                        {% if is_granted('ROLE_SUPER_USER') %}
-                        <li class="nav-item">
-
-                            <a href="{{ path('admin_showUsers') }}" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Liste des  utilisateurs
-
-                                </p>
-                            </a>
+					</ul>
 
 
-                        </li>
-                        {% endif %}
-                        {% if  is_granted('ROLE_GERANT_CAMPING')  %}
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Camping Checklist
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">2</span>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ path('Afficher_site') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Site camping</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ path('Afficher_offre') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Offers</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        {% endif %}
-                        {% if is_granted('ROLE_SUPER_USER') %}
-                        <li class="nav-item">
-                            <a href={{ path('admin_showStats')}} class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>
-                                    Statistiques
+				</nav>
+				<!-- /.navbar -->
+			{% endblock navbar %}
 
-                                </p>
-                            </a>
-                        </li>
-                        {% endif %}
-                        {% if   is_granted('ROLE_GERANT_SECTEUR_ACTIVITE') %}
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Secteurs D'activités
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
+			{% block sidebar %}
+				<!-- Main Sidebar Container -->
+				<aside class="main-sidebar sidebar-dark-primary elevation-4">
+					<!-- Brand Logo -->
 
 
-                                <li class="nav-item">
-                                    <a href="{{ path('activity_index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Activities</p>
+					<!-- Sidebar -->
+						<div
+						class="sidebar"> <!-- Sidebar user panel (optional) -->
+						<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+							<div class="image">
+								{% if app.user.avatar matches '/^uploads/' %}
+									<img src="{{ asset(app.user.avatar)}}" class="img-circle elevation-2" alt="User Image">
+								{% else %}
+									<img src="{{ app.user.Avatar }}" class="img-circle elevation-2" alt="User Image">
+								{% endif %}
 
-                                    </a>
-                                </li>
+							</div>
 
-                                {%  if is_granted('ROLE_SUPER_USER') %}
-                                <li class="nav-item">
-                                    <a href="{{ path('gerant_index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Liste des gérants</p>
+							<div class="info">
+								<a href="{{ path('admin_modifyUser',{id : app.user.id}) }}" class="d-block">{{ app.user.FirstName|capitalize ~ "  " ~app.user.LastName |capitalize}}</a>
+							</div>
+						</div>
 
-                                    </a>
-                                </li>
+						<!-- SidebarSearch Form -->
+						<div class="form-inline">
+							<div class="input-group" data-widget="sidebar-search">
+								<input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+								<div class="input-group-append">
+									<button class="btn btn-sidebar">
+										<i class="fas fa-search fa-fw"></i>
+									</button>
+								</div>
+							</div>
+						</div>
 
-                                {% endif %}
-                                {% endif %}
+						<!-- Sidebar Menu -->
+						<nav class="mt-2">
+							<ul
+								class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+								<!-- Add icons to the links using the .nav-icon class
+								                             with font-awesome or any other icon font library -->
+								<li class="nav-item ">
+									<a href="{{ path('admin_dashboard') }}" class="nav-link ">
+										<i class="nav-icon fas fa-tachometer-alt"></i>
+										<p>
+											Dashboard
 
-                            </ul>
-                        </li>
+										</p>
+									</a>
 
+								</li>
+								{% if is_granted('ROLE_SUPER_USER') %}
+									<li class="nav-item">
 
+										<a href="{{ path('admin_showUsers') }}" class="nav-link">
+											<i class="nav-icon fas fa-users"></i>
+											<p>
+												Liste des  utilisateurs
 
-                        <li class="nav-item navbar-purple ">
-                            <a href="{{ path('logout') }}" class="nav-link">
-                                <i class="nav-icon fas fa-sign-out-alt"></i>
-                                <p>
-                                    Se Déconnecter
-
-                                </p>
-                            </a>
-                    </ul>
-                </nav>
-
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
-    {% endblock sidebar %}
-
-    {% block body_header %}
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">{%  block header_title %} {% endblock header_title%}</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item">
-                                {% block backButton %}<a href="{{ path('admin_dashboard') }}">Home</a>{% endblock backButton %}</li>
-                            <li class="breadcrumb-item active">Dashboard v1</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-        {% endblock body_header  %}
+											</p>
+										</a>
 
 
+									</li>
+								{% endif %}
+								{% if is_granted('ROLE_GERANT_MAISON_HOTE') %}
+									<li class="nav-item">
+										<a href="#" class="nav-link">
+											<i class="nav-icon fas fa-copy"></i>
+											<p>
+												Maison Hote
+												<i class="fas fa-angle-left right"></i>
+												<span class="badge badge-info right">6</span>
+											</p>
+										</a>
+										<ul class="nav nav-treeview">
+											<li class="nav-item">
+												<a href="{{ path('new_maison_hote') }}" class="nav-link">
+													<i class="far fa-circle nav-icon"></i>
+													<p>Ajouter Maison</p>
+												</a>
+											</li>
+											<li class="nav-item">
+												<a href="{{ path('backmaison') }}" class="nav-link">
+													<i class="far fa-circle nav-icon"></i>
+													<p>Liste maison</p>
+												</a>
+											</li>
+											
+										</ul>
+									</li>
+								{% endif %}
+								{% if  is_granted('ROLE_GERANT_CAMPING')  %}
+									<li class="nav-item">
+										<a href="#" class="nav-link">
+											<i class="nav-icon fas fa-copy"></i>
+											<p>
+												Camping Checklist
+												<i class="fas fa-angle-left right"></i>
+												<span class="badge badge-info right">2</span>
+											</p>
+										</a>
+										<ul class="nav nav-treeview">
+											<li class="nav-item">
+												<a href="{{ path('Afficher_site') }}" class="nav-link">
+													<i class="far fa-circle nav-icon"></i>
+													<p>Site camping</p>
+												</a>
+											</li>
+											<li class="nav-item">
+												<a href="{{ path('Afficher_offre') }}" class="nav-link">
+													<i class="far fa-circle nav-icon"></i>
+													<p>Offres</p>
+												</a>
+											</li>
+										</ul>
+									</li>
+								{% endif %}
+								{% if is_granted('ROLE_SUPER_USER') %}
+									<li class="nav-item">
+										<a href={{ path('admin_showStats')}} class="nav-link">
+											<i class="nav-icon fas fa-chart-pie"></i>
+											<p>
+												Statistiques
+
+											</p>
+										</a>
+									</li>
+								{% endif %}
+								{% if   is_granted('ROLE_GERANT_SECTEUR_ACTIVITE') %}
+									<li class="nav-item">
+										<a href="#" class="nav-link">
+											<i class="nav-icon fas fa-table"></i>
+											<p>
+												Secteurs D'activités
+												<i class="fas fa-angle-left right"></i>
+											</p>
+										</a>
+										<ul class="nav nav-treeview">
 
 
-        {% block body %}
-        {% endblock body %}
-    </div>
-</div>
+											<li class="nav-item">
+												<a href="{{ path('activity_index') }}" class="nav-link">
+													<i class="far fa-circle nav-icon"></i>
+													<p>Activities</p>
 
-{% block scripts %}
-    {{ encore_entry_script_tags('app') }}
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+												</a>
+											</li>
 
+											{%  if is_granted('ROLE_SUPER_USER') %}
+												<li class="nav-item">
+													<a href="{{ path('gerant_index') }}" class="nav-link">
+														<i class="far fa-circle nav-icon"></i>
+														<p>Liste des gérants</p>
 
+													</a>
+												</li>
 
-    <!-- jQuery -->
-    <script src="{{ asset('dashboard/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="{{ asset('dashboard/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
-    <!-- Bootstrap 4 -->
-    <script src="{{ asset('dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- ChartJS -->
-    <script src="{{ asset('dashboard/plugins/chart.js/Chart.min.js') }}"></script>
-    <!-- Sparkline -->
-    <script src="{{ asset('dashboard/plugins/sparklines/sparkline.js') }}"></script>
-    <!-- JQVMap -->
-    <script src="{{ asset('dashboard/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset('dashboard/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="{{ asset('dashboard/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
-    <!-- daterangepicker -->
-    <script src="{{ asset('dashboard/plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('dashboard/plugins/daterangepicker/daterangepicker.js') }}"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="{{ asset('dashboard/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <!-- Summernote -->
-    <script src="{{ asset('dashboard/plugins/summernote/summernote-bs4.min.js') }}"></script>
-    <!-- overlayScrollbars -->
-    <script src="{{ asset('dashboard/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('dashboard/dist/js/adminlte.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('dashboard/dist/js/demo.js') }}"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{ asset('dashboard/dist/js/pages/dashboard.js') }}"></script>
-    <script src="{{ asset("confirm.js")}}"></script>
-    <script src="{{ asset("rating.js")}}"></script>
-    <script src="{{ asset("sort.js")}}"></script>
-    <script src="{{ asset("compare.js")}}"></script>
-    <script src="{{ asset("alertify.min.js")}}"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-            crossorigin=""></script>
-    <script src="{{ asset("Map.js")}}"></script>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
-
-    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
-    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-
-    <!-- Turn all file input elements into ponds -->
-    <script>
-        FilePond.registerPlugin(
-            FilePondPluginImagePreview,
-            FilePondPluginImageCrop,
-            FilePondPluginImageResize,
-            FilePondPluginFileEncode,
-            FilePondPluginFileValidateType,);
-        const inputElement = document.querySelector('input[class="filepond"]');
-        // FilePond.parse(document.body);
-        FilePond.create(inputElement,{
-            acceptedFileTypes: ['image/*'],
-            labelIdle:'Sélectionner une photo',
-            imagePreviewHeight: "300",
-            allowFileEncode: true,
-            maxFiles: 1,
-            labelFileTypeNotAllowed:'Votre fichier doit être une image',
-            fileValidateTypeLabelExpectedTypes:'Exemple : .jpg .jpeg .png'
-        });
-    </script>
+											{% endif %}
+										{% endif %}
+									</li>
+								</ul>
+							</li>
 
 
+							<li class="nav-item navbar-purple ">
+								<a href="{{ path('logout') }}" class="nav-link">
+									<i class="nav-icon fas fa-sign-out-alt"></i>
+									<p>
+										Se Déconnecter
+
+									</p>
+								</a>
+							</li>
+						</ul>
+					</nav>
+
+					<!-- /.sidebar-menu -->
+				</div>
+				<!-- /.sidebar -->
+			</aside>
+		{% endblock sidebar %}
+
+		{% block body_header %}
+			<!-- Content Wrapper. Contains page content -->
+			<div
+				class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<div class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h1 class="m-0">
+									{%  block header_title %}{% endblock header_title%}
+								</h1>
+							</div>
+							<!-- /.col -->
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-right">
+									<li class="breadcrumb-item">
+										{% block backButton %}
+											<a href="{{ path('admin_dashboard') }}">Home</a>
+										{% endblock backButton %}
+									</li>
+									<li class="breadcrumb-item active">Dashboard v1</li>
+								</ol>
+							</div>
+							<!-- /.col -->
+						</div>
+						<!-- /.row -->
+					</div>
+					<!-- /.container-fluid -->
+				</div>
+				<!-- /.content-header -->
+			{% endblock body_header  %}
 
 
-    {#        <script type="text/javascript">#}
-    {#                $(document).ready(function () {#}
-    {#                    var url ='{{ path(app.request.get('_route')) }}';#}
+			{% block body %}{% endblock body %}
+		</div>
+	</body>
+</html></div>{% block scripts %}
+{{ encore_entry_script_tags('app') }}
+<!-- Control Sidebar -->
+<aside
+	class="control-sidebar control-sidebar-dark"><!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 
 
+<!-- jQuery -->
+<script src="{{ asset('dashboard/plugins/jquery/jquery.min.js') }}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ asset('dashboard/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+	$.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- ChartJS -->
+<script src="{{ asset('dashboard/plugins/chart.js/Chart.min.js') }}"></script>
+<!-- Sparkline -->
+<script src="{{ asset('dashboard/plugins/sparklines/sparkline.js') }}"></script>
+<!-- JQVMap -->
+<script src="{{ asset('dashboard/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
+<script src="{{ asset('dashboard/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{{ asset('dashboard/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+<!-- daterangepicker -->
+<script src="{{ asset('dashboard/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('dashboard/plugins/daterangepicker/daterangepicker.js') }}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{ asset('dashboard/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+<!-- Summernote -->
+<script src="{{ asset('dashboard/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<!-- overlayScrollbars -->
+<script src="{{ asset('dashboard/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('dashboard/dist/js/adminlte.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('dashboard/dist/js/demo.js') }}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{ asset('dashboard/dist/js/pages/dashboard.js') }}"></script>
+<script src="{{ asset("confirm.js")}}"></script>
+<script src="{{ asset("rating.js")}}"></script>
+<script src="{{ asset("sort.js")}}"></script>
+<script src="{{ asset("compare.js")}}"></script>
+<script src="{{ asset("alertify.min.js")}}"></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+<script src="{{ asset("Map.js")}}"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 
-    {#                    $('ul.nav  a').filter(function() {#}
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
+<script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+<script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 
-    {#                        return this.href.endsWith(url);#}
-    {#                    }).parent().addClass('active');#}
-    {#                });#}
-    {#            </script>#}
-{% endblock scripts %}
+<!-- Turn all file input elements into ponds -->
+<script>
+	FilePond.registerPlugin(FilePondPluginImagePreview, FilePondPluginImageCrop, FilePondPluginImageResize, FilePondPluginFileEncode, FilePondPluginFileValidateType,);
+const inputElement = document.querySelector('input[class="filepond"]');
+// FilePond.parse(document.body);
+FilePond.create(inputElement, {
+acceptedFileTypes: ['image/*'],
+labelIdle: 'Sélectionner une photo',
+imagePreviewHeight: "300",
+allowFileEncode: true,
+maxFiles: 1,
+labelFileTypeNotAllowed: 'Votre fichier doit être une image',
+fileValidateTypeLabelExpectedTypes: 'Exemple : .jpg .jpeg .png'
+});
+</script>
 
-</body>
-</html>
+
+{#        <script type="text/javascript">#}{#                $(document).ready(function () {#}
+{#                    var url ='{{ path(app.request.get('_route')) }}';#}
+
+
+{#                    $('ul.nav  a').filter(function() {#}
+
+{#                        return this.href.endsWith(url);#}
+{#                    }).parent().addClass('active');#}
+{#                });#}
+{#            </script>#}{% endblock scripts %}</body></html>
+
